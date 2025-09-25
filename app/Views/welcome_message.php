@@ -229,6 +229,7 @@
 
         <h2>The small framework with powerful features</h2>
 
+        <a href="<?= url_to('panneauListe') ?>">Voir les panneaux</a>
     </div>
 
 </header>

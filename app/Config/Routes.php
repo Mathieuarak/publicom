@@ -9,17 +9,17 @@ $routes->get('/', 'Home::index');
 
 //ROUTE PANNEAUX
 
-$routes->get('liste-panneau-(:num)', 'Home::liste/$1', ['as' => 'panneauListe']);
+$routes->get('liste-panneau', 'Panneau::liste', ['as' => 'panneauListe']);
 
-$routes->get('map-panneau', 'Home::map', ['as' => 'panneauMap']);
+$routes->get('map-panneau', 'Panneau::map', ['as' => 'panneauMap']);
 
-$routes->get('ajout-panneau-(:num)', 'Home::ajout/$1', ['as' => 'panneauAjout']);  //num-> num de la commune 
-$routes->post('ajout-panneau', 'Home::create', ['as' => 'panneauAjout']);
+$routes->get('ajout-panneau-(:num)', 'Panneau::ajout/$1', ['as' => 'panneauAjout']);  //num-> num de la commune 
+$routes->post('ajout-panneau', 'Panneau::create', ['as' => 'panneauAjout']);
 
-$routes->get('modif-panneau-(:num)', 'Home::modif/$1', ['as' => 'panneauModif']);
-$routes->post('modif-panneau', 'Home::update', ['as' => 'panneauModif']);
+$routes->get('modif-panneau-(:num)', 'Panneau::modif/$1', ['as' => 'panneauModif']);
+$routes->post('modif-panneau', 'Panneau::update', ['as' => 'panneauModif']);
 
-$routes->post('suppr-panneau', 'Home::delete', ['as' => 'panneauSuppr']);
+$routes->post('suppr-panneau', 'Panneau::delete', ['as' => 'panneauSuppr']);
 
 
 //CRUD communes
