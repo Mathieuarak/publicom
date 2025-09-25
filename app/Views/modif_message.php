@@ -3,11 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Publicom</title>
-    <meta name="description" content="The small framework with powerful features">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
-modification message
+    <form method="post" action="#">
+       <fieldset> 
+            <legend>Modification de message de {nom de la commune}</legend>
+
+            <label>Message :</label>
+            <textarea name="message">
+                message
+            </textarea>
+
+            <label>Titre :</label>
+            <input name="titre" type="text" value="Titre">
+
+            <label>Police de caractères du titre :</label>
+            <input name="policeTitre" type="text" value="Police du titre">
+
+            <label>Police de caractères du texte :</label>
+            <input name="policeTexte" type="text" value="Police du texte">
+
+            <label>Alignement du texte :</label>
+            <<div>
+                <input type="radio" id="gauche" name="alignement" value="gauche" />
+                <label for="gauche">Gauche</label>
+            </div>
+
+            <div>
+                <input type="radio" id="centre" name="alignement" value="centre" />
+                <label for="centre">Centre</label>
+            </div>
+
+            <div>
+                <input type="radio" id="droite" name="alignement" value="droite" />
+                <label for="droite">Droite</label>
+            </div>
+
+            <label>Taille du titre :</label>
+            <input name="tailleTitre" type="text" value="28">
+
+            <label>Taille du texte :</label>
+            <input name="tailleTexte" type="text" value="14">
+
+            <label>Fond :</label>
+            <input name="image de fond" type="text">
+
+            <input type="submit" value="Valider">
+        </fieldset>
+    </form>
 </body>
 </html>
