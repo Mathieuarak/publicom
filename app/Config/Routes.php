@@ -14,10 +14,10 @@ $routes->get('liste-panneau', 'Panneau::liste', ['as' => 'panneauListe']);
 $routes->get('map-panneau', 'Panneau::map', ['as' => 'panneauMap']);
 
 $routes->get('ajout-panneau-(:num)', 'Panneau::ajout/$1', ['as' => 'panneauAjout']);  //num-> num de la commune 
-$routes->post('ajout-panneau', 'Panneau::create', ['as' => 'panneauAjout']);
+$routes->post('ajout-panneau', 'Panneau::create', ['as' => 'panneauCreate']);
 
 $routes->get('modif-panneau-(:num)', 'Panneau::modif/$1', ['as' => 'panneauModif']);
-$routes->post('modif-panneau', 'Panneau::update', ['as' => 'panneauModif']);
+$routes->post('modif-panneau', 'Panneau::update', ['as' => 'panneauUpdate']);
 
 $routes->post('suppr-panneau', 'Panneau::delete', ['as' => 'panneauSuppr']);
 
