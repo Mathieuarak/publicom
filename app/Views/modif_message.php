@@ -26,21 +26,20 @@
             <label>Police de caractères du texte :</label>
             <input name="policeTexte" type="text" value="Police du texte">
 
-            <label>Alignement du texte :</label>
-            <<div>
-                <input type="radio" id="gauche" name="alignement" value="gauche" />
-                <label for="gauche">Gauche</label>
-            </div>
+            <label>Alignement</label>
+            <fieldset>
+                    <div>
+                    <input type="radio" id="gauche" name="alignement" value="gauche" checked /> 
+                    <label for="centre">Gauche</label>
 
-            <div>
-                <input type="radio" id="centre" name="alignement" value="centre" />
-                <label for="centre">Centre</label>
-            </div>
+                    <input type="radio" id="centre" name="alignement" value="centre" />
+                    <label for="centre">Centre</label>
+            
+                    <input type="radio" id="droite" name="alignement" value="droite" />
+                    <label for="centre">Droite</label>
+                    </div>
+            </fieldset>
 
-            <div>
-                <input type="radio" id="droite" name="alignement" value="droite" />
-                <label for="droite">Droite</label>
-            </div>
 
             <label>Taille du titre :</label>
             <input name="tailleTitre" type="text" value="28">

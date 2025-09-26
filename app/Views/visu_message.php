@@ -7,6 +7,6 @@
     <link rel="shortcut icon" type="image/png" href="/favicon.ico">
 </head>
 <body>
-visualisation message
+    <h1>visualisation des message de {nom de la comunne}</h1>
 </body>
 </html>

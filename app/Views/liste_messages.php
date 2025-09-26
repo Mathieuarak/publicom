@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/tableaux.css">
 </head>
 <body>
+    <h1>Liste des message de {nom de la communne}</h1>
     <table>
         <tr>
             <th> Message </th>
@@ -15,19 +16,31 @@
         </tr>
         <tr>
             <td> Message 1 </td>
-            <td> <a class="bouton" href='#'> Affichage on/off </a> </td>
+            <td> <form method="post" action="#">
+                    <input type="radio" id="on" name="on_off" value="on" /> <label for="on">On</label>
+
+                    <input type="radio" id="off" name="on_off" value="off" checked /><label for="off">Off</label></form> 
+            </td>
             <td> <a class="bouton" href='#'> Modifier </a> </td>
             <td> <a class="bouton" href='#'> Supprimer </a> </td>
         </tr>
            <tr>
             <td> Message 2 </td>
-            <td> <a class="bouton" href='#'> Affichage on/off </a> </td>
+            <td> <form method="post" action="#">
+                    <input type="radio" id="on" name="on_off" value="on" /> <label for="on">On</label>
+
+                    <input type="radio" id="off" name="on_off" value="off" checked /><label for="off">Off</label></form> 
+            </td>
             <td> <a class="bouton" href='#'> Modifier </a> </td>
             <td> <a class="bouton" href='#'> Supprimer </a> </td>
         </tr>
            <tr>
             <td> Message 3 </td>
-            <td> <a class="bouton" href='#'> Affichage on/off </a> </td>
+            <td> <form method="post" action="#">
+                    <input type="radio" id="on" name="on_off" value="on" /> <label for="on">On</label>
+
+                    <input type="radio" id="off" name="on_off" value="off" checked /><label for="off">Off</label></form> 
+            </td>
             <td> <a class="bouton" href='#'> Modifier </a> </td>
             <td> <a class="bouton" href='#'> Supprimer </a> </td>
         </tr>

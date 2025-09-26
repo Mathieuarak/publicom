@@ -8,25 +8,38 @@
     <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
-    <form method="post" action="#">
+<form method="post" action="#">
        <fieldset> 
-            <legend>Ajout de message de {nom de la commune}</legend>
+            <legend>Modification de message de {nom de la commune}</legend>
 
             <label>Message :</label>
             <textarea name="message">
+                
             </textarea>
 
             <label>Titre :</label>
-            <input name="titre" type="text">
+            <input name="titre" type="text" >
 
             <label>Police de caractères du titre :</label>
-            <input name="policeTitre" type="text">
+            <input name="policeTitre" type="text" >
 
             <label>Police de caractères du texte :</label>
-            <input name="policeTexte" type="text">
+            <input name="policeTexte" type="text" >
 
-            <label>Alignement du texte :</label>
-            <input name="alignement" type="text">
+            <label>Alignement</label>
+            <fieldset>
+                    <div>
+                    <input type="radio" id="gauche" name="alignement" value="gauche" /> 
+                    <label for="centre">Gauche</label>
+
+                    <input type="radio" id="centre" name="alignement" value="centre" />
+                    <label for="centre">Centre</label>
+            
+                    <input type="radio" id="droite" name="alignement" value="droite" />
+                    <label for="centre">Droite</label>
+                    </div>
+            </fieldset>
+
 
             <label>Taille du titre :</label>
             <input name="tailleTitre" type="text">
@@ -35,10 +48,9 @@
             <input name="tailleTexte" type="text">
 
             <label>Fond :</label>
-            <input name="fond" type="text">
-            
+            <input name="image de fond" type="text">
+
             <input type="submit" value="Valider">
         </fieldset>
-    </form>
 </body>
 </html>
