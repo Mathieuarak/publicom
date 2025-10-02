@@ -60,10 +60,8 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
 	
 //Route Message
 
-	//route liste message
+	//Read
 	$routes->get('liste-messages-(:num)', 'Message::liste/$1', ['as' => 'liste_messages']);
-
-	//route visualisation Message
 	$routes->get('visu-message-(:num)', 'Message::visualisation/$1', ['as' => 'visu_message']);
 
 	//Create

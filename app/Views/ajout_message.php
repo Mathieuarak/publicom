@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Publicom</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/favicon.ico">
+<?= $this->extend('layout')?>
+
+<?= $this->section('css')?>
     <link rel="stylesheet" href="css/form.css">
-</head>
-<body>
+<?= $this->endSection()?>
+
+<?= $this->section('contenu') ?>
+
 <form method="post" action="#">
        <fieldset> 
             <legend>Modification de message de {nom de la commune}</legend>
@@ -52,5 +50,4 @@
 
             <input type="submit" value="Valider">
         </fieldset>
-</body>
-</html>
+<?= $this->endSection()?>
