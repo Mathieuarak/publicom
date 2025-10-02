@@ -16,30 +16,42 @@
         </tr>
         <tr>
             <td> Message 1 </td>
-            <td> <form method="post" action="#">
-                    <input type="radio" id="on" name="on_off" value="on" /> <label for="on">On</label>
-
-                    <input type="radio" id="off" name="on_off" value="off" checked /><label for="off">Off</label></form> 
+            <td> 
+                <form method="post" action="#" >           
+                    <input type="radio" id="on" name="on_off" value="on" />
+                    <label for="on">On</label>
+                
+                    <input type="radio" id="off" name="on_off" value="off" checked/>
+                    <label for="off">Off</label>
+                </form> 
             </td>
             <td> <a class="bouton" href='#'> Modifier </a> </td>
             <td> <a class="bouton" href='#'> Supprimer </a> </td>
         </tr>
            <tr>
             <td> Message 2 </td>
-            <td> <form method="post" action="#">
-                    <input type="radio" id="on" name="on_off" value="on" /> <label for="on">On</label>
-
-                    <input type="radio" id="off" name="on_off" value="off" checked /><label for="off">Off</label></form> 
+            <td>                 
+                <form method="post" action="#" >           
+                    <input type="radio" id="on" name="on_off" value="on" />
+                    <label for="on">On</label>
+                
+                    <input type="radio" id="off" name="on_off" value="off" checked/>
+                    <label for="off">Off</label>
+                </form> 
             </td>
             <td> <a class="bouton" href='#'> Modifier </a> </td>
             <td> <a class="bouton" href='#'> Supprimer </a> </td>
         </tr>
            <tr>
             <td> Message 3 </td>
-            <td> <form method="post" action="#">
-                    <input type="radio" id="on" name="on_off" value="on" /> <label for="on">On</label>
-
-                    <input type="radio" id="off" name="on_off" value="off" checked /><label for="off">Off</label></form> 
+                        <td>                 
+                <form method="post" action="#" >           
+                    <input type="radio" id="on" name="on_off" value="on" checked/>
+                    <label for="on">On</label>
+                
+                    <input type="radio" id="off" name="on_off" value="off"/>
+                    <label for="off">Off</label>
+                </form> 
             </td>
             <td> <a class="bouton" href='#'> Modifier </a> </td>
             <td> <a class="bouton" href='#'> Supprimer </a> </td>
