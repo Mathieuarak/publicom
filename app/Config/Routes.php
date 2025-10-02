@@ -5,7 +5,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index');	
+$routes->post('auth','Utilisateur::auth' ,['as' =>'auth_user']);
+	
 
 //ROUTE PANNEAUX
 
@@ -27,11 +29,11 @@ $routes->post('suppr-panneau', 'Panneau::delete', ['as' => 'panneauSuppr']);
 $routes->get('liste-communes', 'Communes::liste', ['as' => 'listeCommunes']);
 
 
-$routes->get('creation-commune','Communes::create',['as' =>'creationCommune']);
-$routes->post('creation-commune','Communes::create',['as' =>'creationCommune']);
+$routes->get('creation-commune','Communes::creation',['as' =>'creationCommune']);
+$routes->post('create-commune','Communes::create',['as' =>'createCommune']);
 
 $routes->get('modification-communes-(:num)', 'Communes::update/$1', ['as' => 'modificationCommunes']);
-$routes->post('modification-communes', 'Communes::update', ['as' => 'modificationCommunes']);
+$routes->post('update-communes', 'Communes::update', ['as' => 'updateCommunes']);
 
 $routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommunes']);
 $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAccueil']);
@@ -46,9 +48,7 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
 	//Read
 	
 	$routes->get('listes-des-utilisateurs(:num)','Utilisateur::reads/$1' ,['as' =>'read_users' ] ); //num->num de la commune
-	
-	$routes->post('utilisateur-auth','Utilisateur::read' ,['as' =>'read_user']);
-	
+
 	//Update
 	
 	$routes->get('modifier-utilisateur-(:num)','Utilisateur::preUpdate/$1' ,['as' =>'preUpdate_user' ] );

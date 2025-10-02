@@ -22,15 +22,16 @@
 </head>
 
 
-
-<form method="post" action="<?=url_to("read_user")?>">
+<body>
+    <form method="post" action="<?=url_to("auth")?>">
     
-    <label for="nom" >Login </label>
-    <input type="text" id="login" name="user_login" />
+        <label for="nom" >Login </label>
+        <input type="text" id="login" name="user_login" />
             
             
-    <label for="motDePasse" >Password </label>
-    <input type="text" id="password" name="user_password" />
+        <label for="motDePasse" >Password </label>
+        <input type="text" id="password" name="user_password" />
 
-    <input type="submit" value="Login">
-</form>   
+        <input type="submit" value="Login">
+    </form> 
+</body>  
