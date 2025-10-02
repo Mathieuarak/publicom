@@ -23,7 +23,7 @@
 
 
 <body>
-    <form method="post" action="<?=url_to("auth")?>">
+    <form method="post" action="<?=url_to("auth_user")?>">
     
         <label for="nom" >Login </label>
         <input type="text" id="login" name="user_login" />

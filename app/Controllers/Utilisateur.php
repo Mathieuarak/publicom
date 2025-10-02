@@ -7,7 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Utilisateur extends BaseController
 {
-    public function read()
+    public function auth()
     {
         dd($this->request->getPost());
 
