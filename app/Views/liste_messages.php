@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Publicom</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/favicon.ico">
-    <link rel="stylesheet" href="css/tableaux.css">
-</head>
-<body>
+
+<?= $this->extend('layout')?>
+
+<?= $this->section('css')?>
+ <link rel="stylesheet" href="css/tableaux.css">
+<?= $this->endSection()?>
+
+<?= $this->section('contenu') ?>
+
     <h1>Liste des message de {nom de la communne}</h1>
     <table>
         <tr>
@@ -61,5 +60,4 @@
 
     <p><a class="bouton" href='#'> Ajout message </a></p> 
     <p><a class="bouton" href='#'> visualisation message </a></p>
-</body>
-</html>
+<?= $this->endSection()?>
