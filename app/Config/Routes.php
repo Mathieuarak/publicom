@@ -42,12 +42,12 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
 
 	//Create
 	
-	$routes->get('ajout-utilisateur(:num)','Utilisateur::preCreate/$1' ,['as' => 'preCreate_user' ] );  //num->num de la commune
+	$routes->get('ajout-utilisateur-(:num)','Utilisateur::preCreate/$1' ,['as' => 'preCreate_user' ] );  //num->num de la commune
 	$routes->post('ajout-utilisateur','Utilisateur::create' ,['as' =>'create_user' ] );
 	
 	//Read
 	
-	$routes->get('listes-des-utilisateurs(:num)','Utilisateur::reads/$1' ,['as' =>'read_users' ] ); //num->num de la commune
+	$routes->get('listes-des-utilisateurs-(:num)','Utilisateur::reads/$1' ,['as' =>'read_users' ] ); //num->num de la commune
 
 	//Update
 	

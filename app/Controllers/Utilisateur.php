@@ -15,9 +15,16 @@ class Utilisateur extends BaseController
     }
     public function reads($numCommune)
     {
+        $data=[
+            ["id"=>"1",
+            "nom"=>"mathieu",
+            "prenom"=>"Arak"],
+            ["id"=>"1",
+            "nom"=>"Cedric",
+            "prenom"=>"boing"]
+        ];
         
-        
-        return;
+        return view("listeUtilisateurs.php",["listeUtilisateurs"=>$data]);
     }
     public function preCreate($numCommune)
     {
@@ -32,18 +39,21 @@ class Utilisateur extends BaseController
     }
     public function preUpdate($idUtilisateur)
     {
-       
+       $data=
+            ["id"=>"2",
+            "nomCommune"=>"albainc",
+            "nom"=>"mathieu",
+            "prenom"=>"Arak"];
         
-        return;
+        return view("modifierUtilisateur.php",["utilisateur"=>$data]);
     }
     public function update()
     {
         
-        return;
+        return redirect()->to('listes-des-utilisateurs-1');
     }
     public function delete()
     {
-        
-        return;
+        return redirect()->back();
     }
 }
