@@ -11,7 +11,9 @@ class Message extends BaseController
     //liste des message
     public function liste($communeId)
     {
-        return view('liste_messages',['communeId' =>$communeId]);
+        $messageModel=model('MessageModel');
+
+        return view('liste_messages',['messageListe' =>$messageModel->findAll()]);
     }
 
     //page de visualisation des message

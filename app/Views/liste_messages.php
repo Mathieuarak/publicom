@@ -5,6 +5,18 @@
 <h1 class="titre">Liste des message de {nom de la communne}</h1>
 <p><a class="bouton" href='<?= url_to('message_ajout', 1) ?>'> Ajout message </a></p>
 <p><a class="bouton" href='<?= url_to('visu_message', 1) ?>'> visualisation message </a></p>
+
+<?php
+    $table=new \CodeIgniter\View\Table();
+
+    $table->setHeading('Titre','Contenu', 'Visibilité');
+
+    foreach ($messageListe as $message ){
+        $table->addRow($message['TITRE'],$message['CONTENU']);
+    }
+
+?>
+
 <table>
     <tr>
         <th> Message </th>
