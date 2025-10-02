@@ -24,17 +24,17 @@ $routes->post('suppr-panneau', 'Panneau::delete', ['as' => 'panneauSuppr']);
 
 //CRUD communes
 
-$routes->get('liste-communes', 'commune::liste', ['as' => 'listeCommunes']);
+$routes->get('liste-communes', 'Communes::liste', ['as' => 'listeCommunes']);
 
 
-$routes->get('creation-commune','commune::create',['as' =>'creationCommune']);
-$routes->post('creation-commune','commune::create',['as' =>'creationCommune']);
+$routes->get('creation-commune','Communes::create',['as' =>'creationCommune']);
+$routes->post('creation-commune','Communes::create',['as' =>'creationCommune']);
 
-$routes->get('modification-communes-(:num)', 'commune::update/$1', ['as' => 'modificationCommunes']);
-$routes->post('modification-communes', 'commune::update', ['as' => 'modificationCommunes']);
+$routes->get('modification-communes-(:num)', 'Communes::update/$1', ['as' => 'modificationCommunes']);
+$routes->post('modification-communes', 'Communes::update', ['as' => 'modificationCommunes']);
 
-$routes->post('supprimer-communes','commune::delete',['as'=>'supprimerCommunes']);
-$routes->get('communes-accueil-(:num)','commune::accueil/$1',['as'=>'communesAccueil']);
+$routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommunes']);
+$routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAccueil']);
 
 //Route Utilisateur 
 

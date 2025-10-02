@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/tableaux.css">
 </head>
 <body>
+    <h1>Liste des message de {nom de la communne}</h1>
     <table>
         <tr>
             <th> Message </th>
