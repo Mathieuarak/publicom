@@ -27,7 +27,7 @@
             <input name="policeTexte" type="text" value="Police du texte">
 
             <label>Alignement du texte :</label>
-            <<div>
+            <div>
                 <input type="radio" id="gauche" name="alignement" value="gauche" />
                 <label for="gauche">Gauche</label>
             </div>
