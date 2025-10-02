@@ -1,53 +1,49 @@
-<?= $this->extend('layout')?>
-
-<?= $this->section('css')?>
-    <link rel="stylesheet" href="css/form.css">
-<?= $this->endSection()?>
+<?= $this->extend('layout') ?>
 
 <?= $this->section('contenu') ?>
 
 <form method="post" action="#">
-       <fieldset> 
-            <legend>Modification de message de {nom de la commune}</legend>
+    <fieldset>
+        <legend>Ajout de message de {nom de la commune}</legend>
 
-            <label>Message :</label>
-            <textarea name="message">
-                
+        <label>Message :</label>
+        <textarea name="message">
+
             </textarea>
 
-            <label>Titre :</label>
-            <input name="titre" type="text" >
+        <label>Titre :</label>
+        <input name="titre" type="text">
 
-            <label>Police de caractères du titre :</label>
-            <input name="policeTitre" type="text" >
+        <label>Police de caractères du titre :</label>
+        <input name="policeTitre" type="text">
 
-            <label>Police de caractères du texte :</label>
-            <input name="policeTexte" type="text" >
+        <label>Police de caractères du texte :</label>
+        <input name="policeTexte" type="text">
 
-            <label>Alignement</label>
-            <fieldset>
-                    <div>
-                    <input type="radio" id="gauche" name="alignement" value="gauche" /> 
-                    <label for="centre">Gauche</label>
+        <label>Alignement</label>
+        <fieldset>
+            <div>
+                <input type="radio" id="gauche" name="alignement" value="gauche" />
+                <label for="centre">Gauche</label>
 
-                    <input type="radio" id="centre" name="alignement" value="centre" />
-                    <label for="centre">Centre</label>
-            
-                    <input type="radio" id="droite" name="alignement" value="droite" />
-                    <label for="centre">Droite</label>
-                    </div>
-            </fieldset>
+                <input type="radio" id="centre" name="alignement" value="centre" />
+                <label for="centre">Centre</label>
 
-
-            <label>Taille du titre :</label>
-            <input name="tailleTitre" type="text">
-
-            <label>Taille du texte :</label>
-            <input name="tailleTexte" type="text">
-
-            <label>Fond :</label>
-            <input name="image de fond" type="text">
-
-            <input type="submit" value="Valider">
+                <input type="radio" id="droite" name="alignement" value="droite" />
+                <label for="centre">Droite</label>
+            </div>
         </fieldset>
-<?= $this->endSection()?>
+
+
+        <label>Taille du titre :</label>
+        <input name="tailleTitre" type="text">
+
+        <label>Taille du texte :</label>
+        <input name="tailleTexte" type="text">
+
+        <label>Fond :</label>
+        <input name="image de fond" type="text">
+
+        <input type="submit" value="Valider">
+    </fieldset>
+    <?= $this->endSection() ?>

@@ -12,24 +12,24 @@
 }
 
 .bouton {
-padding: 1px 6px;
-border: 1px outset buttonborder;
-border-radius: 3px;
-color: buttontext;
-background-color: buttonface;
-text-decoration: none;
+  padding: 1px 6px;
+  border: 1px outset buttonborder;
+  border-radius: 3px;
+  color: buttontext;
+  background-color: buttonface;
+  text-decoration: none;
 
 }
 
-.right{
-    position:relative;
-    left: 92%;
-    
+.right {
+  position: relative;
+  left: 92%;
+
 }
 
 
 
 
-h1{
-    text-align: center;
+h1 {
+  text-align: center;
 }
