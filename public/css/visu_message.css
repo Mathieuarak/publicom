@@ -1,0 +1,19 @@
+.visu_message {
+  margin: 0;
+  padding: 0.3rem;
+  background-color: #eee;
+  text-align: center;
+}
+
+.bouton {
+padding: 1px 6px;
+border: 1px outset buttonborder;
+border-radius: 3px;
+color: buttontext;
+background-color: buttonface;
+text-decoration: none;
+}
+
+h1{
+    text-align: center;
+}
