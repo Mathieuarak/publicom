@@ -1,37 +1,38 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('contenu') ?>
 
-    <h1>liste des panneaux de (commune)</h1>
+<h1>liste des panneaux de (commune)</h1>
 
-    <table border="1" cellpadding="8" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Numéro panneau</th>
-                <th>Coordonnées panneau</th>
-                <th>modifier</th>
-                <th>supprimer</th>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Panneau</td>
-                <td><button type="button">modifier</button></td>
-                <td><button type="button">supprimer</button></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Panneau</td>
-                <td><button type="button">modifier</button></td>
-                <td><button type="button">supprimer</button></td>
-            </tr>
+<section>
+
+    <?php
+
+    $table=new \CodeIgniter\View\Table();
+
+    $table->setHeading('Numéro panneau', 'Coordonnées panneau', 'modifier', 'supprimer');
+
+    foreach ($panneauListe as $panneaux) {
+
+        $modifier = '<a href="' . url_to('panneauUpdate', $panneaux['ID']) . '">Modifier</a>';
+        $supprimer = '<a href="' . url_to('panneauSuppr', $panneaux['ID']) . '">Supprimer</a>';
+
+        $table->addRow(
+            $panneaux['NUMERO'],
+            $panneaux['LATITUDE'],
+            $modifier,
+            $supprimer
+        );
+    }
+
+    echo $table->generate();
+
+    ?>
 
 
 
-        </tbody>
-        </tr>
-        </tbody>
-    </table>
+</section>
 
-    <button type="button">Afficher en tant que carte</button>
-    <button type="button">Ajouter panneau</button>
+<button type="button">Afficher en tant que carte</button>
+<button type="button">Ajouter panneau</button>
 
 <?= $this->endSection() ?>

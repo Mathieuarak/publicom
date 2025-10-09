@@ -7,9 +7,10 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Panneau extends BaseController
 {
-    public function liste()
+    public function liste(): string
     {
-        return view('panneauListe');
+        $panneaux = model('PanneauModel')->findAll();
+        return view('panneauListe', ['panneauListe' => $panneaux]);
     }
     public function map()
     {
@@ -19,9 +20,32 @@ class Panneau extends BaseController
     {
         return view('panneauAjout');
     }
-    public function modif ($num)
+
+
+
+    public function modif(int $panneauxId)
     {
-        return view('panneauModif');
+        $numero = $this->request->getPost('numero');
+        $latitude = $this->request->getPost('latitude');
+        $longitude = $this->request->getPost('longitude');
+
+        $panneauData = [
+            'numero' => $numero,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+        ];
+
+        model('PanneauModel')->update($panneauxId, $panneauData);
+
+        return redirect()->to(url_to('panneauListe'));
+    }
+
+
+
+    
+    public function delete(int $panneauxId)
+    {
+        model('PanneauModel')->delete($panneauxId);
+        return redirect()->to(url_to('panneauListe'));
     }
 }
-
