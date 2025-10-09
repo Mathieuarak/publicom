@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome Publicom</title>
-    <link rel="stylesheet" href="css\form.css">
-    
+<?= $this->extend('layout') ?>
 
-    <!-- STYLES -->
-
-    <style {csp-style-nonce}>
-        .bouton{
-            padding: 1px 6px;
-            border: 1px outset buttonborder;
-            border-radius: 3px;
-            color: buttontext;
-            background-color: buttonface;
-            text-decoration: none;
-        }
-
-    </style>
-</head>
-<body>
+<?= $this->section('contenu') ?>
     <h1>Modification Utilisateur de <?=$utilisateur["nomCommune"]?></h1>
 
     <form method="post" action="<?=url_to("update_user")?>">
@@ -45,8 +25,5 @@
 
 
             <button type="submit">Valider Modification</button>
-
-
-
     </form>
-</body>  
+<?= $this->endSection() ?>

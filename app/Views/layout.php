@@ -9,6 +9,7 @@
      <link rel="stylesheet" href="css/tableaux.css">
      <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="css/visu_message.css">
+    
 </head>
 <body>
 <nav>

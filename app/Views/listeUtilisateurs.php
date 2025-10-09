@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome Publicom</title>
-    <link rel="stylesheet" href="css\tableaux.css">
-    
+<?= $this->extend('layout') ?>
 
-    <!-- STYLES -->
-
-    <style {csp-style-nonce}>
-        .bouton{
-            padding: 1px 6px;
-            border: 1px outset buttonborder;
-            border-radius: 3px;
-            color: buttontext;
-            background-color: buttonface;
-            text-decoration: none;
-        }
-
-    </style>
-</head>
-
-
-<body>
+<?= $this->section('contenu') ?>
     <a href="<?=url_to('preCreate_user',$listeUtilisateurs[0]["idCommune"])?>" class='bouton'>Ajouter un Utilisateur</a>
     <?php
             //dd($listeUtilisateurs);
@@ -33,10 +11,10 @@
                     $utilisateur['nom'],
                     $utilisateur['prenom'], 
                     '<a href="'.url_to('preUpdate_user', $utilisateur['id']).'" class=\'bouton\'>modifierUtilisateur</a>',
-                    '<a href=" '.url_to('delete_user'/*, $utilisateur['id']*/).'"class=\'bouton\'>supprimer</a>'// regarder si opition post pour url to 
+                    '<form method="post" action="'.url_to('delete_user',$listeUtilisateurs[0]["idCommune"]).'"> <button type="submit" name="delete" onclick='."return confirm('Are you sure?')" .'> Supprimer </button> </form>'
                 ]);
             }
             echo $table->generate();
 
             ?>
-</body>  
+<?= $this->endSection() ?>

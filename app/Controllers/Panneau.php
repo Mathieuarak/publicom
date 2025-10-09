@@ -11,4 +11,17 @@ class Panneau extends BaseController
     {
         return view('panneauListe');
     }
+    public function map()
+    {
+        return view('panneauMap');
+    }
+    public function ajout ($num)
+    {
+        return view('panneauAjout');
+    }
+    public function modif ($num)
+    {
+        return view('panneauModif');
+    }
 }
+

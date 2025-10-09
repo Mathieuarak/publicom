@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome Publicom</title>
-    <link rel="stylesheet" href="css\form.css">
-    
+<?= $this->extend('layout') ?>
 
-    <!-- STYLES -->
-
-    <style {csp-style-nonce}>
-        .bouton{
-            padding: 1px 6px;
-            border: 1px outset buttonborder;
-            border-radius: 3px;
-            color: buttontext;
-            background-color: buttonface;
-            text-decoration: none;
-        }
-
-    </style>
-</head>
-<body>
+<?= $this->section('contenu') ?>
     <h1>Ajout Utilisateur dans <?=$commune["nomCommune"]?></h1>
 
     <form method="post" action="<?=url_to("create_user",)?>">
@@ -38,8 +18,5 @@
             <input type="text" id="password" name="password"/>
 
             <button type="submit">Valider Ajout</button>
-
-
-
     </form>
-</body>  
+<?= $this->endSection() ?>
