@@ -3,8 +3,7 @@
 <?= $this->section('contenu') ?>
 
 <h1 class="titre">Liste des message de <?= $commune['NOM'] ?> </h1>
-<p><a class="bouton" href='<?= url_to('message_ajout', 1) ?>'> Ajout message </a></p>
-<p><a class="bouton" href='<?= url_to('visu_message', 1) ?>'> visualisation message </a></p>
+<p><a class="bouton" href='<?= url_to('message_ajout', $commune['ID']) ?>'> Ajout message </a></p>
 
 <?php
 $table = new \CodeIgniter\View\Table();
@@ -27,6 +26,7 @@ foreach ($messageListe as $message) {
         <tr>
             <td> <?= $message['TITRE'] ?> </td>
             <td>
+                 <!-- les bouton on off n'affiche que la valeur déja en base , à modifier pour qu'ils puissent modifier la valeur -->
                 <form method="post" action="#">
                     <?php if ($message['ON_OFF'] == 1) { ?>
                         <input type="radio" id="on" name="on_off" value="on" checked />
@@ -45,6 +45,7 @@ foreach ($messageListe as $message) {
             </td>
             <td> <a class="bouton" href='<?= url_to('message_modif', $message['ID']) ?>'> Modifier </a> </td>
             <td> <a class="bouton" href='<?= url_to('visu_message', $message['ID']) ?>'> Visualisation </a> </td>
+            <!-- le bouton supprimer ne fonctionne pas, à modifier -->
             <td> <a class="bouton" href='<?= url_to('message_delete') ?>'> Supprimer </a> </td>
         </tr>
     <?php } ?>

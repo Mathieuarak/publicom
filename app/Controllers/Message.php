@@ -15,9 +15,8 @@ class Message extends BaseController
         $communeModel=model('CommuneModel');
 
         $messageListe=$messageModel->where('ID_COMMUNEMESSAGE', $communeId)->findAll();
-        $commune=$communeModel->find($communeId);
 
-        return view('liste_messages',['messageListe' =>$messageListe, 'commune' =>$commune]);
+        return view('liste_messages',['messageListe' =>$messageListe, 'commune' =>$communeModel->find($communeId)]);
     }
 
     //page de visualisation des message
@@ -35,11 +34,30 @@ class Message extends BaseController
     //création de message
     public function ajout($communeId)
     {
-        return view('ajout_message',['communeId' =>$communeId]);
+        $communeModel=model('CommuneModel');
+
+        return view('ajout_message',['commune' =>$communeModel->find($communeId)]);
     }
     public function create()
     {
-        //à faire : insertion de message dans la base de donné + redirection vers la liste des message
+        $messageModel=model('MessageModel');
+
+        $data = [
+            'ID_COMMUNEMESSAGE' => $this->request->getPost('idCommune'),
+            'TITRE' => $this->request->getPost('titre'),
+            'CONTENU' => $this->request->getPost('message'),
+            'POLICETITRE' => $this->request->getPost('policeTitre'),
+            'POLICECONTENU' => $this->request->getPost('policeTexte'),
+            'ALIGNEMENT' => $this->request->getPost('alignement'),
+            'FOND' => $this->request->getPost('fond'),
+            'TAILLECONTENU' =>$this->request->getPost('tailleTexte'),
+            'TAILLE TITRE' =>$this->request->getPost('tailleTitre'),
+            
+        ];
+
+        $messageModel->insert($data);
+        return redirect()->route('liste_messages',[$this->request->getPost('idCommune')]);
+
     }
 
     //modification des message
@@ -50,13 +68,13 @@ class Message extends BaseController
     }
     public function update()
     {
-        //à faire : modification de message dans la base de donné + redirection vers la liste des message
+        //à faire : modification de message dans la base de donnée + redirection vers la liste des message
     }
 
     //suppresion des message
     public function delete()
     {
-        //à faire : modification de message dans la base de donné + redirection vers la liste des message
+        //à faire : suppression de message dans la base de donnée + redirection vers la liste des message
     }
 
 }

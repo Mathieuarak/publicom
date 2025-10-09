@@ -2,9 +2,11 @@
 
 <?= $this->section('contenu') ?>
 
-<form method="post" action="#">
+<form method="post" action="<?=url_to('message_create')?>">
     <fieldset>
-        <legend>Ajout de message de {nom de la commune}</legend>
+        <legend>Ajout de message de <?= $commune['NOM'] ?></legend>
+
+        <input name="idCommune" type="hidden" value="<?= $commune['ID'] ?>" />
 
         <label>Message :</label>
         <textarea name="message">
@@ -42,7 +44,7 @@
         <input name="tailleTexte" type="text">
 
         <label>Fond :</label>
-        <input name="image de fond" type="text">
+        <input name="fond" type="text">
 
         <input type="submit" value="Valider">
     </fieldset>
