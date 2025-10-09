@@ -59,6 +59,6 @@ class Utilisateur extends BaseController
     }
     public function delete()
     {
-        return redirect()->to('listes-des-utilisateurs-1');
+        return redirect()->to('listes-des-utilisateurs-2');
     }
 }

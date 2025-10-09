@@ -11,7 +11,7 @@
                     $utilisateur['nom'],
                     $utilisateur['prenom'], 
                     '<a href="'.url_to('preUpdate_user', $utilisateur['id']).'" class=\'bouton\'>modifierUtilisateur</a>',
-                    '<form method="post" action="'.url_to('delete_user',$listeUtilisateurs[0]["idCommune"]).'"> <button type="submit" name="delete" onclick='."return confirm('Are you sure?')" .'> Supprimer </button> </form>'
+                    '<form method="post" action="'.url_to('delete_user',$listeUtilisateurs[0]["idCommune"]).'"> <button type="submit" name="delete" onclick= "'. "return confirm('Are you sure?')".'"> Supprimer </button> </form>'
                 ]);
             }
             echo $table->generate();
