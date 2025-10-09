@@ -63,11 +63,31 @@ class Message extends BaseController
     //modification des message
         public function modif($messageId)
     {
+        $messageModel=model('MessageModel');
+        $communeModel=model('CommuneModel');
 
-        return view('modif_message',['messageId' =>$messageId]);
+        $message=$messageModel->find($messageId);
+        $commune=$communeModel->find($message['ID_COMMUNEMESSAGE']);
+
+        return view('modif_message',['message' =>$message,'commune'=>$commune]);
     }
     public function update()
     {
+        $messageModel=model('MessageModel');
+
+        $data = [
+            'TITRE' => $this->request->getPost('titre'),
+            'CONTENU' => $this->request->getPost('message'),
+            'POLICETITRE' => $this->request->getPost('policeTitre'),
+            'POLICECONTENU' => $this->request->getPost('policeTexte'),
+            'ALIGNEMENT' => $this->request->getPost('alignement'),
+            'FOND' => $this->request->getPost('fond'),
+            'TAILLECONTENU' =>$this->request->getPost('tailleTexte'),
+            'TAILLE TITRE' =>$this->request->getPost('tailleTitre'),
+        ];
+
+        $messageModel->update($this->request->getPost('idMessage'), $data);
+        return redirect()->route('liste_messages',[$this->request->getPost('idCommune')]);
         //à faire : modification de message dans la base de donnée + redirection vers la liste des message
     }
 

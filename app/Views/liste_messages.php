@@ -28,19 +28,12 @@ foreach ($messageListe as $message) {
             <td>
                  <!-- les bouton on off n'affiche que la valeur déja en base , à modifier pour qu'ils puissent modifier la valeur -->
                 <form method="post" action="#">
-                    <?php if ($message['ON_OFF'] == 1) { ?>
-                        <input type="radio" id="on" name="on_off" value="on" checked />
+                        <input type="radio" id="on" name="on_off" value="on" <?php if($message['ON_OFF'] == 1) {echo 'checked';} ?> />
                         <label for="on">On</label>
 
-                        <input type="radio" id="off" name="on_off" value="off" />
+                        <input type="radio" id="off" name="on_off" value="off" <?php if($message['ON_OFF'] == 0) {echo 'checked';} ?>/>
                         <label for="off">Off</label>
-                    <?php } else { ?>
-                        <input type="radio" id="on" name="on_off" value="on" />
-                        <label for="on">On</label>
 
-                        <input type="radio" id="off" name="on_off" value="off" checked />
-                        <label for="off">Off</label>
-                    <?php } ?>
                 </form>
             </td>
             <td> <a class="bouton" href='<?= url_to('message_modif', $message['ID']) ?>'> Modifier </a> </td>
