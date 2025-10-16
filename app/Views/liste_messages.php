@@ -42,7 +42,6 @@ foreach ($messageListe as $message) {
             </td>
             <td> <a class="bouton" href='<?= url_to('message_modif', $message['ID']) ?>'> Modifier </a> </td>
             <td> <a class="bouton" href='<?= url_to('visu_message', $message['ID']) ?>'> Visualisation </a> </td>
-            <!-- le bouton supprimer ne fonctionne pas, à modifier -->
             <td>
                 <form method="post" action='<?= url_to('message_delete') ?>'>
                     <input name="idMessage" type="hidden" value="<?= $message['ID'] ?>" />
