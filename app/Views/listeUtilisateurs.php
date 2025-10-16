@@ -8,10 +8,10 @@
             $table->setHeading('nom', 'prenom',"modifier","supprimer");
             foreach ($listeUtilisateurs as $utilisateur) {
                 $table->addRow([
-                    $utilisateur['nom'],
-                    $utilisateur['prenom'], 
-                    '<a href="'.url_to('preUpdate_user', $utilisateur['id']).'" class=\'bouton\'>modifierUtilisateur</a>',
-                    '<form method="post" action="'.url_to('delete_user',$utilisateur['id']).'"> <button type="submit" name="delete" onclick= "'. "return confirm('Are you sure?')".'"> Supprimer </button> </form>'
+                    $utilisateur['NOM'],
+                    $utilisateur['PRENOM'], 
+                    '<a href="'.url_to('preUpdate_user', $utilisateur['ID']).'" class=\'bouton\'>modifierUtilisateur</a>',
+                    '<form method="post" action="'.url_to('delete_user',$utilisateur['ID']).'"> <button type="submit" name="delete" onclick= "'. "return confirm('Are you sure?')".'"> Supprimer </button> </form>'
                 ]);
             }
             echo $table->generate();
