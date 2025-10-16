@@ -56,7 +56,7 @@ class Message extends BaseController
         ];
 
         $messageModel->insert($data);
-        return redirect()->route('liste_messages',[$this->request->getPost('idCommune'), 'isAdmin'=>true]);
+        return redirect()->route('liste_messages',[$this->request->getPost('idCommune')]);
 
     }
 
@@ -87,7 +87,7 @@ class Message extends BaseController
         ];
 
         $messageModel->update($this->request->getPost('idMessage'), $data);
-        return redirect()->route('liste_messages',[$this->request->getPost('idCommune'), 'isAdmin'=>true]);
+        return redirect()->route('liste_messages',[$this->request->getPost('idCommune')]);
         
     }
 
@@ -97,7 +97,7 @@ class Message extends BaseController
         $messageModel=model('MessageModel');
         $messageModel->delete($this->request->getPost('idMessage'));
         
-        return redirect()->route('liste_messages',[$this->request->getPost('idCommune'), 'isAdmin'=>true]);
+        return redirect()->route('liste_messages',[$this->request->getPost('idCommune')]);
     }
 
 }
