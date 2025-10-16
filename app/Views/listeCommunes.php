@@ -1,48 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-  <body>
-    <div class="container">
-        <div class="commune-row">
-            <input type="text" class="commune-input" value="Saint Étienne de Tulmont" >
-            <button class="btn-supprimer" onclick="supprimerCommune(this)">supprimer commune</button>
-            <button class="btn-modifier" onclick="modifierCommune(this)">✏️</button>
-        </div>
+<?= $this->extend('layout') ?>
+
+
+
+<?= $this->section('contenu') ?>
+
+<section>
+<a href="creationCommune" class="bouton">Création Commune</a>
+    <?php $table = new \CodeIgniter\View\Table();
+    $table-> setHeading(['Nom','Modifier','Supprimer']);
+       foreach ($listeCommunes as $commune){
         
-        <div class="commune-row">
-            <input type="text" class="commune-input" value="Saint Étienne de Tulmont" >
-            <button class="btn-supprimer" onclick="supprimerCommune(this)">supprimer commune</button>
-            <button class="btn-modifier" onclick="modifierCommune(this)">✏️</button>
-        </div>
+        $table->addRow(
+            $commune['NOM'],
+            '<a href="' . url_to('modificationCommunes', $commune['ID']) . '" class="bouton">Modifier</a>',
+            '<a href="' . url_to('supprimerCommunes', $commune['ID']) . '" class="bouton">Supprimer</a>',
+
+        );
+       }
+       echo $table->generate();
+        ?>
+       </section>
+ 
+
+    <?= $this->endSection() ?>
+    
+
+
+    
+    
         
-        <div class="commune-row">
-            <input type="text" class="commune-input" value="Saint Étienne de Tulmont" >
-            <button class="btn-supprimer" onclick="supprimerCommune(this)">supprimer commune</button>
-            <button class="btn-modifier" onclick="modifierCommune(this)">✏️</button>
-        </div>
-        
-        <div class="commune-row">
-            <input type="text" class="commune-input" value="Saint Étienne de Tulmont" >
-            <button class="btn-supprimer" onclick="supprimerCommune(this)">supprimer commune</button>
-            <button class="btn-modifier" onclick="modifierCommune(this)">✏️</button>
-        </div>
-        
-        <div class="commune-row">
-            <input type="text" class="commune-input" value="Saint Étienne de Tulmont" >
-            <button class="btn-supprimer" onclick="supprimerCommune(this)">supprimer commune</button>
-            <button class="btn-modifier" onclick="modifierCommune(this)">✏️</button>
-        </div>
-        
-        <div class="commune-row">
-            <input type="text" class="commune-input" value="Saint Étienne de Tulmont" >
-            <button class="btn-supprimer" onclick="supprimerCommune(this)">supprimer commune</button>
-            <button class="btn-modifier" onclick="modifierCommune(this)">✏️</button>
-        </div>
-        
-        <div class="commune-row">
-            <input type="text" class="commune-input" value="Saint Étienne de Tulmont" >
-            <button class="btn-supprimer" onclick="supprimerCommune(this)">supprimer commune</button>
-            <button class="btn-modifier" onclick="modifierCommune(this)">✏️</button>
-        </div>
-    </div>

@@ -9,6 +9,15 @@ class Communes extends BaseController
 {
     public function liste()
     {
-        return view('listeCommunes');
+        $communeModel = new \App\Models\Commune();
+        $communes = $communeModel-> findAll();
+
+        $data = [
+            'listeCommunes' => $communes
+        ];
+
+        return view('listeCommunes', $data);
     }
+    
 }
+
