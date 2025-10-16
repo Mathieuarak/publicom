@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 class Utilisateur extends BaseController
 {
     public function auth()
+    #Fonctionnel
     {
         $model=model('Admin');
         $log=$model->isAdmin($this->request->getPost('user_login'),$this->request->getPost('user_password'));
@@ -15,8 +16,8 @@ class Utilisateur extends BaseController
             return redirect("listeCommunes");
         }
         else{
-            $mode2=model('Utilisateur');
-            $log2=$mode2->isUser($this->request->getPost('user_login'),$this->request->getPost('user_password'));
+            $model2=model('Utilisateur');
+            $log2=$model2->isUser($this->request->getPost('user_login'),$this->request->getPost('user_password'));
             if (count($log2)){
                 $communeId=$log2[0];
                 return view("communeAccueil",$communeId);
@@ -24,10 +25,14 @@ class Utilisateur extends BaseController
         }
         return redirect()->back();
     }
-    public function reads($numCommune)
-    {
-        $data=[
 
+    public function reads($numCommune){
+        #Fonctionnel
+        $model=model('Utilisateur');
+        $log=$model->usersInCommune($numCommune);
+        //dd($log);
+
+        /*$data=[
             ["id"=>"1",
             "nom"=>"mathieu",
             "prenom"=>"Arak",
@@ -36,23 +41,26 @@ class Utilisateur extends BaseController
             "nom"=>"Cedric",
             "prenom"=>"boing",
             "idCommune"=>"2"]
-        ];
+        ];*/
         
-        return view("listeUtilisateurs.php",["listeUtilisateurs"=>$data,"idCommune"=>$numCommune]);
+        return view("listeUtilisateurs.php",["listeUtilisateurs"=>$log,"idCommune"=>$numCommune]);
     }
-    public function preCreate($numCommune)
-    {
-        $data=
-            ["nomCommune"=>"albainc"];
-        
-        return view("ajoutUtilisateur.php",["commune"=>$data]);
+
+    public function preCreate($numCommune){
+        #Fonctionnel
+        $model=model('Commune');
+        $log=$model->userCommune($numCommune);
+        /*$data=
+            ["nomCommune"=>"albainc"];*/
+        return view("ajoutUtilisateur.php",["commune"=>$log[0],"ID_UTILISATEURCOMMUNE"=>$numCommune]);
     }
+
     public function create()
     {
-        
-        
+        dd($this->request->getPost('ID_UTILISATEURCOMMUNE'));
         return redirect()->to('listes-des-utilisateurs-1');
     }
+
     public function preUpdate($idUtilisateur)
     {
        $data=

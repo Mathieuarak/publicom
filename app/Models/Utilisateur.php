@@ -51,4 +51,10 @@ class Utilisateur extends Model
         ->where("MOTDEPASSE", $password)
         ->findAll();
     }
+    public function usersInCommune($idCommune){
+        return $this
+        ->select("ID,NOM,PRENOM")
+        ->where("ID_UTILISATEURCOMMUNE",$idCommune)
+        ->findAll();
+    }
 }

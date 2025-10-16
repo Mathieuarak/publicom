@@ -50,6 +50,12 @@ class Commune extends Model
             ->select('nom','id','codepostal')
             ->findAll();
     } 
+    public function userCommune($numCommune){
+        return $this
+        ->select("NOM")
+        ->where("ID",$numCommune)
+        ->findAll();
+    }
 
 
 
