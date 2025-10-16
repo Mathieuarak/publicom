@@ -5,6 +5,7 @@
 
  <!-- les bouton suivant et précédent ne fonctionne pas , à modifier -->
 <a class="bouton left" href='#'> Précédent </a> <a class="bouton right" href='#'> Suivant </a>
+<!-- la visualisation des message ne fonctionne pas encore -->
 <article class="visu_message">
     <h2> <?= $message['TITRE'] ?></h2>
     <p> <?= $message['CONTENU']?></p>

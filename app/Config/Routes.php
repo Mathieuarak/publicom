@@ -72,5 +72,8 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
 	$routes->get('modif-message-(:num)', 'Message::modif/$1', ['as' => 'message_modif']);
 	$routes->post('modif-message', 'Message::update', ['as' => 'message_update']);
 
+	$routes->post('visuModif-message', 'Message::visuModif', ['as' => 'message_visuModif']);
+
+
 	//Delete
 	$routes->post('suppr-message', 'Message::delete', ['as' => 'message_delete']);
