@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Commune extends Model
+class Admin extends Model
 {
-    protected $table            = 'commune';
+    protected $table            = 'admin';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom','codepostal','description','image'];
+    protected $allowedFields    = [];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -44,21 +44,12 @@ class Commune extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function findListe()
-    {
-        return $this
-            ->select('nom','id','codepostal')
-            ->findAll();
-    } 
-    public function userCommune($numCommune){
-        return $this
-        ->select("NOM")
-        ->where("ID",$numCommune)
+      public function isAdmin($login,$password){
+        return $this 
+        ->select("id")
+        ->where("IDENTIFIANT", $login)
+        ->where("MOTDEPASSE", $password)
         ->findAll();
     }
-
-
-
-
-
 }
+ 

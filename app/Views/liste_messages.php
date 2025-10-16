@@ -26,20 +26,29 @@ foreach ($messageListe as $message) {
         <tr>
             <td> <?= $message['TITRE'] ?> </td>
             <td>
-                 <!-- les bouton on off n'affiche que la valeur déja en base , à modifier pour qu'ils puissent modifier la valeur -->
-                <form method="post" action="#">
-                        <input type="radio" id="on" name="on_off" value="on" <?php if($message['ON_OFF'] == 1) {echo 'checked';} ?> />
-                        <label for="on">On</label>
 
-                        <input type="radio" id="off" name="on_off" value="off" <?php if($message['ON_OFF'] == 0) {echo 'checked';} ?>/>
-                        <label for="off">Off</label>
+                <form method="post" action='<?= url_to('message_visuModif')?>'>
+                    <input name="idMessage" type="hidden" value="<?= $message['ID'] ?>" />
+                    <input name="idCommune" type="hidden" value="<?= $commune['ID'] ?>" />
+
+                    <input type="radio" id="on" name="on_off" value="1" <?php if ($message['ON_OFF'] == 1) {echo 'checked';} ?> />
+                    <label for="on">On</label>
+
+                    <input type="radio" id="off" name="on_off" value="0" <?php if ($message['ON_OFF'] == 0) {echo 'checked';} ?> />
+                    <label for="off">Off</label>
+                    <button class="bouton" type="submit">Changer</button>
 
                 </form>
             </td>
             <td> <a class="bouton" href='<?= url_to('message_modif', $message['ID']) ?>'> Modifier </a> </td>
             <td> <a class="bouton" href='<?= url_to('visu_message', $message['ID']) ?>'> Visualisation </a> </td>
-            <!-- le bouton supprimer ne fonctionne pas, à modifier -->
-            <td> <a class="bouton" href='<?= url_to('message_delete') ?>'> Supprimer </a> </td>
+            <td>
+                <form method="post" action='<?= url_to('message_delete') ?>'>
+                    <input name="idMessage" type="hidden" value="<?= $message['ID'] ?>" />
+                    <input name="idCommune" type="hidden" value="<?= $commune['ID'] ?>" />
+                    <button class="bouton" type="submit">Supprimer</button>
+                </form>
+            </td>
         </tr>
     <?php } ?>
 </table>

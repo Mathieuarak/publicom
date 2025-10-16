@@ -36,6 +36,7 @@ table tbody tr:nth-child(odd) {
 	color: buttontext;
 	background-color: buttonface;
 	text-decoration: none;
+	width: 35%;
 }
 
 .titre {
