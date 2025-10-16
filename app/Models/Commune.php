@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CommuneModel extends Model
+class Commune extends Model
 {
     protected $table            = 'commune';
     protected $primaryKey       = 'id';
@@ -12,7 +12,7 @@ class CommuneModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nom','codepostal','description','image'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -43,4 +43,16 @@ class CommuneModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function findListe()
+    {
+        return $this
+            ->select('nom','id','codepostal')
+            ->findAll();
+    } 
+
+
+
+
+
 }
