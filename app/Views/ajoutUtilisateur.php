@@ -8,16 +8,16 @@
             <input type="hidden" name="ID_UTILISATEURCOMMUNE" value="<?= $ID_UTILISATEURCOMMUNE?>">
 
             <label for="nom" >Nom </label>
-            <input type="text" id="nom" name="nom"/>
+            <input type="text" id="NOM" name="NOM"/>
             
             <label for="prenom" >Prenom </label>
-            <input type="text" id="prenom" name="prenom"/>
+            <input type="text" id="PRENOM" name="PRENOM"/>
 
             <label for="login" >Login </label>
-            <input type="text" id="login" name="login"/>
+            <input type="text" id="IDENTIFIANT" name="IDENTIFIANT"/>
             
             <label for="password" >Password </label>
-            <input type="text" id="password" name="password"/>
+            <input type="text" id="MOTDEPASSE" name="MOTDEPASSE"/>
 
             <button type="submit">Valider Ajout</button>
     </form>

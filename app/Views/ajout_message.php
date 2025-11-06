@@ -9,9 +9,7 @@
         <input name="idCommune" type="hidden" value="<?= $commune['ID'] ?>" />
 
         <label>Message :</label>
-        <textarea name="message">
-
-            </textarea>
+        <textarea name="message"></textarea>
 
         <label>Titre :</label>
         <input name="titre" type="text">
@@ -45,6 +43,8 @@
 
         <label>Fond :</label>
         <input name="fond" type="text">
+
+        <input name="on_off" type="hidden" value=0 />
 
         <input type="submit" value="Valider">
     </fieldset>
