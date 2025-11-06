@@ -11,6 +11,7 @@
                     $utilisateur['NOM'],
                     $utilisateur['PRENOM'], 
                     '<a href="'.url_to('preUpdate_user', $utilisateur['ID']).'" class=\'bouton\'>modifierUtilisateur</a>',
+                    
                     '<form method="post" action="'.url_to('delete_user',$utilisateur['ID']).'"> <button type="submit" name="delete" onclick= "'. "return confirm('Are you sure?')".'"> Supprimer </button> </form>'
                 ]);
             }

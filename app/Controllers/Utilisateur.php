@@ -22,8 +22,18 @@ class Utilisateur extends BaseController
                 $communeId=$log2[0];
                 return view("communeAccueil",$communeId);
             }
+            else{
+                
+                $session = session();
+                $session->setFlashdata('errorMessage', 'Echec auth');
+                //$_SESSION['error'] = 'Echec Auth';
+                //$session->markAsFlashdata('error');
+                //dd($_SESSION['error']);
+
+            }
         }
-        return redirect()->back();
+        
+        return redirect()->back()/*->with('errorMessage',"Echec auth")*/;
     }
 
     public function reads($numCommune){
@@ -64,20 +74,22 @@ class Utilisateur extends BaseController
         $model->insert($this->request->getPost());
         
         $numCommune=$this->request->getPost("ID_UTILISATEURCOMMUNE");
-        //dd($numCommune);
+        dd($numCommune);
         return redirect()->to('listes-des-utilisateurs-'.$numCommune);
     }
 
     public function preUpdate($idUtilisateur)
     {
-       $data=
+       /*$data=
             ["id"=>"2",
             "nomCommune"=>"albainc",
             "nom"=>"mathieu",
             "prenom"=>"Arak",
-            "login"=>"ArakMat"];
-        
-        return view("modifierUtilisateur.php",["utilisateur"=>$data]);
+            "login"=>"ArakMat"];*/
+        $model=model('Utilisateur');
+        $data=$model->user($idUtilisateur);
+        //dd($data);
+        return view("modifierUtilisateur.php",["utilisateur"=>$data[0]]);
     }
     public function update()
     {
@@ -85,6 +97,8 @@ class Utilisateur extends BaseController
     }
     public function delete()
     {
+        dd($this->request->getPost());
+        //model('Utilisateur')->delete($);
         return redirect()->to('listes-des-utilisateurs-2');
     }
 }

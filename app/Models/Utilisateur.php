@@ -57,4 +57,11 @@ class Utilisateur extends Model
         ->where("ID_UTILISATEURCOMMUNE",$idCommune)
         ->findAll();
     }
+    public function user($idUser){
+        return $this
+        ->select("utilisateur.ID,commune.NOM as nomCommune,utilisateur.PRENOM,utilisateur.IDENTIFIANT,utilisateur.NOM")
+        ->join("commune",'commune.ID =utilisateur.ID_UTILISATEURCOMMUNE')
+        ->where("utilisateur.ID",$idUser)
+        ->findAll();
+    }
 }
