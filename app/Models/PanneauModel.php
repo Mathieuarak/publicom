@@ -7,16 +7,15 @@ use CodeIgniter\Model;
 class PanneauModel extends Model
 {
     protected $table            = 'panneaux';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'ID'; 
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['NUMERO', 'LATITUDE', 'LONGITUDE', 'ID_COMMUNEPANNEAUX'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
-
     protected array $casts = [];
     protected array $castHandlers = [];
 

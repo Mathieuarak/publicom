@@ -29,6 +29,7 @@
                 <?php } ?>
 
                 <li class="push"><a href="">Sortir de la commune</a></li>
+                <li><a href="">Déconnexion</a></li>
             </ul>
     </nav>
 <?php } ?>
