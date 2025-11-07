@@ -33,7 +33,7 @@
             
             
         <label for="motDePasse" >Password </label>
-        <input type="text" id="password" name="user_password" />
+        <input type="password" id="password" name="user_password" />
 
         <input type="submit" value="Login">
     </form> 

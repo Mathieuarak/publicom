@@ -74,7 +74,7 @@ class Utilisateur extends BaseController
         $model->insert($this->request->getPost());
         
         $numCommune=$this->request->getPost("ID_UTILISATEURCOMMUNE");
-        dd($numCommune);
+        //dd($numCommune);
         return redirect()->to('listes-des-utilisateurs-'.$numCommune);
     }
 
@@ -93,12 +93,24 @@ class Utilisateur extends BaseController
     }
     public function update()
     {
+        $model=model('Utilisateur');
+        $data=[
+            "PRENOM"=>$this->request->getPost('PRENOM'),
+            "NOM"=>$this->request->getPost('NOM'),
+            "IDENTIFIANT"=>$this->request->getPost('IDENTIFIANT'),
+            "MOTDEPASSE"=>$this->request->getPost('MOTDEPASSE')
+        ];
+
+        
+        $model->update($this->request->getPost('ID'),$data);
+        //dd($this->request->getPost());
+
         return redirect()->to('listes-des-utilisateurs-1');
     }
     public function delete()
     {
-        dd($this->request->getPost());
-        //model('Utilisateur')->delete($);
-        return redirect()->to('listes-des-utilisateurs-2');
+        //dd($this->request->getPost());
+        model('Utilisateur')->delete($this->request->getPost());
+        return redirect()->to('listes-des-utilisateurs-1');
     }
 }

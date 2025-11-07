@@ -1,0 +1,4 @@
+/*Utilisateur*/
+-Filtre pour session 
+-Rajouter NOT NULL en base a identifiant et Motdepasse
+- Cacher les mot de passe dans les formulaires update creation user 

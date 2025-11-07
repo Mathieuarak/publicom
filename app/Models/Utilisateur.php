@@ -59,7 +59,7 @@ class Utilisateur extends Model
     }
     public function user($idUser){
         return $this
-        ->select("utilisateur.ID,commune.NOM as nomCommune,utilisateur.PRENOM,utilisateur.IDENTIFIANT,utilisateur.NOM")
+        ->select("utilisateur.ID,commune.NOM as nomCommune,utilisateur.PRENOM,utilisateur.IDENTIFIANT,utilisateur.NOM,utilisateur.MOTDEPASSE")
         ->join("commune",'commune.ID =utilisateur.ID_UTILISATEURCOMMUNE')
         ->where("utilisateur.ID",$idUser)
         ->findAll();
