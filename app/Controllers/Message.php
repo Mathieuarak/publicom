@@ -51,7 +51,8 @@ class Message extends BaseController
             'ALIGNEMENT' => $this->request->getPost('alignement'),
             'FOND' => $this->request->getPost('fond'),
             'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
-            'TAILLE TITRE' => $this->request->getPost('tailleTitre'),
+            'TAILLETITRE' => $this->request->getPost('tailleTitre'),
+            'ON_OFF'=> $this->request->getPost('on_off')
 
         ];
 
@@ -82,7 +83,7 @@ class Message extends BaseController
             'ALIGNEMENT' => $this->request->getPost('alignement'),
             'FOND' => $this->request->getPost('fond'),
             'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
-            'TAILLE TITRE' => $this->request->getPost('tailleTitre'),
+            'TAILLETITRE' => $this->request->getPost('tailleTitre'),
         ];
 
         $messageModel->update($this->request->getPost('idMessage'), $data);
@@ -100,7 +101,7 @@ class Message extends BaseController
         $messageModel->update($this->request->getPost('idMessage'), $data);
         return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
     }
-    
+
     //suppresion des message
     public function delete()
     {

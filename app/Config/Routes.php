@@ -21,7 +21,7 @@ $routes->post('ajout-panneau', 'Panneau::create', ['as' => 'panneauCreate']);
 $routes->get('modif-panneau-(:num)', 'Panneau::modif/$1', ['as' => 'panneauModif']);
 $routes->post('modif-panneau', 'Panneau::update', ['as' => 'panneauUpdate']);
 
-$routes->post('suppr-panneau', 'Panneau::delete', ['as' => 'panneauSuppr']);
+$routes->get('suppr-panneau-(:num)', 'Panneau::delete/$1', ['as' => 'panneauSuppr']);
 
 
 //CRUD communes
@@ -77,3 +77,19 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
 
 	//Delete
 	$routes->post('suppr-message', 'Message::delete', ['as' => 'message_delete']);
+
+//Route Categorie
+
+    //Read
+    $routes->get('liste-categorie', 'Categories::index', ['as' => 'liste_categories']); 
+
+    //Create
+    $routes->get('ajout-categorie', 'Categories::create', ['as' => 'categorie_ajout']); // afficher le formulaire
+    $routes->post('ajout-categorie', 'Categories::store', ['as' => 'categorie_store']); // traitement du formulaire
+
+    //Update
+    $routes->get('modif-categorie-(:num)', 'Categories::edit/$1', ['as' => 'categorie_modif']); // afficher le formulaire 
+    $routes->post('modif-categorie', 'Categories::update', ['as' => 'categorie_update']); // traitement du formulaire
+
+    //Delete
+    $routes->post('suppr-categorie', 'Categories::delete', ['as' => 'categorie_delete']); 

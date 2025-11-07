@@ -23,6 +23,9 @@
 
 
 <body>
+    <h1>
+        <?php /*if(isset($_SESSION['error']))*/  if (session()->getFlashdata('errorMessage') !== NULL) { session()->getFlashdata('errorMessage'); /*dd($_SESSION['error']); $_SESSION['error']; */}?>
+    </h1>
     <form method="post" action="<?=url_to("auth_user")?>">
     
         <label for="nom" >Login </label>

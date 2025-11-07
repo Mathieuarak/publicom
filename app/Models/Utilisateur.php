@@ -12,7 +12,7 @@ class Utilisateur extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ["ID_UTILISATEURCOMMUNE","NOM","PRENOM","IDENTIFIANT","MOTDEPASSE"];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -55,6 +55,13 @@ class Utilisateur extends Model
         return $this
         ->select("ID,NOM,PRENOM")
         ->where("ID_UTILISATEURCOMMUNE",$idCommune)
+        ->findAll();
+    }
+    public function user($idUser){
+        return $this
+        ->select("utilisateur.ID,commune.NOM as nomCommune,utilisateur.PRENOM,utilisateur.IDENTIFIANT,utilisateur.NOM")
+        ->join("commune",'commune.ID =utilisateur.ID_UTILISATEURCOMMUNE')
+        ->where("utilisateur.ID",$idUser)
         ->findAll();
     }
 }
