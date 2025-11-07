@@ -13,12 +13,21 @@
 <body>
     <div class="container">
         <div class="commune-row">
-            <button>Saint Étienne de Tulmont</button><br><br/>
-            <input type="text" name="message" id="message" value="" style="height: 400px; width: 500px;" onclick="this.value=''" />
-            <button class="" onclick="panneauListe(this)">Liste panneaux communes</button><p>
-            <button class="" onclick="liste_messages(this)">Liste des messages</button><p>
-            <button class="" onclick="(this)">Liste des utilisateurs de la commune</button><p>
-            <button class="" onclick="(this)">Map panneaux commune</button><p>
+            <form method= "post" action="<?= url_to('commune-update',$commune['ID'])?>">
+                <input type="text" name="message" id="message" value="" style="height: 400px; width: 500px;" onclick="this.value=''" />
+
+                <label for="nom">Éditer nom </label>
+                <input type="text" id="nom" name="nom" value="<?= $commune['NOM'] ?>"><br><br>
+
+                <label for="nom">Éditer le code code Postal</label>
+                <input type="text" id="codePostal" name="code Postal" value="<?= $commune['CODEPOSTAL'] ?>"><br><br>
+
+                <label for="nom">Éditer la description </label>
+                <input type="text" id="description" name="description" value="<?= $commune['DESCRIPTION'] ?>"><br><br>
+                
+                <input type="submit" value="Valider">
+                
+            </form>
 
         </div>
     </body>

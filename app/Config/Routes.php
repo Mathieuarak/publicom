@@ -32,7 +32,7 @@ $routes->get('liste-communes', 'Communes::liste', ['as' => 'listeCommunes']);
 $routes->get('creation-commune','Communes::creation',['as' =>'creationCommune']);
 $routes->post('create-commune','Communes::create',['as' =>'createCommune']);
 
-$routes->get('modification-communes-(:num)', 'Communes::update/$1', ['as' => 'modificationCommunes']);
+$routes->get('modification-communes-(:num)', 'Communes::modif/$1', ['as' => 'modificationCommunes']);
 $routes->post('update-communes', 'Communes::update', ['as' => 'updateCommunes']);
 
 $routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommunes']);

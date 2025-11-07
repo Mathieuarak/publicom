@@ -49,8 +49,28 @@ class Communes extends BaseController
     return redirect('/');
 
     }
+    public function modif( $communeId): string
+    {
+        $communeModel = model('Commune');
+        return view('communeAccueil');
+    }
+
     
-    public function 
+    public function update($communeID){
+        $communeModel = model('Commune');
+        $commune = $communeModel-> find($communeID);
+
+        $data = [
+            'nom' => $this->request->getPost('NOM'),
+            'codePostal' => $this->request->getPost('CODEPOSTAL'),
+            'description'=>$this->request->getPost('DESCRIPTION')
+
+        ];
+        $communeModel->update($communeID);
+        return view('communesAccueil',$commune);
+
+
+    }
 
 
 
