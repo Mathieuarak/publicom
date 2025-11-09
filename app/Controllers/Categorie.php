@@ -25,8 +25,8 @@ class Categorie extends BaseController
         $categorieModel = model('CategorieModel');
         
         $data = [
-            'nom' => $this->request->getPost('nom'),
-            'description' => $this->request->getPost('description')
+            'NOM' => $this->request->getPost('nom'),
+            'DESCRIPTION' => $this->request->getPost('description')
         ];
 
         if ($categorieModel->save($data)) {
@@ -56,9 +56,9 @@ class Categorie extends BaseController
         $categorieModel = model('CategorieModel');
         
         $data = [
-            'id' => $id,
-            'nom' => $this->request->getPost('nom'),
-            'description' => $this->request->getPost('description')
+            'IDCATEGORIE' => $id,
+            'NOM' => $this->request->getPost('nom'),
+            'DESCRIPTION' => $this->request->getPost('description')
         ];
 
         if ($categorieModel->save($data)) {

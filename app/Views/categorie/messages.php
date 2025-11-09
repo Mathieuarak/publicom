@@ -3,8 +3,15 @@
 <?= $this->section('content') ?>
 
 <div class="container mt-4">
-    <h2>Messages de la catégorie : <?= esc($categorie['nom']) ?></h2>
-    <p class="text-muted"><?= esc($categorie['description']) ?></p>
+    <?php
+        // Normalisation des clés pour éviter les erreurs si la BDD utilise des majuscules
+        $catNom = $categorie['NOM'] ?? $categorie['nom'] ?? 'Nom indisponible';
+        $catDescription = $categorie['DESCRIPTION'] ?? $categorie['description'] ?? '';
+    ?>
+    <h2>Messages de la catégorie : <?= esc($catNom) ?></h2>
+    <?php if ($catDescription !== ''): ?>
+        <p class="text-muted"><?= esc($catDescription) ?></p>
+    <?php endif; ?>
 
     <div class="mb-3">
         <a href="/categories" class="btn btn-secondary">Retour aux catégories</a>

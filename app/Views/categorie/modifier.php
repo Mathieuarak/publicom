@@ -2,33 +2,62 @@
 
 <?= $this->section('content') ?>
 
-<div class="container mt-4">
-    <h2>Modifier une Catégorie</h2>
+<div class="category-header">
+    <div class="container">
+        <h2 class="mb-0"><i class="fas fa-edit me-2"></i>Modifier la Catégorie</h2>
+    </div>
+</div>
 
-    <?php if (session()->getFlashdata('errors')) : ?>
-        <div class="alert alert-danger">
-            <?php foreach (session()->getFlashdata('errors') as $error) : ?>
-                <p><?= $error ?></p>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <?php if (session()->getFlashdata('errors')) : ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php foreach (session()->getFlashdata('errors') as $error) : ?>
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    <p class="mb-0"><?= $error ?></p>
+                                </div>
+                            <?php endforeach; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php endif; ?>
 
-    <form action="/categorie/update/<?= $categorie['id'] ?>" method="post">
-        <div class="mb-3">
-            <label for="nom" class="form-label">Nom de la catégorie</label>
-            <input type="text" class="form-control" id="nom" name="nom" 
-                   value="<?= old('nom', $categorie['nom']) ?>" required>
-        </div>
-        
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description" 
-                      rows="3"><?= old('description', $categorie['description']) ?></textarea>
-        </div>
+                    <form action="/categorie/update/<?= $categorie['IDCATEGORIE'] ?>" method="post">
+                        <div class="mb-4">
+                            <label for="nom" class="form-label">Nom de la catégorie</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-folder"></i></span>
+                                <input type="text" class="form-control" id="nom" name="nom" 
+                                       value="<?= old('nom', $categorie['NOM']) ?>" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="description" class="form-label">Description</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-align-left"></i></span>
+                                <textarea class="form-control" id="description" name="description" 
+                                          rows="4"><?= old('description', $categorie['DESCRIPTION']) ?></textarea>
+                            </div>
+                        </div>
 
-        <button type="submit" class="btn btn-primary">Mettre à jour</button>
-        <a href="/categories" class="btn btn-secondary">Annuler</a>
-    </form>
+                        <div class="d-flex justify-content-end gap-2">
+                            <a href="/categories" class="btn btn-outline-secondary">
+                                <i class="fas fa-times me-1"></i>Annuler
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>Enregistrer les modifications
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <?= $this->endSection() ?>

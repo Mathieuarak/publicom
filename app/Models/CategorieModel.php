@@ -19,8 +19,8 @@ class CategorieModel extends Model
 
     // Validation
     protected $validationRules = [
-        'nom' => 'required|min_length[3]|max_length[50]',
-        'description' => 'permit_empty|max_length[255]'
+        'NOM' => 'required|min_length[3]|max_length[32]',
+        'DESCRIPTION' => 'permit_empty|max_length[255]'
     ];
 
     // Méthode pour obtenir les messages d'une catégorie

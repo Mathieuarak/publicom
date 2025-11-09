@@ -2,49 +2,79 @@
 
 <?= $this->section('content') ?>
 
-<div class="container mt-4">
-    <h2>Liste des Catégories</h2>
+<div class="category-header">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="mb-0"><i class="fas fa-folder-open me-2"></i>Gestion des Catégories</h2>
+            <a href="/categorie/ajout" class="btn btn-light">
+                <i class="fas fa-plus-circle me-2"></i>Nouvelle Catégorie
+            </a>
+        </div>
+    </div>
+</div>
 
+<div class="container">
     <?php if (session()->getFlashdata('success')) : ?>
-        <div class="alert alert-success">
-            <?= session()->getFlashdata('success') ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i><?= session()->getFlashdata('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
 
-    <div class="mb-3">
-        <a href="/categorie/ajout" class="btn btn-primary">Ajouter une catégorie</a>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th class="text-center">Messages</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (empty($categories)) : ?>
+                            <tr>
+                                <td colspan="4" class="text-center py-4 text-muted">
+                                    <i class="fas fa-folder-open mb-3 d-block" style="font-size: 2rem;"></i>
+                                    Aucune catégorie n'a été créée
+                                </td>
+                            </tr>
+                        <?php else : ?>
+                            <?php foreach ($categories as $categorie) : ?>
+                                <tr>
+                                    <td>
+                                        <i class="fas fa-folder me-2 text-warning"></i>
+                                        <?= esc($categorie['NOM']) ?>
+                                    </td>
+                                    <td><?= esc($categorie['DESCRIPTION']) ?></td>
+                                    <td class="text-center">
+                                        <a href="/categorie/messages/<?= $categorie['IDCATEGORIE'] ?>" class="btn btn-outline-primary btn-sm">
+                                            <i class="fas fa-envelope me-1"></i> Voir les messages
+                                        </a>
+                                    </td>
+                                    <td class="text-end">
+                                        <div class="btn-group">
+                                            <a href="/categorie/modifier/<?= $categorie['IDCATEGORIE'] ?>" class="btn btn-outline-warning btn-sm">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="/categorie/supprimer/<?= $categorie['IDCATEGORIE'] ?>" 
+                                               class="btn btn-outline-danger btn-sm"
+                                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Messages</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($categories as $categorie) : ?>
-                <tr>
-                    <td><?= esc($categorie['nom']) ?></td>
-                    <td><?= esc($categorie['description']) ?></td>
-                    <td>
-                        <a href="/categorie/messages/<?= $categorie['id'] ?>" class="btn btn-info btn-sm">
-                            Voir les messages
-                        </a>
-                    </td>
-                    <td>
-                        <a href="/categorie/modifier/<?= $categorie['id'] ?>" class="btn btn-warning btn-sm">Modifier</a>
-                        <a href="/categorie/supprimer/<?= $categorie['id'] ?>" class="btn btn-danger btn-sm" 
-                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')">
-                            Supprimer
-                        </a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+</div>
 </div>
 
 <?= $this->endSection() ?>
