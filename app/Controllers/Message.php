@@ -92,7 +92,6 @@ class Message extends BaseController
             'fond' => [
                 'label' => 'Image File',
                 'rules' => [
-                    'uploaded[fond]',
                     'is_image[fond]',
                     'mime_in[fond,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
                 ],
