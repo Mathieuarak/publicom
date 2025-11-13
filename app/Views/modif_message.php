@@ -1,7 +1,13 @@
 <?= $this->extend('layout') ?>
 
 <?= $this->section('contenu') ?>
-<form method="post" action="<?=url_to('message_update')?>">
+
+
+<?php if (isset($errors)) { foreach ($errors as $error){ ?>
+    <li><?= esc($error) ?></li>
+<?php }}?>
+
+<?= form_open_multipart('modif-message') ?>
     <fieldset>
         <legend>Modification de message de <?= $commune['NOM'] ?></legend>
 
@@ -43,7 +49,7 @@
         <input name="tailleTexte" type="text" value="<?= $message['TAILLECONTENU'] ?>">
 
         <label>Fond :</label>
-        <input name="fond" type="text" value="<?= $message['FOND'] ?>">
+        <input name="fond" type="file" >
 
         <input type="submit" value="Valider">
     </fieldset>
