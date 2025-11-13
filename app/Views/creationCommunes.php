@@ -6,6 +6,7 @@
  <title>Création de communes </title>
  <h1> Création de communes :</h1>
  <form method= post  action="<?= url_to('createCommune') ?>">
+    <input type="hidden" name="ID" value="<?= esc($communeId ?? 0) ?>">
         <label for="nom">Nom commune</label>
         <input type="text" id="NOM" name="NOM"><br><br>
   
@@ -15,8 +16,8 @@
         <label for="nom">Informations supplémentaires: </label>
         <input type="text" id= "DESCRIPTION" name= "DESCRIPTION"><br><br>
   
-        <label for="nom">Upload image </label>
-        <input type="file" id= "IMAGE" name= "IMAGE"><br><br>
+        <!-- <label for="nom">Upload image </label>
+        <input type="file" id= "IMAGE" name= "IMAGE"><br><br> -->
   
         <input type="submit" value="Valider">
     </form>

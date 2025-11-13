@@ -32,11 +32,11 @@ $routes->get('liste-communes', 'Communes::liste', ['as' => 'listeCommunes']);
 $routes->get('creation-commune','Communes::creation',['as' =>'creationCommune']);
 $routes->post('create-commune','Communes::create',['as' =>'createCommune']);
 
-$routes->get('modification-communes-(:num)', 'Communes::modif/$1', ['as' => 'modificationCommunes']);
-$routes->post('update-communes', 'Communes::update', ['as' => 'updateCommunes']);
+$routes->get('modification-commune-(:num)', 'Communes::modif/$1', ['as' => 'modificationCommune']);
+$routes->post('modification-commune', 'Communes::update', ['as' => 'updateCommune']);
 
-$routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommunes']);
-$routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAccueil']);
+$routes->get('supprimer-commune','Communes::delete',['as'=>'supprimerCommune']);
+$routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccueil']);
 
 //Route Utilisateur 
 

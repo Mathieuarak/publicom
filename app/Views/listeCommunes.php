@@ -12,8 +12,8 @@
         
         $table->addRow(
             $commune['NOM'],
-            '<a href="' . url_to('modificationCommunes', $commune['ID']) . '" class="bouton">Modifier</a>',
-            '<a href="' . url_to('supprimerCommunes', $commune['ID']) . '" class="bouton">Supprimer</a>',
+            '<a href="' . url_to('modificationCommune', $commune['ID']) . '" class="bouton">Modifier</a>',
+            '<a href="' . url_to('supprimerCommune', $commune['ID']) . '" class="bouton">Supprimer</a>',
 
         );
        }
