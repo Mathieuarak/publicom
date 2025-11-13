@@ -2,10 +2,10 @@
 
 
 
-<?= $this->section('contenu') ?>
+ <?= $this->section('contenu') ?>
 
 <section>
-<a href="creationCommune" class="bouton">Création Commune</a>
+<a href="<?= url_to('creationCommune') ?>" class="bouton">Création Commune</a>
     <?php $table = new \CodeIgniter\View\Table();
     $table-> setHeading(['Nom','Modifier','Supprimer']);
        foreach ($listeCommunes as $commune){
@@ -22,7 +22,7 @@
        </section>
  
 
-    <?= $this->endSection() ?>
+    <?= $this->endSection() ?> 
     
 
 
