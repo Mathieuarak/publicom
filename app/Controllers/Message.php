@@ -6,8 +6,10 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Files\File;
 
+
 class Message extends BaseController
 {
+
 
     protected $helpers = ['form'];
 
@@ -101,10 +103,14 @@ class Message extends BaseController
             return view('modif_message', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'errors' => $error]);
         }
 
+
         
         $img = $this->request->getFile('fond');
         
-        delete_files(ROOTPATH.'public/'.$message['FOND']);
+        if($message['FOND'] != NULL){
+             unlink($message['FOND']);   
+        }
+
         $fileName = $img->getRandomName();
         $ext = $img->getClientExtension();
         $img->move(ROOTPATH.'public/uploads/',$fileName);
