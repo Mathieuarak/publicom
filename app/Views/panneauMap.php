@@ -1,12 +1,35 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('contenu') ?>
 
+<h1>Carte des panneaux de la commune de (commune)</h1>
 
-    <img src="doc/map.jpg" alt="map" style="width:600px;height:400px;">
-    <h1>Carte des panneaux de (nom de la commune)</h1>
+<div 
+<?php 
+if (isset($_POST['submit'])) {
+    $latitude = $_POST['latitude'];
+    $longitude = $_POST['longitude'];
 
-    <p>Panneau numéro <?= $panneaux['NUMERO']?></p>
-    <p>Coordonnées : <?= $panneaux['LATITUDE']?><?= $panneaux['LONGITUDE']?></p>
+?>
+<iframe src="https://maps.google.com/maps?&q=<?php echo $panneau['LATITUDE'].','.$panneau['LONGITUDE'] ?>&output=embed"
+    width="100%" height="500"
+    ></iframe>
+<?php } ?>
 
+
+
+
+
+<?php if (!empty($panneaux)): ?>
+    <ul>
+        <?php foreach ($panneaux as $panneau): ?>
+            <li>
+                Panneau n° <?= esc($panneau['NUMERO']) ?><br>
+                Coordonnées : <?= esc($panneau['LATITUDE']) ?>, <?= esc($panneau['LONGITUDE']) ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <p>Aucun panneau à afficher.</p>
+<?php endif; ?>
 
 <?= $this->endSection() ?>

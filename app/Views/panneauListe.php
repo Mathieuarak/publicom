@@ -1,41 +1,40 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('contenu') ?>
 
-<h1>liste des panneaux de (commune)</h1>
-
 <section>
 
     <?php
+    $table = new \CodeIgniter\View\Table();
 
-    $table=new \CodeIgniter\View\Table();
+    $table->setHeading('Numéro', 'Latitude', 'Longitude', 'Modifier', 'Supprimer');
 
-    $table->setHeading('Numéro panneau', 'Latitude','Longitude', 'modifier', 'supprimer');
+    foreach ($panneauListe as $panneau) {
+        $id = $panneau['ID'];
 
-    foreach ($panneauListe as $panneaux) {
-
-        $modifier = '<a href="' . url_to('panneauModif', $panneaux['ID']) . '"><button type="button">Modifier</button></a>';
-        $supprimer = '<form action="' . url_to('panneauSuppr') . '" method="post" style="display:inline">
-                          <input type="hidden" name="id" value="' . $panneaux['ID'] . '">
-                          <button type="submit" onclick="return confirm(\'Supprimer ce panneau ?\')">Supprimer</button>
-                      </form>';
+        $modifier = '<a href="' . base_url("modif-panneau-$id") . '" class="btn">Modifier</a>';
+        $supprimer = '<a href="' . base_url("suppr-panneau-$id") . '" onclick="return confirm(\'Supprimer ce panneau ?\')" class="btn">Supprimer</a>';
 
         $table->addRow(
-            $panneaux['NUMERO'],
-            $panneaux['LATITUDE'],
-            $panneaux['LONGITUDE'],
+            $panneau['NUMERO'],
+            $panneau['LATITUDE'],
+            $panneau['LONGITUDE'],
             $modifier,
             $supprimer
         );
     }
-
-    echo $table->generate();
-
     ?>
+
+    <h1>Liste des panneaux de (commune)</h1>
+
+    <?= $table->generate(); ?>
 
 </section>
 
-<?php $communeId = isset($panneauListe[0]) ? $panneauListe[0]['ID_COMMUNEPANNEAUX'] : 0; ?>
-<a href="<?= url_to('panneauMap') ?>">Afficher en tant que carte</a>
-<a href="<?= url_to('panneauAjout', $communeId) ?>"><button type="button">Ajouter panneau</button></a>
+<?php
+$communeId = $panneauListe[0]['ID_COMMUNEPANNEAUX'] ?? 0;
+?>
+
+<a href="<?= url_to('panneauMap') ?>">Afficher sur la carte</a>
+<a href="<?= base_url("ajout-panneau-$communeId") ?>">Ajouter un panneau</a>
 
 <?= $this->endSection() ?>

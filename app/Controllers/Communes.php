@@ -16,8 +16,62 @@ class Communes extends BaseController
             'listeCommunes' => $communes
         ];
 
-        return view('listeCommunes', $data);
+        return view('listeCommunes', ['communePage'=>true,'listeCommunes' => $communes]);
     }
+
+
+    public function creation()
     
+    {
+        return view('creationCommunes');
+    }
+
+    public function create()
+    
+    {
+    $communeModel = new \App\Models\Commune();
+    /*$data= [
+        $this->request->getPost('NOM'),
+        $this->request->getPost('CODEPOSTAL'),
+        $this->request->getPost('DESCRIPTION')
+        
+        
+    ];*/
+    $communeModel->insert($this->request->getPost());
+    return redirect()->to('liste-communes');
+
+    }
+    public function modif( $communeID): string
+    {
+        $communeModel = model('Commune');
+        $commune = $communeModel-> find($communeID);
+        //dd($commune);
+        return view('communeAccueil',$commune);
+    }
+
+    
+    public function update($communeID){
+        $communeModel = model('Commune');
+
+        $data = [
+            'NOM' => $this->request->getPost('NOM'),
+            'CODEPOSTAL' => $this->request->getPost('CODEPOSTAL'),
+            'DESCRIPTION'=>$this->request->getPost('DESCRIPTION')
+
+        ];
+        $communeModel->update($communeID);
+        return view('communesAccueil',$commune);
+
+
+    }
+
+
+
+
+
+
+
+
+
 }
 

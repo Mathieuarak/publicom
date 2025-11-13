@@ -2,18 +2,18 @@
 
 
 
-<?= $this->section('contenu') ?>
+ <?= $this->section('contenu') ?>
 
 <section>
-<a href="creationCommune" class="bouton">Création Commune</a>
+<a href="<?= url_to('creationCommune') ?>" class="bouton">Création Commune</a>
     <?php $table = new \CodeIgniter\View\Table();
     $table-> setHeading(['Nom','Modifier','Supprimer']);
        foreach ($listeCommunes as $commune){
         
         $table->addRow(
             $commune['NOM'],
-            '<a href="' . url_to('modificationCommunes', $commune['ID']) . '" class="bouton">Modifier</a>',
-            '<a href="' . url_to('supprimerCommunes', $commune['ID']) . '" class="bouton">Supprimer</a>',
+            '<a href="' . url_to('modificationCommune', $commune['ID']) . '" class="bouton">Modifier</a>',
+            '<a href="' . url_to('supprimerCommune', $commune['ID']) . '" class="bouton">Supprimer</a>',
 
         );
        }
@@ -22,7 +22,7 @@
        </section>
  
 
-    <?= $this->endSection() ?>
+    <?= $this->endSection() ?> 
     
 
 

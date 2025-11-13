@@ -7,23 +7,35 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Utilisateur extends BaseController
 {
-    public function auth()
-    #Fonctionnel
-    {
+    public function auth(){
+        $session = session();
+        $session->set(['isLogIn' => False]);
         $model=model('Admin');
         $log=$model->isAdmin($this->request->getPost('user_login'),$this->request->getPost('user_password'));
         if (count($log)!=0){
+            $session->set(['isLogIn' => true]);
             return redirect("listeCommunes");
         }
         else{
             $model2=model('Utilisateur');
             $log2=$model2->isUser($this->request->getPost('user_login'),$this->request->getPost('user_password'));
             if (count($log2)){
+                $session->set(['isLogIn' => true]);
                 $communeId=$log2[0];
                 return view("communeAccueil",$communeId);
             }
+            //else{
+               // $session->set(['isLogIn' => false]);
+                //$session = session();
+                //$session->setFlashdata('errorMessage', 'Echec auth');
+                //$_SESSION['error'] = 'Echec Auth';
+                //$session->markAsFlashdata('error');
+                //dd($_SESSION['error']);
+
+           // }
         }
-        return redirect()->back();
+        
+        return redirect()->back()/*->with('errorMessage',"Echec auth")*/;
     }
 
     public function reads($numCommune){
@@ -57,27 +69,50 @@ class Utilisateur extends BaseController
 
     public function create()
     {
-        dd($this->request->getPost('ID_UTILISATEURCOMMUNE'));
-        return redirect()->to('listes-des-utilisateurs-1');
+        #Fonctionnelle (rajouter if si param vide)
+        
+        $model=model('Utilisateur');
+        //dd($this->request->getPost());
+        $model->insert($this->request->getPost());
+        
+        $numCommune=$this->request->getPost("ID_UTILISATEURCOMMUNE");
+        //dd($numCommune);
+        return redirect()->to('listes-des-utilisateurs-'.$numCommune);
     }
 
     public function preUpdate($idUtilisateur)
     {
-       $data=
+       /*$data=
             ["id"=>"2",
             "nomCommune"=>"albainc",
             "nom"=>"mathieu",
             "prenom"=>"Arak",
-            "login"=>"ArakMat"];
-        
-        return view("modifierUtilisateur.php",["utilisateur"=>$data]);
+            "login"=>"ArakMat"];*/
+        $model=model('Utilisateur');
+        $data=$model->user($idUtilisateur);
+        //dd($data);
+        return view("modifierUtilisateur.php",["utilisateur"=>$data[0]]);
     }
     public function update()
     {
+        $model=model('Utilisateur');
+        $data=[
+            "PRENOM"=>$this->request->getPost('PRENOM'),
+            "NOM"=>$this->request->getPost('NOM'),
+            "IDENTIFIANT"=>$this->request->getPost('IDENTIFIANT'),
+            "MOTDEPASSE"=>$this->request->getPost('MOTDEPASSE')
+        ];
+
+        
+        $model->update($this->request->getPost('ID'),$data);
+        //dd($this->request->getPost());
+
         return redirect()->to('listes-des-utilisateurs-1');
     }
     public function delete()
     {
-        return redirect()->to('listes-des-utilisateurs-2');
+        //dd($this->request->getPost());
+        model('Utilisateur')->delete($this->request->getPost());
+        return redirect()->to('listes-des-utilisateurs-1');
     }
 }
