@@ -29,41 +29,34 @@ class Communes extends BaseController
     public function create()
     
     {
-
-    
     $communeModel = new \App\Models\Commune();
-
     /*$data= [
         $this->request->getPost('NOM'),
         $this->request->getPost('CODEPOSTAL'),
         $this->request->getPost('DESCRIPTION')
-
-
-
+        
+        
     ];*/
-
-
-    //dd($data);
     $communeModel->insert($this->request->getPost());
-    //dd($this->request->getPost());
-    return redirect('/');
+    return redirect()->to('liste-communes');
 
     }
-    public function modif( $communeId): string
+    public function modif( $communeID): string
     {
         $communeModel = model('Commune');
-        return view('communeAccueil');
+        $commune = $communeModel-> find($communeID);
+        //dd($commune);
+        return view('communeAccueil',$commune);
     }
 
     
     public function update($communeID){
         $communeModel = model('Commune');
-        $commune = $communeModel-> find($communeID);
 
         $data = [
-            'nom' => $this->request->getPost('NOM'),
-            'codePostal' => $this->request->getPost('CODEPOSTAL'),
-            'description'=>$this->request->getPost('DESCRIPTION')
+            'NOM' => $this->request->getPost('NOM'),
+            'CODEPOSTAL' => $this->request->getPost('CODEPOSTAL'),
+            'DESCRIPTION'=>$this->request->getPost('DESCRIPTION')
 
         ];
         $communeModel->update($communeID);

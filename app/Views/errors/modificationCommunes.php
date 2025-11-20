@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->extend('layout') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <style>
-        button {
-            padding-right: 150px;
-        }
-      
-    </style>
-</head>
-<body>
-    <div class="container">
+
+
+ <?= $this->section('contenu') ?>
+
+ <div class="container">
         <div class="commune-row">
-           <form action="<?= url_to('updateCommunes') ?>" method="post">
-            <input type="hidden" name="id" value="<?= $commune["ID"]?>">
-            
+           <form action="<?= url_to('updateCommunes',$commune['ID']) ?>" method="post">
                 <input type="text" name="message" id="message" value="" style="height: 400px; width: 500px;" onclick="this.value=''" />
 
                 <label for="nom">Éditer nom </label>
