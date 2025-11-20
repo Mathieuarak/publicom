@@ -79,21 +79,12 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
 	$routes->get('visu-message-(:num)', 'Message::visualisation/$1', ['as' => 'visu_message']);
 
 	//Create
-<<<<<<< HEAD
-	$routes->get('ajout-message-(:num)', 'Message::ajout/$1', ['as' => 'message_ajout']);
-	$routes->post('ajout-message', 'Message::create', ['as' => 'message_create']);
-
-	//Update
-	$routes->get('modif-message-(:num)', 'Message::modif/$1', ['as' => 'message_modif']);
-	$routes->post('modif-message', 'Message::update', ['as' => 'message_update']);
-=======
 	$routes->get('ajout-message-(:num)', 'Message::ajout/$1', ['as' => 'ajout_message']);//num -> id de la commune 
 	$routes->post('ajout-message', 'Message::create', ['as' => 'create_message']);
 
 	//Update
 	$routes->get('modif-message-(:num)', 'Message::modif/$1', ['as' => 'modif_message']);//num -> id du message
 	$routes->post('modif-message', 'Message::update', ['as' => 'update_message']);
->>>>>>> 4c88fa5d2869ff9a28b243874da8cabf84ca244d
 
 	$routes->post('visuModif-message', 'Message::visuModif', ['as' => 'visuModif_message']);
 
