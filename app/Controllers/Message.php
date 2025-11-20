@@ -47,23 +47,75 @@ class Message extends BaseController
     public function create()
     {
         $messageModel = model('MessageModel');
+        $communeModel = model('Commune');
 
-        $data = [
-            'ID_COMMUNEMESSAGE' => $this->request->getPost('idCommune'),
-            'TITRE' => $this->request->getPost('titre'),
-            'CONTENU' => $this->request->getPost('message'),
-            'POLICETITRE' => $this->request->getPost('policeTitre'),
-            'POLICECONTENU' => $this->request->getPost('policeTexte'),
-            'ALIGNEMENT' => $this->request->getPost('alignement'),
-            'FOND' => $this->request->getPost('fond'),
-            'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
-            'TAILLETITRE' => $this->request->getPost('tailleTitre'),
-            'ON_OFF'=> $this->request->getPost('on_off')
-
+        $validationRule = [
+            'fond' => [
+                'label' => 'Image File',
+                'rules' => [
+                    'uploaded[fond]',
+                    'is_image[fond]',
+                    'mime_in[fond,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                ],
+            ],
         ];
 
-        $messageModel->insert($data);
-        return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
+        $isUploaded = [
+            'fond' => [
+                'label' => 'Image File',
+                'rules' => [
+                    'uploaded[fond]',
+                ],
+            ],
+        ];
+
+        if ( $this->validateData([], $isUploaded)) {
+            if (! $this->validateData([], $validationRule)) {
+                $error = $this->validator->getErrors();
+                return view('ajout_message', ['commune' =>  $communeModel->find($this->request->getPost('idCommune')), 'isAdmin' => true, 'errors' => $error]);
+            } else {
+                $img = $this->request->getFile('fond');
+
+                $fileName = $img->getRandomName();
+                $ext = $img->getClientExtension();
+                $img->move(ROOTPATH.'public/uploads/',$fileName);
+                $filepath='uploads/'.$fileName;
+
+                $data = [
+                    'ID_COMMUNEMESSAGE' => $this->request->getPost('idCommune'),
+                    'TITRE' => $this->request->getPost('titre'),
+                    'CONTENU' => $this->request->getPost('message'),
+                    'POLICETITRE' => $this->request->getPost('policeTitre'),
+                    'POLICECONTENU' => $this->request->getPost('policeTexte'),
+                    'ALIGNEMENT' => $this->request->getPost('alignement'),
+                    'FOND' => $this->request->getPost('fond'),
+                    'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
+                    'TAILLETITRE' => $this->request->getPost('tailleTitre'),
+                    'ON_OFF'=> $this->request->getPost('on_off'),
+                    'FOND' => new File($filepath),
+
+                ];
+
+                $messageModel->insert($data);
+                return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]); }
+        } else {
+            $data = [
+                'ID_COMMUNEMESSAGE' => $this->request->getPost('idCommune'),
+                'TITRE' => $this->request->getPost('titre'),
+                'CONTENU' => $this->request->getPost('message'),
+                'POLICETITRE' => $this->request->getPost('policeTitre'),
+                'POLICECONTENU' => $this->request->getPost('policeTexte'),
+                'ALIGNEMENT' => $this->request->getPost('alignement'),
+                'FOND' => $this->request->getPost('fond'),
+                'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
+                'TAILLETITRE' => $this->request->getPost('tailleTitre'),
+                'ON_OFF'=> $this->request->getPost('on_off'),
+
+            ];
+
+            $messageModel->insert($data);
+            return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
+        }
     }
 
     //modification des message
@@ -92,14 +144,29 @@ class Message extends BaseController
             'fond' => [
                 'label' => 'Image File',
                 'rules' => [
+                    'uploaded[fond]',
                     'is_image[fond]',
                     'mime_in[fond,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
                 ],
             ],
         ];
-        if (! $this->validateData([], $validationRule)) {
+
+        $isUploaded = [
+            'fond' => [
+                'label' => 'Image File',
+                'rules' => [
+                    'uploaded[fond]',
+                ],
+            ],
+        ];
+
+    
+        if ($this->validateData([], $isUploaded)) {
+             if (! $this->validateData([], $validationRule)) {
+
             $error = $this->validator->getErrors();
-            return view('modifMessage', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'errors' => $error]);
+            return view('modif_message', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'errors' => $error]);
+
         }
 
 
@@ -129,6 +196,22 @@ class Message extends BaseController
         
         $messageModel->update($this->request->getPost('idMessage'), $data);
         return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
+        
+    } else {
+                $data = [
+        'TITRE' => $this->request->getPost('titre'),
+        'CONTENU' => $this->request->getPost('message'),
+        'POLICETITRE' => $this->request->getPost('policeTitre'),
+        'POLICECONTENU' => $this->request->getPost('policeTexte'),
+        'ALIGNEMENT' => $this->request->getPost('alignement'),
+        'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
+        'TAILLETITRE' => $this->request->getPost('tailleTitre'),
+        ];
+        
+        $messageModel->update($this->request->getPost('idMessage'), $data);
+        return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
+    }
+    
     }
 
     public function visuModif()
