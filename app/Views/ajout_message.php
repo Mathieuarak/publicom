@@ -2,7 +2,11 @@
 
 <?= $this->section('contenu') ?>
 
-<form method="post" action="<?=url_to('message_create')?>">
+<?php if (isset($errors)) { foreach ($errors as $error){ ?>
+    <li><?= esc($error) ?></li>
+<?php }}?>
+
+<?= form_open_multipart('ajout-message') ?>
     <fieldset>
         <legend>Ajout de message de <?= $commune['NOM'] ?></legend>
 
@@ -42,7 +46,7 @@
         <input name="tailleTexte" type="text">
 
         <label>Fond :</label>
-        <input name="fond" type="text">
+        <input name="fond" type="file" >
 
         <input name="on_off" type="hidden" value=0 />
 
