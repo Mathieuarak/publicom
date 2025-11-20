@@ -5,8 +5,13 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');	
+$routes->get('/', 'Home::index');
+// login
+$routes->get('login',"Utilisateur::login",['as' =>'login_user']);
 $routes->post('auth','Utilisateur::auth' ,['as' =>'auth_user']);
+// logout
+$routes->post('/logout',"Utilisateur::logout",['as' =>'logout_user']);
+
 	
 
 //ROUTE CATEGORIES

@@ -7,9 +7,18 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Utilisateur extends BaseController
 {
+    public function login(){
+        return view('auth.php');
+    }
+    
+    public function logout(){
+        $session->destroy();
+        return view('auth.php');
+    }
+
     public function auth(){
         $session = session();
-        $session->set(['isLogIn' => False]);
+        $session->set(['isLogIn' => false]);
         $model=model('Admin');
         $log=$model->isAdmin($this->request->getPost('user_login'),$this->request->getPost('user_password'));
         if (count($log)!=0){
