@@ -5,27 +5,25 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
-// login
-$routes->get('login',"Utilisateur::login",['as' =>'login_user']);
+$routes->get('/', 'Home::index');	
 $routes->post('auth','Utilisateur::auth' ,['as' =>'auth_user']);
 // logout
-$routes->get('/logout',"Utilisateur::logout",['as' =>'logout_user']);
+$routes->post('/logout',"Utilisateur::logout",['as' =>'logout_user']);
 
 	
 
 //ROUTE CATEGORIES
 $routes->get('categories', 'Categorie::index', ['as' => 'categories_liste']);
-$routes->get('categorie/ajout', 'Categorie::ajout', ['as' => 'categorie_ajout']);
-$routes->post('categorie/create', 'Categorie::create', ['as' => 'categorie_create']);
-$routes->get('categorie/modifier/(:num)', 'Categorie::modifier/$1', ['as' => 'categorie_modifier']);
-$routes->post('categorie/update/(:num)', 'Categorie::update/$1', ['as' => 'categorie_update']);
-$routes->get('categorie/supprimer/(:num)', 'Categorie::supprimer/$1', ['as' => 'categorie_supprimer']);
-$routes->get('categorie/messages/(:num)', 'Categorie::messages/$1', ['as' => 'categorie_messages']);
+$routes->get('categorie-ajout', 'Categorie::ajout', ['as' => 'categorie_ajout']);
+$routes->post('categorie-create', 'Categorie::create', ['as' => 'categorie_create']);
+$routes->get('categorie-modifier-(:num)', 'Categorie::modifier/$1', ['as' => 'categorie_modifier']);
+$routes->post('categorie-update-(:num)', 'Categorie::update/$1', ['as' => 'categorie_update']);
+$routes->get('categorie-supprimer-(:num)', 'Categorie::supprimer/$1', ['as' => 'categorie_supprimer']);
+$routes->get('categorie-messages-(:num)', 'Categorie::messages/$1', ['as' => 'categorie_messages']);
 
 //ROUTE PANNEAUX
 
-$routes->get('liste-panneaux', 'Panneau::liste', ['as' => 'panneauListe']);
+$routes->get('liste-panneau', 'Panneau::liste', ['as' => 'panneauListe']);
 
 $routes->get('map-panneau', 'Panneau::map', ['as' => 'panneauMap']);
 
@@ -86,7 +84,7 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
 	$routes->get('modif-message-(:num)', 'Message::modif/$1', ['as' => 'message_modif']);
 	$routes->post('modif-message', 'Message::update', ['as' => 'message_update']);
 
-	$routes->post('visuModif-message', 'Message::visuModif', ['as' => 'visuModif_message']);
+	$routes->post('visuModif-message', 'Message::visuModif', ['as' => 'message_visuModif']);
 
 
 	//Delete
@@ -106,4 +104,4 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
     $routes->post('modif-categorie', 'Categories::update', ['as' => 'categorie_update']); // traitement du formulaire
 
     //Delete
-    $routes->post('suppr-categorie', 'Categories::delete', ['as' => 'categorie_delete']); 
+    $routes->post('suppr-categorie', 'Categories::delete', ['as' => 'categorie_delete']);

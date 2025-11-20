@@ -7,19 +7,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Utilisateur extends BaseController
 {
-    public function login(){
-        return view('auth.php');
-    }
-    
-    public function logout(){
-        $session = session();
-        $session->destroy();
-        return redirect("login_user");
-    }
-
     public function auth(){
         $session = session();
-        $session->set(['isLogIn' => false]);
+        $session->set(['isLogIn' => False]);
         $model=model('Admin');
         $admin=$model->isAdmin($this->request->getPost('user_login'),/*password_hash(*/$this->request->getPost('user_password')/*, PASSWORD_DEFAULT)*/);
         if ($admin){
