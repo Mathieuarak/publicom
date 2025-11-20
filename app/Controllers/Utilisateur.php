@@ -14,23 +14,25 @@ class Utilisateur extends BaseController
     public function logout(){
         $session = session();
         $session->destroy();
-        return view('auth.php');
+        return redirect("login_user");
     }
 
     public function auth(){
         $session = session();
         $session->set(['isLogIn' => false]);
         $model=model('Admin');
-        $log=$model->isAdmin($this->request->getPost('user_login'),$this->request->getPost('user_password'));
-        if (count($log)!=0){
+        $admin=$model->isAdmin($this->request->getPost('user_login'),/*password_hash(*/$this->request->getPost('user_password')/*, PASSWORD_DEFAULT)*/);
+        if ($admin){
             $session->set(['isLogIn' => true]);
+            $session->set(['isAdmin' => true]);
             return redirect("listeCommunes");
         }
         else{
             $model2=model('Utilisateur');
-            $log2=$model2->isUser($this->request->getPost('user_login'),$this->request->getPost('user_password'));
-            if (count($log2)){
+            $user=$model2->isUser($this->request->getPost('user_login'),password_hash($this->request->getPost('user_password'), PASSWORD_DEFAULT));
+            if ($user){
                 $session->set(['isLogIn' => true]);
+                $session->set(['isAdmin' => false]);
                 $commune=$log2[0];
                 return view("communeAccueil",$commune);
             }
@@ -110,7 +112,7 @@ class Utilisateur extends BaseController
             "PRENOM"=>$this->request->getPost('PRENOM'),
             "NOM"=>$this->request->getPost('NOM'),
             "IDENTIFIANT"=>$this->request->getPost('IDENTIFIANT'),
-            "MOTDEPASSE"=>$this->request->getPost('MOTDEPASSE')
+            "MOTDEPASSE"=>password_hash($this->request->getPost('MOTDEPASSE'),PASSWORD_DEFAULT)
         ];
 
         
