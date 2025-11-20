@@ -12,7 +12,7 @@ class Commune extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['NOM','cCODEPOSTAL','DESCRIPTION','IMAGE'];
+    protected $allowedFields    = ['NOM','CODEPOSTAL','DESCRIPTION','IMAGE'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
