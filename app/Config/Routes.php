@@ -5,8 +5,13 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');	
+$routes->get('/', 'Home::index');
+// login
+$routes->get('login',"Utilisateur::login",['as' =>'login_user']);
 $routes->post('auth','Utilisateur::auth' ,['as' =>'auth_user']);
+// logout
+$routes->post('/logout',"Utilisateur::logout",['as' =>'logout_user']);
+
 	
 
 //ROUTE CATEGORIES
@@ -101,4 +106,4 @@ $routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccu
     $routes->post('modif-categorie', 'Categories::update', ['as' => 'categorie_update']); // traitement du formulaire
 
     //Delete
-    $routes->post('suppr-categorie', 'Categories::delete', ['as' => 'categorie_delete']); 
+    $routes->post('suppr-categorie', 'Categories::delete', ['as' => 'categorie_delete']);

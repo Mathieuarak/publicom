@@ -1,80 +1,73 @@
 <?= $this->extend('layout') ?>
 
-<?= $this->section('content') ?>
+<?= $this->section('contenu') ?>
 
-<div class="category-header">
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2 class="mb-0"><i class="fas fa-folder-open me-2"></i>Gestion des Catégories</h2>
-            <a href="/categorie/ajout" class="btn btn-light">
-                <i class="fas fa-plus-circle me-2"></i>Nouvelle Catégorie
-            </a>
-        </div>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="fas fa-folder-open me-2"></i>Gestion des Catégories</h1>
+        <a href="<?= url_to('categorie_ajout') ?>" class="btn btn-primary">
+            <i class="fas fa-plus-circle me-2"></i>Nouvelle Catégorie
+        </a>
     </div>
-</div>
 
-<div class="container">
     <?php if (session()->getFlashdata('success')) : ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <i class="fas fa-check-circle me-2"></i><?= session()->getFlashdata('success') ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <?= session()->getFlashdata('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     <?php endif; ?>
 
-    <div class="card shadow-sm">
+    <?php if (session()->getFlashdata('error')) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('error') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    <?php endif; ?>
+
+    <div class="card">
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-hover align-middle">
-                    <thead class="table-light">
+            <?php if (empty($categories)) : ?>
+                <p class="text-center text-muted">Aucune catégorie n'a été créée</p>
+            <?php else : ?>
+                <table class="table table-hover">
+                    <thead>
                         <tr>
                             <th>Nom</th>
                             <th>Description</th>
-                            <th class="text-center">Messages</th>
                             <th class="text-end">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (empty($categories)) : ?>
+                        <?php foreach ($categories as $categorie) : ?>
                             <tr>
-                                <td colspan="4" class="text-center py-4 text-muted">
-                                    <i class="fas fa-folder-open mb-3 d-block" style="font-size: 2rem;"></i>
-                                    Aucune catégorie n'a été créée
+                                <td>
+                                    <i class="fas fa-folder me-2 text-warning"></i>
+                                    <?= esc($categorie['NOM']) ?>
+                                </td>
+                                <td><?= esc($categorie['DESCRIPTION'] ?? '') ?></td>
+                                <td class="text-end">
+                                    <a href="<?= url_to('categorie_messages', $categorie['IDCATEGORIE']) ?>" 
+                                       class="btn btn-sm btn-info" title="Voir les messages">
+                                        <i class="fas fa-envelope"></i> Messages
+                                    </a>
+                                    <a href="<?= url_to('categorie_modifier', $categorie['IDCATEGORIE']) ?>" 
+                                       class="btn btn-sm btn-warning" title="Modifier">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="<?= url_to('categorie_supprimer', $categorie['IDCATEGORIE']) ?>" 
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')"
+                                       title="Supprimer">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
-                        <?php else : ?>
-                            <?php foreach ($categories as $categorie) : ?>
-                                <tr>
-                                    <td>
-                                        <i class="fas fa-folder me-2 text-warning"></i>
-                                        <?= esc($categorie['NOM']) ?>
-                                    </td>
-                                    <td><?= esc($categorie['DESCRIPTION']) ?></td>
-                                    <td class="text-center">
-                                        <a href="/categorie/messages/<?= $categorie['IDCATEGORIE'] ?>" class="btn btn-outline-primary btn-sm">
-                                            <i class="fas fa-envelope me-1"></i> Voir les messages
-                                        </a>
-                                    </td>
-                                    <td class="text-end">
-                                        <div class="btn-group">
-                                            <a href="/categorie/modifier/<?= $categorie['IDCATEGORIE'] ?>" class="btn btn-outline-warning btn-sm">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="/categorie/supprimer/<?= $categorie['IDCATEGORIE'] ?>" 
-                                               class="btn btn-outline-danger btn-sm"
-                                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
-</div>
 </div>
 
 <?= $this->endSection() ?>
