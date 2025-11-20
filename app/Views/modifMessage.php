@@ -15,16 +15,16 @@
 
         <input name="idCommune" type="hidden" value="<?= $message['ID_COMMUNEMESSAGE'] ?>" />
 
-        <label>Message :</label>
-        <textarea name="message"><?= $message['CONTENU']?></textarea>
-
         <label>Titre :</label>
         <input name="titre" type="text" value="<?= $message['TITRE'] ?>">
 
-        <label>Police de caractères du titre :</label>
+        <label>Contenu du message :</label>
+        <textarea name="message"><?= $message['CONTENU']?></textarea>
+
+        <label>Nom de la police de caractères du titre :</label>
         <input name="policeTitre" type="text" value="<?= $message['POLICETITRE'] ?>">
 
-        <label>Police de caractères du texte :</label>
+        <label>Nom de la police de caractères du texte :</label>
         <input name="policeTexte" type="text" value="<?= $message['POLICECONTENU'] ?>">
 
         <label>Alignement</label>
@@ -42,10 +42,10 @@
         </fieldset>
 
 
-        <label>Taille du titre :</label>
+        <label>Taille de la police du titre :</label>
         <input name="tailleTitre" type="text" value="<?= $message['TAILLETITRE'] ?>">
 
-        <label>Taille du texte :</label>
+        <label>Taille de la police du texte :</label>
         <input name="tailleTexte" type="text" value="<?= $message['TAILLECONTENU'] ?>">
 
         <label>Fond :</label>

@@ -12,16 +12,18 @@
 
         <input name="idCommune" type="hidden" value="<?= $commune['ID'] ?>" />
 
-        <label>Message :</label>
-        <textarea name="message"></textarea>
-
         <label>Titre :</label>
         <input name="titre" type="text">
 
-        <label>Police de caractères du titre :</label>
+        <label>Contenu du message :</label>
+        <textarea name="message"></textarea>
+
+        
+
+        <label>Nom de la police de caractères du titre :</label>
         <input name="policeTitre" type="text">
 
-        <label>Police de caractères du texte :</label>
+        <label>Nom de la police de caractères du texte :</label>
         <input name="policeTexte" type="text">
 
         <label>Alignement</label>
@@ -39,10 +41,10 @@
         </fieldset>
 
 
-        <label>Taille du titre :</label>
+        <label>Taille de la police du titre :</label>
         <input name="tailleTitre" type="text">
 
-        <label>Taille du texte :</label>
+        <label>Taille de la police du texte :</label>
         <input name="tailleTexte" type="text">
 
         <label>Fond :</label>
