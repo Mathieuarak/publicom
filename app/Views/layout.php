@@ -18,7 +18,7 @@
         <?php if (isset($communePage)) { ?>
             <ul class="main-nav">
 
-                <li class="push"><a href="">Déconnexion</a></li>
+                <li class="push"><a href=<?= url_to('logout_user')?>>Déconnexion</a></li>
             </ul>
         <?php } else { ?>
             <ul class="main-nav">

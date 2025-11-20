@@ -12,6 +12,7 @@ class Utilisateur extends BaseController
     }
     
     public function logout(){
+        $session = session();
         $session->destroy();
         return view('auth.php');
     }
@@ -30,8 +31,8 @@ class Utilisateur extends BaseController
             $log2=$model2->isUser($this->request->getPost('user_login'),$this->request->getPost('user_password'));
             if (count($log2)){
                 $session->set(['isLogIn' => true]);
-                $communeId=$log2[0];
-                return view("communeAccueil",$communeId);
+                $commune=$log2[0];
+                return view("communeAccueil",$commune);
             }
             //else{
                // $session->set(['isLogIn' => false]);

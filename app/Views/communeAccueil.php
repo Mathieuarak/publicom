@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <div class="commune-row">
-           <form action="<?= url_to('updateCommunes') ?>" method="post">
+           <form action="<?= url_to('updateCommune') ?>" method="post">
             <input type="hidden" name="id" value="<?= $commune["ID"]?>">
             
                 <input type="text" name="message" id="message" value="" style="height: 400px; width: 500px;" onclick="this.value=''" />
