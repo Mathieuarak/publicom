@@ -18,7 +18,7 @@
         <?php if (isset($communePage)) { ?>
             <ul class="main-nav">
 
-                <li class="push"><a href="">Déconnexion</a></li>
+                <li class="push"><a href=<?= url_to('logout_user')?>>Déconnexion</a></li>
             </ul>
         <?php } else { ?>
             <ul class="main-nav">
@@ -31,7 +31,7 @@
                 <?php } ?>
 
                 <li class="push"><a href="">Sortir de la commune</a></li>
-                <li><a href="">Déconnexion</a></li>
+                <li><a href=<?= url_to('logout_user')?>>Déconnexion</a></li>
             </ul>
     </nav>
 <?php } ?>

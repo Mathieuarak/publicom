@@ -16,9 +16,8 @@ class AuthFilter implements FilterInterface
         // Exemple : vérifier si l'utilisateur est connecté
         if (!$session->get('isLogIn')) {
             // Redirige vers la page de connexion
-            return redirect('login_user');
+            return redirect('auth_user');
         }
-        //dd('test');
     }
 
     /*Exécuté après la requête*/

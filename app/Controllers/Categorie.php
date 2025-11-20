@@ -12,12 +12,12 @@ class Categorie extends BaseController
         $categorieModel = model('CategorieModel');
         $categories = $categorieModel->findAll();
 
-        return view('categorie/liste', ['categories' => $categories, 'isAdmin' => true]);
+        return view('categorie/liste', ['categories' => $categories]);
     }
 
     public function ajout()
     {
-        return view('categorie/ajout', ['isAdmin' => true]);
+        return view('categorie/ajout');
     }
 
     public function create()
@@ -42,10 +42,7 @@ class Categorie extends BaseController
         $categorie = $categorieModel->find($id);
 
         if ($categorie) {
-            return view('categorie/modifier', [
-                'categorie' => $categorie,
-                'isAdmin' => true
-            ]);
+            return view('categorie/modifier', ['categorie' => $categorie]);
         }
 
         return redirect()->to('/categories')->with('error', 'Catégorie non trouvée');
@@ -87,8 +84,7 @@ class Categorie extends BaseController
 
         return view('categorie/messages', [
             'categorie' => $categorie,
-            'messages' => $messages,
-            'isAdmin' => true
+            'messages' => $messages
         ]);
     }
 }

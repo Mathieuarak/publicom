@@ -34,7 +34,7 @@
                         <tr>
                             <th>Nom</th>
                             <th>Description</th>
-                            <th class="text-end">Actions</th>
+                            <th class="text-center" style="width: 200px;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,20 +45,16 @@
                                     <?= esc($categorie['NOM']) ?>
                                 </td>
                                 <td><?= esc($categorie['DESCRIPTION'] ?? '') ?></td>
-                                <td class="text-end">
-                                    <a href="<?= url_to('categorie_messages', $categorie['IDCATEGORIE']) ?>" 
-                                       class="btn btn-sm btn-info" title="Voir les messages">
-                                        <i class="fas fa-envelope"></i> Messages
-                                    </a>
+                                <td class="text-center">
                                     <a href="<?= url_to('categorie_modifier', $categorie['IDCATEGORIE']) ?>" 
                                        class="btn btn-sm btn-warning" title="Modifier">
-                                        <i class="fas fa-edit"></i>
+                                        <i class="fas fa-edit"></i> Modifier
                                     </a>
                                     <a href="<?= url_to('categorie_supprimer', $categorie['IDCATEGORIE']) ?>" 
                                        class="btn btn-sm btn-danger"
                                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')"
                                        title="Supprimer">
-                                        <i class="fas fa-trash"></i>
+                                        <i class="fas fa-trash"></i> Supprimer
                                     </a>
                                 </td>
                             </tr>

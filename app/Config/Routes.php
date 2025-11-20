@@ -5,9 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
-// login
-$routes->get('login',"Utilisateur::login",['as' =>'login_user']);
+$routes->get('/', 'Home::index');	
 $routes->post('auth','Utilisateur::auth' ,['as' =>'auth_user']);
 // logout
 $routes->post('/logout',"Utilisateur::logout",['as' =>'logout_user']);
@@ -16,16 +14,16 @@ $routes->post('/logout',"Utilisateur::logout",['as' =>'logout_user']);
 
 //ROUTE CATEGORIES
 $routes->get('categories', 'Categorie::index', ['as' => 'categories_liste']);
-$routes->get('categorie/ajout', 'Categorie::ajout', ['as' => 'categorie_ajout']);
-$routes->post('categorie/create', 'Categorie::create', ['as' => 'categorie_create']);
-$routes->get('categorie/modifier/(:num)', 'Categorie::modifier/$1', ['as' => 'categorie_modifier']);
-$routes->post('categorie/update/(:num)', 'Categorie::update/$1', ['as' => 'categorie_update']);
-$routes->get('categorie/supprimer/(:num)', 'Categorie::supprimer/$1', ['as' => 'categorie_supprimer']);
-$routes->get('categorie/messages/(:num)', 'Categorie::messages/$1', ['as' => 'categorie_messages']);
+$routes->get('categorie-ajout', 'Categorie::ajout', ['as' => 'categorie_ajout']);
+$routes->post('categorie-create', 'Categorie::create', ['as' => 'categorie_create']);
+$routes->get('categorie-modifier-(:num)', 'Categorie::modifier/$1', ['as' => 'categorie_modifier']);
+$routes->post('categorie-update-(:num)', 'Categorie::update/$1', ['as' => 'categorie_update']);
+$routes->get('categorie-supprimer-(:num)', 'Categorie::supprimer/$1', ['as' => 'categorie_supprimer']);
+$routes->get('categorie-messages-(:num)', 'Categorie::messages/$1', ['as' => 'categorie_messages']);
 
 //ROUTE PANNEAUX
 
-$routes->get('liste-panneaux', 'Panneau::liste', ['as' => 'panneauListe']);
+$routes->get('liste-panneau', 'Panneau::liste', ['as' => 'panneauListe']);
 
 $routes->get('map-panneau', 'Panneau::map', ['as' => 'panneauMap']);
 
@@ -46,11 +44,11 @@ $routes->get('liste-communes', 'Communes::liste', ['as' => 'listeCommunes']);
 $routes->get('creation-commune','Communes::creation',['as' =>'creationCommune']);
 $routes->post('create-commune','Communes::create',['as' =>'createCommune']);
 
-$routes->get('modification-commune-(:num)', 'Communes::modif/$1', ['as' => 'modificationCommune']);
-$routes->post('modification-commune', 'Communes::update', ['as' => 'updateCommune']);
+$routes->get('modification-communes-(:num)', 'Communes::modif/$1', ['as' => 'modificationCommune']);
+$routes->post('update-communes', 'Communes::update', ['as' => 'updateCommunes']);
 
-$routes->get('supprimer-commune','Communes::delete',['as'=>'supprimerCommune']);
-$routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccueil']);
+$routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommune']);
+$routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAccueil']);
 
 //Route Utilisateur 
 
@@ -75,18 +73,18 @@ $routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccu
 //Route Message
 
 	//Read
-	$routes->get('liste-messages-(:num)', 'Message::liste/$1', ['as' => 'liste_messages']); //num -> id de la commune 
-	$routes->get('visu-message-(:num)', 'Message::visualisation/$1', ['as' => 'visu_message']);//num -> id du message 
+	$routes->get('liste-messages-(:num)', 'Message::liste/$1', ['as' => 'liste_messages']); 
+	$routes->get('visu-message-(:num)', 'Message::visualisation/$1', ['as' => 'visu_message']);
 
 	//Create
-	$routes->get('ajout-message-(:num)', 'Message::ajout/$1', ['as' => 'ajout_message']);//num -> id de la commune 
-	$routes->post('ajout-message', 'Message::create', ['as' => 'create_message']);
+	$routes->get('ajout-message-(:num)', 'Message::ajout/$1', ['as' => 'message_ajout']);
+	$routes->post('ajout-message', 'Message::create', ['as' => 'message_create']);
 
 	//Update
-	$routes->get('modif-message-(:num)', 'Message::modif/$1', ['as' => 'modif_message']);//num -> id du message
-	$routes->post('modif-message', 'Message::update', ['as' => 'update_message']);
+	$routes->get('modif-message-(:num)', 'Message::modif/$1', ['as' => 'message_modif']);
+	$routes->post('modif-message', 'Message::update', ['as' => 'message_update']);
 
-	$routes->post('visuModif-message', 'Message::visuModif', ['as' => 'visuModif_message']);
+	$routes->post('visuModif-message', 'Message::visuModif', ['as' => 'message_visuModif']);
 
 
 	//Delete

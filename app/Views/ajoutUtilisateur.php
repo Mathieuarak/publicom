@@ -17,7 +17,7 @@
             <input type="text" id="IDENTIFIANT" name="IDENTIFIANT"/>
             
             <label for="password" >Password </label>
-            <input type="password" id="MOTDEPASSE" name="MOTDEPASSE"/>
+            <input type="text" id="MOTDEPASSE" name="MOTDEPASSE"/>
 
             <button type="submit">Valider Ajout</button>
     </form>
