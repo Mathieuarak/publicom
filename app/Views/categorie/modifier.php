@@ -17,7 +17,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="<?= url_to('categorie_update', $categorie['ID']) ?>" method="post">
+            <form action="<?= url_to('categorie_update', $categorie['IDCATEGORIE']) ?>" method="post">
                 <?= csrf_field() ?>
                 
                 <div class="mb-3">
@@ -29,12 +29,12 @@
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control" id="description" name="description" 
-                              rows="3"><?= old('description', $categorie['DESCRIPTION'] ?? '') ?></textarea>
+                              rows="3"><?= old('description', $categorie['DESCRIPTION']) ?></textarea>
                 </div>
 
                 <div class="d-flex justify-content-end gap-2">
                     <a href="<?= url_to('categories_liste') ?>" class="btn btn-secondary">Annuler</a>
-                    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                    <button type="submit" class="btn btn-primary">Mettre à jour</button>
                 </div>
             </form>
         </div>
