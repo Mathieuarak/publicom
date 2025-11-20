@@ -46,15 +46,15 @@
                                 </td>
                                 <td><?= esc($categorie['DESCRIPTION'] ?? '') ?></td>
                                 <td class="text-end">
-                                    <a href="<?= url_to('categorie_messages', $categorie['ID']) ?>" 
+                                    <a href="<?= url_to('categorie_messages', $categorie['IDCATEGORIE']) ?>" 
                                        class="btn btn-sm btn-info" title="Voir les messages">
                                         <i class="fas fa-envelope"></i> Messages
                                     </a>
-                                    <a href="<?= url_to('categorie_modifier', $categorie['ID']) ?>" 
+                                    <a href="<?= url_to('categorie_modifier', $categorie['IDCATEGORIE']) ?>" 
                                        class="btn btn-sm btn-warning" title="Modifier">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="<?= url_to('categorie_supprimer', $categorie['ID']) ?>" 
+                                    <a href="<?= url_to('categorie_supprimer', $categorie['IDCATEGORIE']) ?>" 
                                        class="btn btn-sm btn-danger"
                                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')"
                                        title="Supprimer">

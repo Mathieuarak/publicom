@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class CategorieModel extends Model
 {
-    protected $table            = 'categorie'; // Minuscule comme les autres tables
-    protected $primaryKey       = 'ID';
+    protected $table            = 'categorie';
+    protected $primaryKey       = 'IDCATEGORIE'; // ← CORRECTION ICI
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
