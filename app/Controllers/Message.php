@@ -21,7 +21,7 @@ class Message extends BaseController
 
         $messageListe = $messageModel->where('ID_COMMUNEMESSAGE', $communeId)->findAll();
 
-        return view('liste_messages', ['messageListe' => $messageListe, 'commune' => $communeModel->find($communeId), 'isAdmin' => true]);
+        return view('listeMessages', ['messageListe' => $messageListe, 'commune' => $communeModel->find($communeId), 'isAdmin' => true]);
     }
 
     //page de visualisation des message
@@ -34,7 +34,7 @@ class Message extends BaseController
         $commune = $communeModel->find($message['ID_COMMUNEMESSAGE']);
         $file = $message['FOND'];
 
-        return view('visu_message', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'img' => $file]);
+        return view('visuMessage', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'img' => $file]);
     }
 
     //création de message
@@ -42,7 +42,7 @@ class Message extends BaseController
     {
         $communeModel = model('Commune');
 
-        return view('ajout_message', ['commune' => $communeModel->find($communeId), 'isAadmin' => true]);
+        return view('ajoutMessage', ['commune' => $communeModel->find($communeId), 'isAadmin' => true]);
     }
     public function create()
     {
@@ -75,7 +75,7 @@ class Message extends BaseController
         $message = $messageModel->find($messageId);
         $commune = $communeModel->find($message['ID_COMMUNEMESSAGE']);
 
-        return view('modif_message', ['message' => $message, 'commune' => $commune, 'isAdmin' => true]);
+        return view('modifMessage', ['message' => $message, 'commune' => $commune, 'isAdmin' => true]);
     }
     public function update()
     {
@@ -99,7 +99,7 @@ class Message extends BaseController
         ];
         if (! $this->validateData([], $validationRule)) {
             $error = $this->validator->getErrors();
-            return view('modif_message', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'errors' => $error]);
+            return view('modifMessage', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'errors' => $error]);
         }
 
 

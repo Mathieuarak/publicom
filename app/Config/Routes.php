@@ -77,14 +77,14 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
 	$routes->get('visu-message-(:num)', 'Message::visualisation/$1', ['as' => 'visu_message']);
 
 	//Create
-	$routes->get('ajout-message-(:num)', 'Message::ajout/$1', ['as' => 'message_ajout']);
+	$routes->get('ajout-message-(:num)', 'Message::ajout/$1', ['as' => 'ajout_message']);
 	$routes->post('ajout-message', 'Message::create', ['as' => 'message_create']);
 
 	//Update
-	$routes->get('modif-message-(:num)', 'Message::modif/$1', ['as' => 'message_modif']);
+	$routes->get('modif-message-(:num)', 'Message::modif/$1', ['as' => 'modif_message']);
 	$routes->post('modif-message', 'Message::update', ['as' => 'message_update']);
 
-	$routes->post('visuModif-message', 'Message::visuModif', ['as' => 'message_visuModif']);
+	$routes->post('visuModif-message', 'Message::visuModif', ['as' => 'visuModif_message']);
 
 
 	//Delete
