@@ -37,13 +37,33 @@ class Message extends BaseController
         return view('message/visuMessage', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'img' => $file]);
     }
 
-    public function preSuiv($messageId, $suiv)
+    public function preSuiv($messageId,$isSuivant)
     {
         $messageModel = model('MessageModel');
 
         $message = $messageModel->find($messageId);;
 
         $correctMsg = false;
+        if ($isSuivant==1){
+            $i = $messageId + 1;
+            while ($correctMsg != true) {
+                if ($i >= $messageModel->message_maxId()) {
+                    return redirect()->back()->with('msg', 'Il n\'y a pas de message suivant');
+                } else {
+                    $messageSuiv = $messageModel->find($i);
+                    if ($messageSuiv != false) {
+                        if ($messageSuiv['ID_COMMUNEMESSAGE'] == $message['ID_COMMUNEMESSAGE']) {
+                            $correctMsg = true;
+                        } else {
+                            $i++;
+                        }
+                    } else {
+                        $i++;
+                    }
+                }
+            }
+
+        } else {
             $i = $messageId - 1;
             while ($correctMsg != true) {
                 if ($i == 0) {
@@ -62,7 +82,7 @@ class Message extends BaseController
                 }
             }
 
-
+        }
         return redirect()->route('visu_message', [$i]);
     }
 

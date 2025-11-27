@@ -55,9 +55,9 @@ if ($message['ALIGNEMENT']=="droite"){
 
 <!-- les bouton suivant et précédent ne fonctionne pas , à modifier -->
 
-<a class="bouton left" href='<?=url_to('preSuiv_message', $message['ID'],false)  ?>'> Message précédent </a> 
+<a class="bouton left" href='<?=url_to('preSuiv_message', $message['ID'],0)  ?>'> Message précédent </a> 
 
-<a class="bouton right" href='<?= url_to('preSuiv_message', $message['ID'],true) ?> '> Message Suivant </a>
+<a class="bouton right" href='<?= url_to('preSuiv_message', $message['ID'],1) ?> '> Message Suivant </a>
 
 <article class="article">
     <h2 class="titre"> <?= $message['TITRE'] ?></h2>

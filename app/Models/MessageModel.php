@@ -45,7 +45,8 @@ class MessageModel extends Model
     protected $afterDelete    = [];
 
     public function message_maxId(){
-        
+        $row=$this->selectMax('ID')->first();
+        return (int) $row['ID'];
     }
 
 }
