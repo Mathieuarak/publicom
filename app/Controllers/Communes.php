@@ -46,6 +46,41 @@ class Communes extends BaseController
         $communeModel = model('Commune');
         $commune = $communeModel-> find($communeID);
         //dd($commune);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         return view('communeAccueil',$commune);
     }
 
