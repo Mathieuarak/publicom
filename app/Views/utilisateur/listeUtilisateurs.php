@@ -12,7 +12,7 @@
                     $utilisateur['PRENOM'], 
                     '<a href="'.url_to('preUpdate_user', $utilisateur['ID']).'" class=\'bouton\'>modifierUtilisateur</a>',
                     
-                    '<form method="post" action="'.url_to('delete_user').'"><input name="ID" type="hidden" value='.$utilisateur['ID'].' /><button type="submit" onclick= "'. "return confirm('Are you sure?')".'"> Supprimer </button></form>'
+                    '<form method="post" action="'.url_to('delete_user').'"><input name="ID" type="hidden" value='.$utilisateur['ID'].' /><button  class="bouton"  type="submit" onclick= "'. "return confirm('Are you sure?')".'"> Supprimer </button></form>'
                 ]);
             }
             echo $table->generate();

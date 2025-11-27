@@ -27,7 +27,6 @@
     <h1>Liste des panneaux de (commune)</h1>
 
     <?= $table->generate(); ?>
-    <>
 
 </section>
 

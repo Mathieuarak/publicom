@@ -7,6 +7,17 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Utilisateur extends BaseController
 {
+
+    public function login(){
+        return view('auth.php');
+    }
+    
+    public function logout(){
+        $session = session();
+        $session->destroy();
+        return redirect("login_user");
+    }
+
     public function auth(){
         $session = session();
         $session->set(['isLogIn' => False]);
@@ -19,12 +30,13 @@ class Utilisateur extends BaseController
         }
         else{
             $model2=model('Utilisateur');
-            $user=$model2->isUser($this->request->getPost('user_login'),password_hash($this->request->getPost('user_password'), PASSWORD_DEFAULT));
+            $user=$model2->isUser($this->request->getPost('user_login'),/*password_hash(*/$this->request->getPost('user_password')/*, PASSWORD_DEFAULT)*/);
             if ($user){
                 $session->set(['isLogIn' => true]);
                 $session->set(['isAdmin' => false]);
-                $commune=$log2[0];
-                return view("communeAccueil",$commune);
+                //dd($user[0]);
+                $commune=$user[0];
+                return view("communes/communeAccueil",$commune);
             }
             //else{
                // $session->set(['isLogIn' => false]);
@@ -57,7 +69,7 @@ class Utilisateur extends BaseController
             "idCommune"=>"2"]
         ];*/
         
-        return view("listeUtilisateurs.php",["listeUtilisateurs"=>$log,"idCommune"=>$numCommune]);
+        return view("utilisateur/listeUtilisateurs.php",["listeUtilisateurs"=>$log,"idCommune"=>$numCommune]);
     }
 
     public function preCreate($numCommune){
@@ -66,7 +78,7 @@ class Utilisateur extends BaseController
         $log=$model->userCommune($numCommune);
         /*$data=
             ["nomCommune"=>"albainc"];*/
-        return view("ajoutUtilisateur.php",["commune"=>$log[0],"ID_UTILISATEURCOMMUNE"=>$numCommune]);
+        return view("utilisateur/ajoutUtilisateur.php",["commune"=>$log[0],"ID_UTILISATEURCOMMUNE"=>$numCommune]);
     }
 
     public function create()
@@ -75,7 +87,15 @@ class Utilisateur extends BaseController
         
         $model=model('Utilisateur');
         //dd($this->request->getPost());
-        $model->insert($this->request->getPost());
+        $data=[
+            "PRENOM"=>$this->request->getPost('PRENOM'),
+            "NOM"=>$this->request->getPost('NOM'),
+            "ID_UTILISATEURCOMMUNE"=>$this->request->getPost('ID_UTILISATEURCOMMUNE'),
+            "IDENTIFIANT"=>$this->request->getPost('IDENTIFIANT'),
+            "MOTDEPASSE"=>password_hash($this->request->getPost('MOTDEPASSE'),PASSWORD_DEFAULT)
+        ];
+
+        $model->insert($data);
         
         $numCommune=$this->request->getPost("ID_UTILISATEURCOMMUNE");
         //dd($numCommune);
@@ -93,7 +113,7 @@ class Utilisateur extends BaseController
         $model=model('Utilisateur');
         $data=$model->user($idUtilisateur);
         //dd($data);
-        return view("modifierUtilisateur.php",["utilisateur"=>$data[0]]);
+        return view("utilisateur/modifierUtilisateur.php",["utilisateur"=>$data[0]]);
     }
     public function update()
     {
