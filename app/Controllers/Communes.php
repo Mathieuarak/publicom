@@ -61,10 +61,10 @@ class Communes extends BaseController
         return redirect()->to('liste-communes');
     }
 
-    public function delete()
+    public function delete($communeId)
     {
         $communeModel = model('Commune');
-        $communeModel->delete($this->request->getPost('CommuneId'));
+        $communeModel->delete($communeId);
         return redirect()->to('liste-communes');
     }
 

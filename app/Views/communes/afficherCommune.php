@@ -6,21 +6,21 @@
 <body>
     <div class="container">
         <div class="commune-row">
-           <form>
-    
-            <input type="text" id="nom" name="NOM" value="<?= $commune['NOM'] ?>" disabled/><br><br>
+           
+            <h1>Commune : </h1>  
+            <h2><?= $commune['NOM'] ?><br><br>
             
             <label for="nom">Code Postal</label>
-            <input id="codePostal" name="CODEPOSTAL" value="<?= $commune['CODEPOSTAL'] ?>"disabled><br><br>
+            <h2><?= $commune['CODEPOSTAL'] ?><br><br>
             
             
-            <label for="nom"> Description </label>
-            <input type="text" id="description" name="DESCRIPTION" value="<?= $commune['DESCRIPTION'] ?>"disabled><br><br>
+            <h1>Description :
+            <p><?= $commune['DESCRIPTION'] ?><br><br>
+            
 
 
             
 
-            </form>
         </div>
     </div>
 </body>

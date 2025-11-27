@@ -51,12 +51,12 @@ $routes->get('modification-communes-(:num)', 'Communes::modif/$1', ['as' => 'mod
 $routes->post('update-communes', 'Communes::update', ['as' => 'updateCommunes']);
 
 
-$routes->get('supprimer-commune-(:num)','Communes::delete',['as'=>'supprimerCommune']);
+$routes->get('supprimer-commune-(:num)','Communes::delete/$1',['as'=>'supprimerCommune']);
 
 //Gérer la colone en particulier pour admin
 $routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccueil']);
 
-$routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommune']);
+
 
 //Route Utilisateur 
 
