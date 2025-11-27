@@ -67,7 +67,25 @@ class Communes extends BaseController
         $communeModel->delete($communeID);
         return redirect()->to('liste-communes');
     }
+        public function accueil()
+    {
 
+        $communeModel = model('Commune');
+        $commune = $communeModel->find();
+        //dd($commune);
+        return view('communes/afficherCommune', [
+        'commune' => [
+        'NOM' => $commune['NOM'],
+        'CODEPOSTAL' => $commune['CODEPOSTAL'],
+        'DESCRIPTION' => $commune['DESCRIPTION']
+    ]
+    ]);
+
+    }
+
+
+
+    
 }
 
 
