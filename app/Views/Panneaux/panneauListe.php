@@ -30,11 +30,8 @@
 
 </section>
 
-<?php
-$communeId = $panneauListe[0]['ID_COMMUNEPANNEAUX'] ?? 0;
-?>
 
-<button type="button" onclick="window.location.href='<?= url_to('panneauMap') ?>'">Afficher sur la carte</button>
+<button type="button" onclick="window.location.href='<?= url_to('panneauMap', $communeId) ?>'">Afficher sur la carte</button>
 <button type="button" onclick="window.location.href='<?= url_to('panneauAjout', $communeId) ?>'">Ajouter un panneau</button>
 
 <?= $this->endSection() ?>

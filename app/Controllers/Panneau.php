@@ -6,16 +6,24 @@ use App\Controllers\BaseController;
 
 class Panneau extends BaseController
 {
-    public function liste(): string
+    public function liste(int $communeId)
     {
-        $panneaux = model('PanneauModel')->findAll();
-        return view('Panneaux/panneauListe', ['panneauListe' => $panneaux]);
+        $panneaux = model('PanneauModel')->where('ID_COMMUNEPANNEAUX', $communeId)->findAll();
+
+        return view('Panneaux/panneauListe', [
+            'panneauListe' => $panneaux,
+            'communeId'    => $communeId
+        ]);
     }
 
-    public function map()
+    public function map(int $communeId)
     {
-        $panneaux = model('PanneauModel')->findAll();
-        return view('Panneaux/panneauMap', ['panneaux' => $panneaux]);
+        $panneaux = model('PanneauModel')->where('ID_COMMUNEPANNEAUX', $communeId)->findAll();
+
+        return view('Panneaux/panneauMap', [
+            'panneaux'  => $panneaux,
+            'communeId' => $communeId
+        ]);
     }
 
     public function ajout(int $communeId)
@@ -23,10 +31,10 @@ class Panneau extends BaseController
         return view('Panneaux/PanneauAjout', ['communeId' => $communeId]);
     }
 
-    public function modif(int $id)
+    public function modif(int $id, $communeId)
     {
-        $panneau = model('PanneauModel')->find($id);
-        return view('Panneaux/PanneauModif', ['panneau' => $panneau]);
+        $panneau = model('PanneauModel')->where('ID_COMMUNEPANNEAUX', $communeId)->find($id);
+        return view('Panneaux/PanneauModif', ['panneau' => $panneau, 'communeId' => $communeId]);
     }
 
     public function update()
@@ -45,7 +53,7 @@ class Panneau extends BaseController
 
         model('PanneauModel')->update($id, $data);
 
-        return redirect()->to(url_to('panneauListe'));
+        return redirect()->to(url_to('panneauListe', 1));
     }
 
     public function create()
@@ -64,7 +72,7 @@ class Panneau extends BaseController
 
         model('PanneauModel')->insert($data);
 
-        return redirect()->to(url_to('panneauListe'));
+        return redirect()->to(url_to('panneauListe', 1));
     }
 
     public function delete($id = null)
@@ -75,6 +83,6 @@ class Panneau extends BaseController
             model('PanneauModel')->delete($id);
         }
 
-        return redirect()->to(url_to('panneauListe'));
+        return redirect()->to(url_to('panneauListe', 1));
     }
 }

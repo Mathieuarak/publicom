@@ -26,9 +26,9 @@ $routes->get('categorie-messages-(:num)', 'Categorie::messages/$1', ['as' => 'ca
 
 //ROUTE PANNEAUX
 
-$routes->get('liste-panneau', 'Panneau::liste', ['as' => 'panneauListe']);
+$routes->get('liste-panneau-(:num)', 'Panneau::liste/$1', ['as' => 'panneauListe']);
 
-$routes->get('map-panneau', 'Panneau::map', ['as' => 'panneauMap']);
+$routes->get('map-panneau-(:num)', 'Panneau::map/$1', ['as' => 'panneauMap']);
 
 $routes->get('ajout-panneau-(:num)', 'Panneau::ajout/$1', ['as' => 'panneauAjout']);  //num-> num de la commune 
 $routes->post('ajout-panneau', 'Panneau::create', ['as' => 'panneauCreate']);
