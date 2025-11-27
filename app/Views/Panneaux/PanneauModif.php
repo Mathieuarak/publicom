@@ -26,7 +26,7 @@
     </p>
 
     <button type="submit">Valider</button>
-    <a href="<?= url_to('panneauListe') ?>">Annuler</a>
+    <button type="button" onclick="window.location.href='<?= url_to('panneauListe') ?>'">Annuler</button>
 </form>
 
 

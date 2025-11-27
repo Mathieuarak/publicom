@@ -3,7 +3,7 @@
 <?= $this->section('contenu') ?>
 
 <h1 class="titre">Liste des message de <?= $commune['NOM'] ?> </h1>
-<p><a class="bouton" href='<?= url_to('message_ajout', $commune['ID']) ?>'> Ajout message </a></p>
+<p><a class="bouton" href='<?= url_to('ajout_message', $commune['ID']) ?>'> Ajout message </a></p>
 
 <?php
 $table = new \CodeIgniter\View\Table();
@@ -27,7 +27,7 @@ foreach ($messageListe as $message) {
             <td> <?= $message['TITRE'] ?> </td>
             <td>
 
-                <form method="post" action='<?= url_to('message_visuModif')?>'>
+                <form method="post" action='<?= url_to('visuModif_message')?>'>
                     <input name="idMessage" type="hidden" value="<?= $message['ID'] ?>" />
                     <input name="idCommune" type="hidden" value="<?= $commune['ID'] ?>" />
 
@@ -40,10 +40,10 @@ foreach ($messageListe as $message) {
 
                 </form>
             </td>
-            <td> <a class="bouton" href='<?= url_to('message_modif', $message['ID']) ?>'> Modifier </a> </td>
+            <td> <a class="bouton" href='<?= url_to('modif_message', $message['ID']) ?>'> Modifier </a> </td>
             <td> <a class="bouton" href='<?= url_to('visu_message', $message['ID']) ?>'> Visualisation </a> </td>
             <td>
-                <form method="post" action='<?= url_to('message_delete') ?>'>
+                <form method="post" action='<?= url_to('delete_message') ?>'>
                     <input name="idMessage" type="hidden" value="<?= $message['ID'] ?>" />
                     <input name="idCommune" type="hidden" value="<?= $commune['ID'] ?>" />
                     <button class="bouton" type="submit">Supprimer</button>

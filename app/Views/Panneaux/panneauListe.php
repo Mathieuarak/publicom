@@ -11,8 +11,8 @@
     foreach ($panneauListe as $panneau) {
         $id = $panneau['ID'];
 
-        $modifier = '<a href="' . base_url("modif-panneau-$id") . '" class="btn">Modifier</a>';
-        $supprimer = '<a href="' . base_url("suppr-panneau-$id") . '" onclick="return confirm(\'Supprimer ce panneau ?\')" class="btn">Supprimer</a>';
+        $modifier = '<button type="button" class="btn" onclick="window.location.href=\'' . base_url("modif-panneau-$id") . '\'">Modifier</button>';
+        $supprimer = '<button type="button" class="btn" onclick="if(confirm(\'Supprimer ce panneau ?\')) window.location.href=\'' . base_url("suppr-panneau-$id") . '\'">Supprimer</button>';
 
         $table->addRow(
             $panneau['NUMERO'],
@@ -27,6 +27,7 @@
     <h1>Liste des panneaux de (commune)</h1>
 
     <?= $table->generate(); ?>
+    <>
 
 </section>
 
@@ -34,7 +35,7 @@
 $communeId = $panneauListe[0]['ID_COMMUNEPANNEAUX'] ?? 0;
 ?>
 
-<a href="<?= url_to('panneauMap') ?>">Afficher sur la carte</a>
-<a href="<?= base_url("ajout-panneau-$communeId") ?>">Ajouter un panneau</a>
+<button type="button" onclick="window.location.href='<?= url_to('panneauMap') ?>'">Afficher sur la carte</button>
+<button type="button" onclick="window.location.href='<?= url_to('panneauAjout', $communeId) ?>'">Ajouter un panneau</button>
 
 <?= $this->endSection() ?>

@@ -16,6 +16,7 @@ if ($message['ALIGNEMENT']=="droite"){
 }
 ?>
 
+
 <style>
     .article {
         margin: 10px;
@@ -25,6 +26,7 @@ if ($message['ALIGNEMENT']=="droite"){
         border-width: 2px;
         border-color: black;
         background-color: #eee;
+        background-image: url(<?=$img?>);
 
     }
 
@@ -43,12 +45,19 @@ if ($message['ALIGNEMENT']=="droite"){
 
 <h1>Visualisation des message de <?= $commune['NOM'] ?></h1>
 
+
 <!-- les bouton suivant et précédent ne fonctionne pas , à modifier -->
-<a class="bouton left" href='#'> Précédent </a> <a class="bouton right" href='#'> Suivant </a>
+ <?php 
+    if ($message['ID']>1) {
+
+     ?> <a class="bouton left" href='<?=url_to('preSuiv_message', $message['ID'])  ?>'> Message précédent </a> 
+
+     <?php }?>
+
+     <a class="bouton right" href=' '> Message Suivant </a>
 
 <article class="article">
     <h2 class="titre"> <?= $message['TITRE'] ?></h2>
     <p class="contenu"> <?= $message['CONTENU'] ?></p>
-
 </article>
 <?= $this->endSection() ?>

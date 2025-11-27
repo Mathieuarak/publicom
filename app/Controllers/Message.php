@@ -4,9 +4,14 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\Files\File;
+
 
 class Message extends BaseController
 {
+
+
+    protected $helpers = ['form'];
 
     //liste des message
     public function liste($communeId)
@@ -16,7 +21,7 @@ class Message extends BaseController
 
         $messageListe = $messageModel->where('ID_COMMUNEMESSAGE', $communeId)->findAll();
 
-        return view('liste_messages', ['messageListe' => $messageListe, 'commune' => $communeModel->find($communeId), 'isAdmin' => true]);
+        return view('message/listeMessages', ['messageListe' => $messageListe, 'commune' => $communeModel->find($communeId), 'isAdmin' => true]);
     }
 
     //page de visualisation des message
@@ -27,8 +32,9 @@ class Message extends BaseController
 
         $message = $messageModel->find($messageId);
         $commune = $communeModel->find($message['ID_COMMUNEMESSAGE']);
+        $file = $message['FOND'];
 
-        return view('visu_message', ['message' => $message, 'commune' => $commune, 'isAdmin' => true]);
+        return view('message/visuMessage', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'img' => $file]);
     }
 
     //création de message
@@ -36,28 +42,80 @@ class Message extends BaseController
     {
         $communeModel = model('Commune');
 
-        return view('ajout_message', ['commune' => $communeModel->find($communeId), 'isAadmin' => true]);
+        return view('message/ajoutMessage', ['commune' => $communeModel->find($communeId), 'isAadmin' => true]);
     }
     public function create()
     {
         $messageModel = model('MessageModel');
+        $communeModel = model('Commune');
 
-        $data = [
-            'ID_COMMUNEMESSAGE' => $this->request->getPost('idCommune'),
-            'TITRE' => $this->request->getPost('titre'),
-            'CONTENU' => $this->request->getPost('message'),
-            'POLICETITRE' => $this->request->getPost('policeTitre'),
-            'POLICECONTENU' => $this->request->getPost('policeTexte'),
-            'ALIGNEMENT' => $this->request->getPost('alignement'),
-            'FOND' => $this->request->getPost('fond'),
-            'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
-            'TAILLETITRE' => $this->request->getPost('tailleTitre'),
-            'ON_OFF'=> $this->request->getPost('on_off')
-
+        $validationRule = [
+            'fond' => [
+                'label' => 'Image File',
+                'rules' => [
+                    'uploaded[fond]',
+                    'is_image[fond]',
+                    'mime_in[fond,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                ],
+            ],
         ];
 
-        $messageModel->insert($data);
-        return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
+        $isUploaded = [
+            'fond' => [
+                'label' => 'Image File',
+                'rules' => [
+                    'uploaded[fond]',
+                ],
+            ],
+        ];
+
+        if ( $this->validateData([], $isUploaded)) {
+            if (! $this->validateData([], $validationRule)) {
+                $error = $this->validator->getErrors();
+                return view('message/ajout_message', ['commune' =>  $communeModel->find($this->request->getPost('idCommune')), 'isAdmin' => true, 'errors' => $error]);
+            } else {
+                $img = $this->request->getFile('fond');
+
+                $fileName = $img->getRandomName();
+                $ext = $img->getClientExtension();
+                $img->move(ROOTPATH.'public/uploads/',$fileName);
+                $filepath='uploads/'.$fileName;
+
+                $data = [
+                    'ID_COMMUNEMESSAGE' => $this->request->getPost('idCommune'),
+                    'TITRE' => $this->request->getPost('titre'),
+                    'CONTENU' => $this->request->getPost('message'),
+                    'POLICETITRE' => $this->request->getPost('policeTitre'),
+                    'POLICECONTENU' => $this->request->getPost('policeTexte'),
+                    'ALIGNEMENT' => $this->request->getPost('alignement'),
+                    'FOND' => $this->request->getPost('fond'),
+                    'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
+                    'TAILLETITRE' => $this->request->getPost('tailleTitre'),
+                    'ON_OFF'=> $this->request->getPost('on_off'),
+                    'FOND' => new File($filepath),
+
+                ];
+
+                $messageModel->insert($data);
+                return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]); }
+        } else {
+            $data = [
+                'ID_COMMUNEMESSAGE' => $this->request->getPost('idCommune'),
+                'TITRE' => $this->request->getPost('titre'),
+                'CONTENU' => $this->request->getPost('message'),
+                'POLICETITRE' => $this->request->getPost('policeTitre'),
+                'POLICECONTENU' => $this->request->getPost('policeTexte'),
+                'ALIGNEMENT' => $this->request->getPost('alignement'),
+                'FOND' => $this->request->getPost('fond'),
+                'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
+                'TAILLETITRE' => $this->request->getPost('tailleTitre'),
+                'ON_OFF'=> $this->request->getPost('on_off'),
+
+            ];
+
+            $messageModel->insert($data);
+            return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
+        }
     }
 
     //modification des message
@@ -69,25 +127,91 @@ class Message extends BaseController
         $message = $messageModel->find($messageId);
         $commune = $communeModel->find($message['ID_COMMUNEMESSAGE']);
 
-        return view('modif_message', ['message' => $message, 'commune' => $commune, 'isAdmin' => true]);
+        return view('message/modifMessage', ['message' => $message, 'commune' => $commune, 'isAdmin' => true]);
     }
     public function update()
     {
+        
         $messageModel = model('MessageModel');
+        $communeModel = model('Commune');
 
-        $data = [
-            'TITRE' => $this->request->getPost('titre'),
-            'CONTENU' => $this->request->getPost('message'),
-            'POLICETITRE' => $this->request->getPost('policeTitre'),
-            'POLICECONTENU' => $this->request->getPost('policeTexte'),
-            'ALIGNEMENT' => $this->request->getPost('alignement'),
-            'FOND' => $this->request->getPost('fond'),
-            'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
-            'TAILLETITRE' => $this->request->getPost('tailleTitre'),
+        $messageId=$this->request->getPost('idMessage');
+        $message = $messageModel->find($messageId);
+        $commune = $communeModel->find($message['ID_COMMUNEMESSAGE']);
+
+
+        $validationRule = [
+            'fond' => [
+                'label' => 'Image File',
+                'rules' => [
+                    'uploaded[fond]',
+                    'is_image[fond]',
+                    'mime_in[fond,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                ],
+            ],
         ];
 
+        $isUploaded = [
+            'fond' => [
+                'label' => 'Image File',
+                'rules' => [
+                    'uploaded[fond]',
+                ],
+            ],
+        ];
+
+    
+        if ($this->validateData([], $isUploaded)) {
+             if (! $this->validateData([], $validationRule)) {
+
+            $error = $this->validator->getErrors();
+            return view('message/modif_message', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'errors' => $error]);
+
+        }
+
+
+        
+        $img = $this->request->getFile('fond');
+        
+        if($message['FOND'] != NULL){
+             unlink($message['FOND']);   
+        }
+
+        $fileName = $img->getRandomName();
+        $ext = $img->getClientExtension();
+        $img->move(ROOTPATH.'public/uploads/',$fileName);
+        $filepath='uploads/'.$fileName;
+            
+
+        $data = [
+        'TITRE' => $this->request->getPost('titre'),
+        'CONTENU' => $this->request->getPost('message'),
+        'POLICETITRE' => $this->request->getPost('policeTitre'),
+        'POLICECONTENU' => $this->request->getPost('policeTexte'),
+        'ALIGNEMENT' => $this->request->getPost('alignement'),
+        'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
+        'TAILLETITRE' => $this->request->getPost('tailleTitre'),
+        'FOND' => new File($filepath),
+        ];
+        
         $messageModel->update($this->request->getPost('idMessage'), $data);
         return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
+        
+    } else {
+                $data = [
+        'TITRE' => $this->request->getPost('titre'),
+        'CONTENU' => $this->request->getPost('message'),
+        'POLICETITRE' => $this->request->getPost('policeTitre'),
+        'POLICECONTENU' => $this->request->getPost('policeTexte'),
+        'ALIGNEMENT' => $this->request->getPost('alignement'),
+        'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
+        'TAILLETITRE' => $this->request->getPost('tailleTitre'),
+        ];
+        
+        $messageModel->update($this->request->getPost('idMessage'), $data);
+        return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
+    }
+
     }
 
     public function visuModif()
