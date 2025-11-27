@@ -16,8 +16,6 @@
            <form action="<?= url_to('updateCommunes') ?>" method="post">
 
             <input type="hidden" name="ID" value="<?= $commune["ID"]?>">
-            
-            
             <label for="nom">Éditer nom </label>
             <input type="text" id="nom" name="NOM" value="<?= $commune['NOM'] ?>"/><br><br>
             
@@ -25,8 +23,8 @@
             <input type="text" id="codePostal" name="CODEPOSTAL" value="<?= $commune['CODEPOSTAL'] ?>"><br><br>
             
             <label for="nom">Éditer la description </label>
-            <input type="text" name="message" id="message" value="" style="height: 400px; width: 500px;" onclick="this.value=''" />
             <input type="text" id="description" name="DESCRIPTION" value="<?= $commune['DESCRIPTION'] ?>"><br><br>
+            <button type="submit" value="Valider">
 
                 
             </form>

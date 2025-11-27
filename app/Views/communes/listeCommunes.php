@@ -13,7 +13,7 @@
         $table->addRow(
             $commune['NOM'],
             '<a href="' . url_to('modificationCommune', $commune['ID']) . '" class="bouton">Modifier</a>',
-            '<a href="' . url_to('supprimerCommune', $commune['ID']) . '" class="bouton">Supprimer</a>',
+            '<a href="' . url_to('supprimerCommune', $commune['ID']) . '" class="bouton">Supprimer</a>',//onclick alert confirmation
             '<a href="' . url_to('communeAccueil',$commune['ID']) .'" class="bouton">Accueil</a>'
 
         );

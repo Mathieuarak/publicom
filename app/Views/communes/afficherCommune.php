@@ -14,19 +14,20 @@
     <div class="container">
         <div class="commune-row">
            <form>
+    
+            <input type="text" id="nom" name="NOM" value="<?= $commune['NOM'] ?>" disabled/><br><br>
             
-            
-            <label for="nom">nom </label>
-            <label type="text" id="nom" name="NOM" value="<?= $communes['NOM'] ?>"><br><br>
-            
-            <label for="nom">code Postal</label>
-            <label type="text" id="codePostal" name="CODEPOSTAL" value="<?= $communes['CODEPOSTAL'] ?>"><br><br>
-            
-            <label for="nom">description </label>
-            <label type="text" id="description" name="DESCRIPTION" value="<?= $communes['DESCRIPTION'] ?>"><br><br>
-            <label type="text" name="message" id="message" value="" style="height: 400px; width: 500px;" onclick="this.value=''">
-                
-            </form>
+            <label for="nom">Code Postal</label>
+            <input id="codePostal" name="CODEPOSTAL" value="<?= $commune['CODEPOSTAL'] ?>"disabled><br><br>
 
+            
+            <label for="nom"> Description </label>
+            <input type="text" id="description" name="DESCRIPTION" value="<?= $commune['DESCRIPTION'] ?>"disabled><br><br>
+
+            
+            
+
+            </form>
         </div>
-    </body>
+    </div>
+</body>

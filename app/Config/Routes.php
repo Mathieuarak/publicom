@@ -42,7 +42,6 @@ $routes->get('suppr-panneau-(:num)', 'Panneau::delete/$1', ['as' => 'panneauSupp
 //CRUD communes
 
 $routes->get('liste-communes', 'Communes::liste', ['as' => 'listeCommunes']);
-$routes->get('afficher-commune-(:num)','Communes::accueil', ['as' =>'communeAccueil']);
 
 
 $routes->get('creation-commune','Communes::creation',['as' =>'creationCommune']);
@@ -58,7 +57,6 @@ $routes->get('supprimer-commune-(:num)','Communes::delete',['as'=>'supprimerComm
 $routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccueil']);
 
 $routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommune']);
-$routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAccueil']);
 
 //Route Utilisateur 
 
