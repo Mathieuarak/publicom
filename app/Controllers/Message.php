@@ -46,8 +46,9 @@ class Message extends BaseController
         $correctMsg = false;
         if ($isSuivant==1){
             $i = $messageId + 1;
+            $maxId=$messageModel->message_maxId();
             while ($correctMsg != true) {
-                if ($i >= $messageModel->message_maxId()) {
+                if ($i > $maxId) {
                     return redirect()->back()->with('msg', 'Il n\'y a pas de message suivant');
                 } else {
                     $messageSuiv = $messageModel->find($i);
@@ -140,7 +141,7 @@ class Message extends BaseController
                     'FOND' => $this->request->getPost('fond'),
                     'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
                     'TAILLETITRE' => $this->request->getPost('tailleTitre'),
-                    'ON_OFF' => $this->request->getPost('on_off'),
+                    'PUBLIE' => $this->request->getPost('publie'),
                     'FOND' => new File($filepath),
 
                 ];
@@ -159,7 +160,7 @@ class Message extends BaseController
                 'FOND' => $this->request->getPost('fond'),
                 'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
                 'TAILLETITRE' => $this->request->getPost('tailleTitre'),
-                'ON_OFF' => $this->request->getPost('on_off'),
+                'PUBLIE' => $this->request->getPost('publie'),
 
             ];
 
@@ -266,7 +267,7 @@ class Message extends BaseController
         $messageModel = model('MessageModel');
 
         $data = [
-            'ON_OFF' => $this->request->getPost('on_off')
+            'PUBLIE' => $this->request->getPost('publie')
         ];
 
         $messageModel->update($this->request->getPost('idMessage'), $data);

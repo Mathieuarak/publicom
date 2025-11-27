@@ -50,7 +50,7 @@
         <label>Fond :</label>
         <input name="fond" type="file" >
 
-        <input name="on_off" type="hidden" value=0 />
+        <input name="publie" type="hidden" value=0 />
 
         <input type="submit" value="Valider">
     </fieldset>
