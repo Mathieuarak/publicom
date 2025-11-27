@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->extend('layout') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <style>
-        button {
-            padding-right: 150px;
-        }
-      
-    </style>
-</head>
-<body>
+
+
+<?= $this->section('contenu') ?>
     <div class="container">
         <div class="commune-row">
            <form action="<?= url_to('updateCommunes') ?>" method="post">
@@ -31,3 +23,5 @@
 
         </div>
     </body>
+
+<?= $this->endSection() ?> 

@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->extend('layout') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <style>
-        button {
-            padding-right: 150px;
-        }
-      
-    </style>
-</head>
+
+
+ <?= $this->section('contenu') ?>
 <body>
     <div class="container">
         <div class="commune-row">
@@ -19,15 +12,16 @@
             
             <label for="nom">Code Postal</label>
             <input id="codePostal" name="CODEPOSTAL" value="<?= $commune['CODEPOSTAL'] ?>"disabled><br><br>
-
+            
             
             <label for="nom"> Description </label>
             <input type="text" id="description" name="DESCRIPTION" value="<?= $commune['DESCRIPTION'] ?>"disabled><br><br>
 
-            
+
             
 
             </form>
         </div>
     </div>
 </body>
+  <?= $this->endSection() ?> 
