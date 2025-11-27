@@ -9,24 +9,24 @@ class Panneau extends BaseController
     public function liste(): string
     {
         $panneaux = model('PanneauModel')->findAll();
-        return view('panneauListe', ['panneauListe' => $panneaux]);
+        return view('Panneaux/panneauListe', ['panneauListe' => $panneaux]);
     }
 
     public function map()
     {
         $panneaux = model('PanneauModel')->findAll();
-        return view('panneauMap', ['panneaux' => $panneaux]);
+        return view('Panneaux/panneauMap', ['panneaux' => $panneaux]);
     }
 
     public function ajout(int $communeId)
     {
-        return view('PanneauAjout', ['communeId' => $communeId]);
+        return view('Panneaux/PanneauAjout', ['communeId' => $communeId]);
     }
 
     public function modif(int $id)
     {
         $panneau = model('PanneauModel')->find($id);
-        return view('PanneauModif', ['panneau' => $panneau]);
+        return view('Panneaux/PanneauModif', ['panneau' => $panneau]);
     }
 
     public function update()
