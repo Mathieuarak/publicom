@@ -30,11 +30,12 @@ class Utilisateur extends BaseController
         }
         else{
             $model2=model('Utilisateur');
-            $user=$model2->isUser($this->request->getPost('user_login'),password_hash($this->request->getPost('user_password'), PASSWORD_DEFAULT));
+            $user=$model2->isUser($this->request->getPost('user_login'),/*password_hash(*/$this->request->getPost('user_password')/*, PASSWORD_DEFAULT)*/);
             if ($user){
                 $session->set(['isLogIn' => true]);
                 $session->set(['isAdmin' => false]);
-                $commune=$log2[0];
+                //dd($user[0]);
+                $commune=$user[0];
                 return view("communes/communeAccueil",$commune);
             }
             //else{
