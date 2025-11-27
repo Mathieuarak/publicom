@@ -42,6 +42,7 @@ $routes->get('suppr-panneau-(:num)', 'Panneau::delete/$1', ['as' => 'panneauSupp
 //CRUD communes
 
 $routes->get('liste-communes', 'Communes::liste', ['as' => 'listeCommunes']);
+$routes->get('afficher-commune-(:num)','Communes::accueil', ['as' =>'communeAccueil']);
 
 
 $routes->get('creation-commune','Communes::creation',['as' =>'creationCommune']);
@@ -49,6 +50,12 @@ $routes->post('create-commune','Communes::create',['as' =>'createCommune']);
 
 $routes->get('modification-communes-(:num)', 'Communes::modif/$1', ['as' => 'modificationCommune']);
 $routes->post('update-communes', 'Communes::update', ['as' => 'updateCommunes']);
+
+
+$routes->get('supprimer-commune-(:num)','Communes::delete',['as'=>'supprimerCommune']);
+
+//Gérer la colone en particulier pour admin
+$routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccueil']);
 
 $routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommune']);
 $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAccueil']);
