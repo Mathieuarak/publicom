@@ -16,9 +16,6 @@
         <label for="nom">Informations supplémentaires: </label>
         <input type="text" id= "DESCRIPTION" name= "DESCRIPTION"><br><br>
   
-        <label for="nom">Upload image </label>
-        <input type="file" id= "IMAGE" name= "IMAGE"><br><br>
-  
         <input type="submit" value="Valider">
     </form>
   <?= $this->endSection() ?> 
