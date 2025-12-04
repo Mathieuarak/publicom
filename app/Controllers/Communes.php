@@ -71,6 +71,9 @@ class Communes extends BaseController
     
     public function accueil($communeId)
     {
+    $session=session();
+    $session->set(['IdCommune'=>$communeId]);
+    //dd($_SESSION['IdCommune']);
     $communeModel = model('Commune');
     $commune = $communeModel->find($communeId);
 
