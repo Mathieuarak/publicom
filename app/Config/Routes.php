@@ -77,6 +77,8 @@ $routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccu
 	//Delete
 	
 	$routes->post('delete-utilisateur','Utilisateur::delete',['as' => 'delete_user'] );
+	// Securiter
+	//$routes->post('test-is-not-admin','Utilisateur::isNotAuthAsAdmin',['as' => 'testisNotAuthAsAdmin'] );
 	
 //Route Message
 
