@@ -6,36 +6,43 @@ use App\Controllers\BaseController;
 
 class Panneau extends BaseController
 {
-    public function liste(int $communeId)
+    public function liste()
     {
-        $panneaux = model('PanneauModel')->where('ID_COMMUNEPANNEAUX', $communeId)->findAll();
+        $panneaux = model('PanneauModel')->findAll();
 
         return view('Panneaux/panneauListe', [
             'panneauListe' => $panneaux,
-            'communeId'    => $communeId
+            'communeId'    => $_SESSION['IdCommune']
         ]);
     }
 
-    public function map(int $communeId)
+    public function map()
     {
-        $panneaux = model('PanneauModel')->where('ID_COMMUNEPANNEAUX', $communeId)->findAll();
+        $panneaux = model('PanneauModel')->findAll();
 
         return view('Panneaux/panneauMap', [
             'panneaux'  => $panneaux,
-            'communeId' => $communeId
+            'communeId' => $_SESSION['IdCommune']
         ]);
     }
 
-    public function ajout(int $communeId)
+    public function ajout()
     {
-        return view('Panneaux/PanneauAjout', ['communeId' => $communeId]);
+        return view('Panneaux/PanneauAjout', ['communeId' => $_SESSION['IdCommune']]);
     }
 
-    public function modif(int $id, $communeId)
+    
+    public function modif(int $id)
     {
-        $panneau = model('PanneauModel')->where('ID_COMMUNEPANNEAUX', $communeId)->find($id);
-        return view('Panneaux/PanneauModif', ['panneau' => $panneau, 'communeId' => $communeId]);
+        $session = session();
+        $panneaux = model('PanneauModel')->find($id);
+
+        return view('Panneaux/PanneauModif', [
+            'panneau'   => $panneaux,
+            'communeId' => $_SESSION['IdCommune']
+        ]);
     }
+    
 
     public function update()
     {
@@ -53,7 +60,7 @@ class Panneau extends BaseController
 
         model('PanneauModel')->update($id, $data);
 
-        return redirect()->to(url_to('panneauListe', 1));
+        return redirect()->to(url_to('panneauListe', $_SESSION['IdCommune']));
     }
 
     public function create()
@@ -72,7 +79,7 @@ class Panneau extends BaseController
 
         model('PanneauModel')->insert($data);
 
-        return redirect()->to(url_to('panneauListe', 1));
+        return redirect()->to(url_to('panneauListe', $_SESSION['IdCommune']));
     }
 
     public function delete($id = null)
@@ -83,6 +90,6 @@ class Panneau extends BaseController
             model('PanneauModel')->delete($id);
         }
 
-        return redirect()->to(url_to('panneauListe', 1));
+        return redirect()->to(url_to('panneauListe', $_SESSION['IdCommune']));
     }
 }

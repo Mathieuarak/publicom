@@ -31,7 +31,7 @@
 </section>
 
 
-<button type="button" onclick="window.location.href='<?= url_to('panneauMap', $communeId) ?>'">Afficher sur la carte</button>
-<button type="button" onclick="window.location.href='<?= url_to('panneauAjout', $communeId) ?>'">Ajouter un panneau</button>
+<button type="button" onclick="window.location.href='<?= url_to('panneauMap', $_SESSION['IdCommune']) ?>'">Afficher sur la carte</button>
+<button type="button" onclick="window.location.href='<?= url_to('panneauAjout', $_SESSION['IdCommune']) ?>'">Ajouter un panneau</button>
 
 <?= $this->endSection() ?>
