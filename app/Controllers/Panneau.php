@@ -19,7 +19,8 @@ class Panneau extends BaseController
 
     public function map()
     {
-        $panneaux = model('PanneauModel')->findAll();
+        $communeId = session()->get('IdCommune') ?? ($_SESSION['IdCommune'] ?? null);
+        $panneaux = model('PanneauModel')->where('ID_COMMUNEPANNEAUX', $communeId)->findAll();
 
         return view('Panneaux/panneauMap', [
             'panneaux'  => $panneaux,
