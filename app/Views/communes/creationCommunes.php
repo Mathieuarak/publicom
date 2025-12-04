@@ -10,7 +10,7 @@
         <label for="nom">Nom commune</label>
         <input type="text" id="NOM" name="NOM"><br><br>
   
-        <label for="nom">Code Postal</label>
+        <label for="nom">Code Postal (Chiffres entiers)</label>
         <input type="text" id="CODEPOSTAL" name="CODEPOSTAL"><br><br>
   
         <label for="nom">Informations supplémentaires: </label>

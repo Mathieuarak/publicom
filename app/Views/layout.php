@@ -30,9 +30,10 @@
                 
                 <?php if ($session->get('isAdmin')) {?>
                     <li><a href="<?= url_to('read_users', $_SESSION['IdCommune']) ?>">Liste des utilisateurs</a></li>;
+                    <li><a href="<?= url_to('listeCommunes') ?>">Sortir de la commune</a></li>
                 <?php } ?>
-
-                <li class="push"><a href="">Sortir de la commune</a></li>
+                   <li class="push"></li>
+                
                 <li><a href=<?= url_to('logout_user')?>>Déconnexion</a></li>
             </ul>
     </nav>

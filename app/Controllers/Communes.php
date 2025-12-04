@@ -3,12 +3,15 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-
+$session=session();
 class Communes extends BaseController
 {
     public function liste()
     {
-        $session=session();
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
+        }
+        
         if (isset($_SESSION['IdCommune'])){
             unset($_SESSION['IdCommune']);
         }
@@ -28,11 +31,19 @@ class Communes extends BaseController
 
     public function creation()
     {
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
+        }
+
         return view('communes/creationCommunes');
     }
 
     public function create()
     {
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
+        }
+
         $communeModel = model('Commune');
         $communeModel->insert($this->request->getPost());
         return redirect()->to('liste-communes');
@@ -40,6 +51,10 @@ class Communes extends BaseController
 
     public function modif($communeID)
     {
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
+        }
+
         $communeModel = model('Commune');
         $commune = $communeModel->find($communeID);
 
@@ -55,6 +70,10 @@ class Communes extends BaseController
 
     public function update()
     {
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
+        }
+
         $communeModel = model('Commune');
         $data = [
             'NOM'=> $this->request->getPost('NOM'),
@@ -69,6 +88,10 @@ class Communes extends BaseController
 
     public function delete($communeId)
     {
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
+        }
+
         $communeModel = model('Commune');
         $communeModel->delete($communeId);
         return redirect()->to('liste-communes');
@@ -80,11 +103,9 @@ class Communes extends BaseController
     {
     $session=session();
     $session->set(['IdCommune'=>$communeId]);
-    //dd($_SESSION['IdCommune']);
     $communeModel = model('Commune');
     $commune = $communeModel->find($communeId);
     $session->set(['NomCommune'=>$commune['NOM']]);
-    //dd($_SESSION['NomCommune']);
     return view('communes/afficherCommune', [
         'commune' => $commune
     ]);
