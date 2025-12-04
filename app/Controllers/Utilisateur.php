@@ -73,8 +73,8 @@ class Utilisateur extends BaseController
 
     public function reads($numCommune)
     {
-        if (!isset($_SESSION["isAdmin"])){
-            return redirect()->back(); 
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
         }
 
         #Fonctionnel
@@ -98,8 +98,8 @@ class Utilisateur extends BaseController
 
     public function preCreate($numCommune)
     {
-        if (!isset($_SESSION["isAdmin"])){
-            return redirect()->back(); 
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
         }
 
         #Fonctionnel
@@ -112,8 +112,8 @@ class Utilisateur extends BaseController
 
     public function create()
     {
-        if (!isset($_SESSION["isAdmin"])){
-            return redirect()->back(); 
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
         }
 
         #Fonctionnelle (rajouter if si param vide)
@@ -137,8 +137,8 @@ class Utilisateur extends BaseController
 
     public function preUpdate($idUtilisateur)
     {
-        if (!isset($_SESSION["isAdmin"])){
-            return redirect()->back(); 
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
         }
         /*$data=
             ["id"=>"2",
@@ -153,8 +153,8 @@ class Utilisateur extends BaseController
     }
     public function update()
     {
-        if (!isset($_SESSION["isAdmin"])){
-            return redirect()->back(); 
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
         }
         $model = model('Utilisateur');
         $data = [
@@ -171,8 +171,8 @@ class Utilisateur extends BaseController
     }
     public function delete()
     {
-        if (!isset($_SESSION["isAdmin"])){
-            return redirect()->back(); 
+        if (!$_SESSION["isAdmin"]){
+             return redirect()->to("commune-accueil-".$_SESSION["IdCommune"]);
         }
         //dd($this->request->getPost());
         model('Utilisateur')->delete($this->request->getPost());
