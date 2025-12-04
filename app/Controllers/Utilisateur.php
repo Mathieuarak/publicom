@@ -1,12 +1,18 @@
 <?php
 
+
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
-
+$session = session();
 class Utilisateur extends BaseController
 {
+    /*public function isNotAuthAsAdmin(){
+        if (!isset($_SESSION["isAdmin"])){
+            return redirect()->back(); 
+        } 
+    }*/
 
     public function login()
     {
@@ -67,6 +73,10 @@ class Utilisateur extends BaseController
 
     public function reads($numCommune)
     {
+        if (!isset($_SESSION["isAdmin"])){
+            return redirect()->back(); 
+        }
+
         #Fonctionnel
         $model = model('Utilisateur');
         $log = $model->usersInCommune($numCommune);
@@ -88,6 +98,10 @@ class Utilisateur extends BaseController
 
     public function preCreate($numCommune)
     {
+        if (!isset($_SESSION["isAdmin"])){
+            return redirect()->back(); 
+        }
+
         #Fonctionnel
         $model = model('Commune');
         $log = $model->userCommune($numCommune);
@@ -98,6 +112,10 @@ class Utilisateur extends BaseController
 
     public function create()
     {
+        if (!isset($_SESSION["isAdmin"])){
+            return redirect()->back(); 
+        }
+
         #Fonctionnelle (rajouter if si param vide)
 
         $model = model('Utilisateur');
@@ -119,6 +137,9 @@ class Utilisateur extends BaseController
 
     public function preUpdate($idUtilisateur)
     {
+        if (!isset($_SESSION["isAdmin"])){
+            return redirect()->back(); 
+        }
         /*$data=
             ["id"=>"2",
             "nomCommune"=>"albainc",
@@ -132,7 +153,9 @@ class Utilisateur extends BaseController
     }
     public function update()
     {
-        $session=session();
+        if (!isset($_SESSION["isAdmin"])){
+            return redirect()->back(); 
+        }
         $model = model('Utilisateur');
         $data = [
             "PRENOM" => $this->request->getPost('PRENOM'),
@@ -144,14 +167,15 @@ class Utilisateur extends BaseController
 
         $model->update($this->request->getPost('ID'), $data);
         //dd($this->request->getPost());
-
-        return redirect()->to('listes-des-utilisateurs-'.$session->get("IdCommune"));
+        return redirect()->to('listes-des-utilisateurs-'.$_SESSION["IdCommune"]);
     }
     public function delete()
     {
-        $session=session();
+        if (!isset($_SESSION["isAdmin"])){
+            return redirect()->back(); 
+        }
         //dd($this->request->getPost());
         model('Utilisateur')->delete($this->request->getPost());
-        return redirect()->to('listes-des-utilisateurs-'.$session->get("IdCommune"));
+        return redirect()->to('listes-des-utilisateurs-'.$_SESSION["IdCommune"]);
     }
 }
