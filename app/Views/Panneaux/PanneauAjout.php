@@ -4,7 +4,7 @@
 <h1>Ajouter un panneau à la commune de (commune)</h1>
 
 <form action="<?= url_to('panneauCreate') ?>" method="post">
-    <input type="hidden" name="ID" value="<?= esc($communeId ?? 0) ?>">
+    <input type="hidden" name="ID" value="<?= esc($_SESSION['IdCommune'] ?? 0) ?>">
 
     <p>
         <label for="numero">Numéro :</label>

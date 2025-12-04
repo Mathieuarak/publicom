@@ -26,7 +26,7 @@
     </p>
 
     <button type="submit">Valider</button>
-    <button type="button" onclick="window.location.href='<?= url_to('panneauListe', $communeId) ?>'">Annuler</button>
+    <button type="button" onclick="window.location.href='<?= url_to('panneauListe', $_SESSION['IdCommune']) ?>'">Annuler</button>
 </form>
 
 

@@ -47,6 +47,8 @@ class Utilisateur extends BaseController
                 $session->set(['isAdmin' => false]);
                 //dd($user["ID_UTILISATEURCOMMUNE"]);
                 $session->set(['IdCommune'=>$user["ID_UTILISATEURCOMMUNE"]]);
+                //dd($session->get('IdCommune'));
+                //dd($_SESSION['IdCommune']);
                 //dd($user[0]);
                 return redirect()->to("commune-accueil-".$user["ID_UTILISATEURCOMMUNE"]);
             }
