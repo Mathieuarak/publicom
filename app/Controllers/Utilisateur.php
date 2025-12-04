@@ -112,7 +112,7 @@ class Utilisateur extends BaseController
 
         $model->insert($data);
 
-        $numCommune = $this->request->getPost("ID_UTILISATEURCOMMUNE");
+        $numCommune = $this->request->getPost("ID_UTILISATEURCOMMUNE"); 
         //dd($numCommune);
         return redirect()->to('listes-des-utilisateurs-' . $numCommune);
     }
@@ -132,6 +132,7 @@ class Utilisateur extends BaseController
     }
     public function update()
     {
+        $session=session();
         $model = model('Utilisateur');
         $data = [
             "PRENOM" => $this->request->getPost('PRENOM'),
@@ -144,12 +145,13 @@ class Utilisateur extends BaseController
         $model->update($this->request->getPost('ID'), $data);
         //dd($this->request->getPost());
 
-        return redirect()->to('listes-des-utilisateurs-1');
+        return redirect()->to('listes-des-utilisateurs-'.$session->get("IdCommune"));
     }
     public function delete()
     {
+        $session=session();
         //dd($this->request->getPost());
         model('Utilisateur')->delete($this->request->getPost());
-        return redirect()->to('listes-des-utilisateurs-1');
+        return redirect()->to('listes-des-utilisateurs-'.$session->get("IdCommune"));
     }
 }
