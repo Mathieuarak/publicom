@@ -70,27 +70,20 @@
     </style>
 </head>
 
+
 <body>
-    <div class="auth-card">
-        <h1>Connexion</h1>
+    <h1>
+        <?php /*if(isset($_SESSION['error']))*/  //if (session()->getFlashdata('errorMessage') !== NULL) { session()->getFlashdata('errorMessage'); /*dd($_SESSION['error']); $_SESSION['error']; */}?>
+    </h1>
+    <form method="post" action="<?=url_to("auth_user")?>">
+    
+        <label for="nom" >Login </label>
+        <input type="text" id="login" name="user_login" />
+            
+            
+        <label for="motDePasse" >Password </label>
+        <input type="password" id="password" name="user_password" />
 
-        <?php if (session()->getFlashdata('errorMessage')): ?>
-            <div class="flash-error"><?= esc(session()->getFlashdata('errorMessage')) ?></div>
-        <?php endif; ?>
-
-        <form method="post" action="<?= url_to('auth_user') ?>">
-            <div>
-                <label for="login">Login</label>
-                <input type="text" id="login" name="user_login" required autofocus />
-            </div>
-
-            <div>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="user_password" required />
-            </div>
-
-            <input type="submit" value="Se connecter" class="btn" />
-        </form>
-    </div>
-</body>
-</html>
+        <input type="submit" value="Login">
+    </form> 
+</body>  
