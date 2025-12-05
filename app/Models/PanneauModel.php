@@ -48,4 +48,12 @@ class PanneauModel extends Model
         return $this -> findAll();
 
     }
+
+
+    public function panneauInCommune($idCommune){
+        return $this
+        ->select("ID")
+        ->where("ID_COMMUNEPANNEAUX",$idCommune)
+        ->findAll();
+    }
 }
