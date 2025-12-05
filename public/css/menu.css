@@ -1,28 +1,201 @@
+:root{
+  --nav-bg: #222428;
+  --nav-text: #ffffff;
+  --nav-hover: rgba(255,255,255,0.06);
+  --accent: #c0392b;
+  --accent-dark: #9b2e24;
+  --radius: 8px;
+  --transition: 180ms;
+  --shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
 .main-nav {
   display: flex;
-    list-style-type: none;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
   margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333333;
+  padding: 6px 12px;
+  background-color: var(--nav-bg);
+  border-radius: calc(var(--radius) / 1.2);
+  box-shadow: var(--shadow);
+  flex-wrap: wrap;
 }
 
-.main-nav li{
-  float: left;
+/* li as flex item (remove floats) */
+.main-nav li {
+  list-style: none;
+  margin: 0;
 }
 
+/* Links look like pill buttons */
 .main-nav li a {
-  display: block;
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--nav-text);
   text-align: center;
-  padding: 14px 16px;
+  padding: 10px 14px;
   text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background var(--transition) ease, transform var(--transition) ease, box-shadow var(--transition) ease;
+  will-change: transform, background;
+  outline: none;
 }
 
-.main-nav li a:hover {
-  background-color: #111111;
+/* Hover / active visual */
+.main-nav li a:hover,
+.main-nav li a:focus {
+  background: var(--nav-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+  color: var(--nav-text);
 }
 
+/* Optional "primary" link style (use class .primary on anchor) */
+.main-nav li a.primary {
+  background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+  box-shadow: 0 8px 20px rgba(192,57,43,0.14);
+}
+
+/* Focus visible for keyboard users */
+.main-nav li a:focus-visible {
+  outline: 3px solid rgba(192,57,43,0.14);
+  outline-offset: 3px;
+}
+
+/* Put push items to the right */
 .push {
   margin-left: auto;
 }
+
+/* Small screens: stack vertically */
+@media (max-width: 700px) {
+  .main-nav {
+    gap: 6px;
+    padding: 6px;
+  }
+  .main-nav li a {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+  /* When stacked, make push full width at bottom */
+  .push {
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+/* Utility: turn an anchor into the same style as form buttons when needed */
+.a-button {
+  display:inline-flex;
+  align-items:center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background var(--transition) ease, transform var(--transition) ease;
+}
+.a-button:hover { background: var(--accent-dark); transform: translateY(-3px); }
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 6px 12px;
+  background-color: var(--nav-bg);
+  border-radius: calc(var(--radius) / 1.2);
+  box-shadow: var(--shadow);
+  flex-wrap: wrap;
+}
+
+/* li as flex item (remove floats) */
+.main-nav li {
+  list-style: none;
+  margin: 0;
+}
+
+/* Links look like pill buttons */
+.main-nav li a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--nav-text);
+  text-align: center;
+  padding: 10px 14px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background var(--transition) ease, transform var(--transition) ease, box-shadow var(--transition) ease;
+  will-change: transform, background;
+  outline: none;
+}
+
+/* Hover / active visual */
+.main-nav li a:hover,
+.main-nav li a:focus {
+  background: var(--nav-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+  color: var(--nav-text);
+}
+
+/* Optional "primary" link style (use class .primary on anchor) */
+.main-nav li a.primary {
+  background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+  box-shadow: 0 8px 20px rgba(192,57,43,0.14);
+}
+
+/* Focus visible for keyboard users */
+.main-nav li a:focus-visible {
+  outline: 3px solid rgba(192,57,43,0.14);
+  outline-offset: 3px;
+}
+
+/* Put push items to the right */
+.push {
+  margin-left: auto;
+}
+
+/* Small screens: stack vertically */
+@media (max-width: 700px) {
+  .main-nav {
+    gap: 6px;
+    padding: 6px;
+  }
+  .main-nav li a {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+  /* When stacked, make push full width at bottom */
+  .push {
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+/* Utility: turn an anchor into the same style as form buttons when needed */
+.a-button {
+  display:inline-flex;
+  align-items:center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background var(--transition) ease, transform var(--transition) ease;
+}
+.a-button:hover { background: var(--accent-dark); transform: translateY(-3px); }
+
+/* Keep menu accessible and tidy */
+.main-nav a svg { height: 18px; width: 18px; display: inline-block; vertical-align: middle; }

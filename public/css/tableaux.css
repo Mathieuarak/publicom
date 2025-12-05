@@ -29,7 +29,7 @@ table tbody tr:nth-child(odd) {
 	background-color: #ffffff;
 }
 
-.bouton {
+.boutton {
 	padding: 1px 6px;
 	border: 1px outset buttonborder;
 	border-radius: 3px;
@@ -51,3 +51,246 @@ table form{
     background: #f9fafb;
     font-size: 1em;
 }
+
+
+:root{
+  --bg: #fbfdff;
+  --card: #ffffff;
+  --text: #2b2f33;
+  --muted: #6b7280;
+  --accent: #c0392b;
+  --accent-dark: #9b2e24;
+  --border: #e6e9ee;
+  --radius: 8px;
+  --transition: 200ms;
+  --shadow: 0 8px 20px rgba(39,44,49,0.06);
+  --font-stack: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { font-family: var(--font-stack); color: var(--text); background: transparent; }
+
+.table-wrap { width:100%; overflow-x:auto; border-radius: calc(var(--radius)); background: transparent; padding: 6px 0; }
+
+table {
+    border-collapse: collapse;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    background: var(--card);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    min-width: 640px;
+}
+
+table td, table th {
+    padding: 12px 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+
+table thead th {
+    background-color: #2f3b45;
+    color: #ffffff;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
+}
+
+table tbody td {
+    color: var(--text);
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+table tbody tr {
+    background-color: var(--bg);
+    transition: transform var(--transition) ease, background var(--transition) ease, box-shadow var(--transition) ease;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+table tbody tr:hover {
+    background: #fff7f6;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(192,57,43,0.04);
+}
+
+.titre { text-align: center; font-weight:600; margin-bottom:10px; }
+
+.bouton, .table-btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  border: 0;
+  cursor: pointer;
+  transition: transform var(--transition) ease, box-shadow var(--transition) ease, background var(--transition) ease;
+  color: #fff;
+  background: var(--accent);
+  box-shadow: 0 6px 14px rgba(192,57,43,0.12);
+  text-decoration: none;
+}
+
+.bouton.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.bouton:hover, .table-btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(155,46,36,0.12);
+}
+
+.bouton:active, .table-btn:active {
+  transform: translateY(1px);
+}
+
+table form{
+    border: none;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  table { font-size: 0.95rem; min-width: 640px; }
+  .bouton { padding: 6px 8px; font-size: 0.9rem; }
+}
+
+@media (max-width: 640px) {
+  table { min-width: 520px; }
+  table td, table th { padding: 10px 12px; }
+}
+
+.bouton:focus, .table-btn:focus, table a:focus {
+  outline: 3px solid rgba(192,57,43,0.14);
+  outline-offset: 2px;
+}
+
+* { box-sizing: border-box; }
+body { font-family: var(--font-stack); color: var(--text); background: transparent; }
+
+.table-wrap { width:100%; overflow-x:auto; border-radius: calc(var(--radius)); background: transparent; padding: 6px 0; }
+
+table {
+    border-collapse: collapse;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    background: var(--card);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    min-width: 640px;
+}
+
+table td, table th {
+    padding: 12px 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+
+table thead th {
+    background-color: #2f3b45;
+    color: #ffffff;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
+}
+
+table tbody td {
+    color: var(--text);
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+table tbody tr {
+    background-color: var(--bg);
+    transition: transform var(--transition) ease, background var(--transition) ease, box-shadow var(--transition) ease;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+table tbody tr:hover {
+    background: #fff7f6;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(192,57,43,0.04);
+}
+
+.titre { text-align: center; font-weight:600; margin-bottom:10px; }
+
+.bouton, .table-btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  border: 0;
+  cursor: pointer;
+  transition: transform var(--transition) ease, box-shadow var(--transition) ease, background var(--transition) ease;
+  color: #fff;
+  background: var(--accent);
+  box-shadow: 0 6px 14px rgba(192,57,43,0.12);
+  text-decoration: none;
+}
+
+.bouton.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.bouton:hover, .table-btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(155,46,36,0.12);
+}
+
+.bouton:active, .table-btn:active {
+  transform: translateY(1px);
+}
+
+table form{
+    border: none;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  table { font-size: 0.95rem; min-width: 640px; }
+  .bouton { padding: 6px 8px; font-size: 0.9rem; }
+}
+
+@media (max-width: 640px) {
+  table { min-width: 520px; }
+  table td, table th { padding: 10px 12px; }
+}
+
+.bouton:focus, .table-btn:focus, table a:focus {
+  outline: 3px solid rgba(192,57,43,0.14);
+  outline-offset: 2px;
+}
+
+.table-compact td, .table-compact th { padding: 8px 10px; font-size: 0.92rem; }
