@@ -320,7 +320,7 @@ a.button.secondary {
 .a-button:hover { background:var(--accent-dark); transform: translateY(-2px); }
 
 .danger {
-    color: #721c24;
+    color: #ff0019;
     border-radius: 5px;
     margin: 10px 0;
 }
