@@ -22,13 +22,11 @@
   flex-wrap: wrap;
 }
 
-/* li as flex item (remove floats) */
 .main-nav li {
   list-style: none;
   margin: 0;
 }
 
-/* Links look like pill buttons */
 .main-nav li a {
   display: inline-flex;
   align-items: center;
@@ -44,7 +42,6 @@
   outline: none;
 }
 
-/* Hover / active visual */
 .main-nav li a:hover,
 .main-nav li a:focus {
   background: var(--nav-hover);
@@ -53,24 +50,20 @@
   color: var(--nav-text);
 }
 
-/* Optional "primary" link style (use class .primary on anchor) */
 .main-nav li a.primary {
   background: linear-gradient(180deg, var(--accent), var(--accent-dark));
   box-shadow: 0 8px 20px rgba(192,57,43,0.14);
 }
 
-/* Focus visible for keyboard users */
 .main-nav li a:focus-visible {
   outline: 3px solid rgba(192,57,43,0.14);
   outline-offset: 3px;
 }
 
-/* Put push items to the right */
 .push {
   margin-left: auto;
 }
 
-/* Small screens: stack vertically */
 @media (max-width: 700px) {
   .main-nav {
     gap: 6px;
@@ -80,7 +73,7 @@
     padding: 10px;
     font-size: 0.95rem;
   }
-  /* When stacked, make push full width at bottom */
+  
   .push {
     margin-left: 0;
     width: 100%;
@@ -89,7 +82,6 @@
   }
 }
 
-/* Utility: turn an anchor into the same style as form buttons when needed */
 .a-button {
   display:inline-flex;
   align-items:center;
@@ -116,13 +108,11 @@
   flex-wrap: wrap;
 }
 
-/* li as flex item (remove floats) */
 .main-nav li {
   list-style: none;
   margin: 0;
 }
 
-/* Links look like pill buttons */
 .main-nav li a {
   display: inline-flex;
   align-items: center;
@@ -138,7 +128,6 @@
   outline: none;
 }
 
-/* Hover / active visual */
 .main-nav li a:hover,
 .main-nav li a:focus {
   background: var(--nav-hover);
@@ -147,24 +136,23 @@
   color: var(--nav-text);
 }
 
-/* Optional "primary" link style (use class .primary on anchor) */
 .main-nav li a.primary {
   background: linear-gradient(180deg, var(--accent), var(--accent-dark));
   box-shadow: 0 8px 20px rgba(192,57,43,0.14);
 }
 
-/* Focus visible for keyboard users */
+
 .main-nav li a:focus-visible {
   outline: 3px solid rgba(192,57,43,0.14);
   outline-offset: 3px;
 }
 
-/* Put push items to the right */
+
 .push {
   margin-left: auto;
 }
 
-/* Small screens: stack vertically */
+
 @media (max-width: 700px) {
   .main-nav {
     gap: 6px;
@@ -174,7 +162,7 @@
     padding: 10px;
     font-size: 0.95rem;
   }
-  /* When stacked, make push full width at bottom */
+  
   .push {
     margin-left: 0;
     width: 100%;
@@ -183,7 +171,6 @@
   }
 }
 
-/* Utility: turn an anchor into the same style as form buttons when needed */
 .a-button {
   display:inline-flex;
   align-items:center;
@@ -197,5 +184,4 @@
 }
 .a-button:hover { background: var(--accent-dark); transform: translateY(-3px); }
 
-/* Keep menu accessible and tidy */
 .main-nav a svg { height: 18px; width: 18px; display: inline-block; vertical-align: middle; }
