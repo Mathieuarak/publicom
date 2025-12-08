@@ -4,7 +4,10 @@
 
 <?php if (isset($errors)) { foreach ($errors as $error){ ?>
     <li><?= esc($error) ?></li>
-<?php }}?>
+    
+<?php }}
+$errors ??= session()->getFlashdata('errors');
+?>
 
 <?= form_open_multipart('ajout-message') ?>
     <fieldset>
@@ -14,6 +17,7 @@
 
         <label>Titre :</label>
         <input name="titre" type="text">
+        <p class=""><?=  $errors['TITRE']?? '' ?></p>
 
         <label>Contenu du message :</label>
         <textarea name="message"></textarea>

@@ -28,8 +28,18 @@ class MessageModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'TITRE' => 'required',
+        'CONTENU' => 'required',
+    ];
+    protected $validationMessages   = [
+        'TITRE' => [
+            'required' => 'Le titre du message est obligatoire',
+        ],
+        'CONTENU' => [
+            'required' => 'Le contenu du message est obligatoire',
+        ]
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
@@ -44,16 +54,17 @@ class MessageModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function message_maxId(){
-        $row=$this->selectMax('ID')->first();
+    public function message_maxId()
+    {
+        $row = $this->selectMax('ID')->first();
         return (int) $row['ID'];
     }
 
-    public function messageInCommune($idCommune){
+    public function messageInCommune($idCommune)
+    {
         return $this
-        ->select("ID")
-        ->where("ID_COMMUNEMESSAGE",$idCommune)
-        ->findAll();
+            ->select("ID")
+            ->where("ID_COMMUNEMESSAGE", $idCommune)
+            ->findAll();
     }
-
 }

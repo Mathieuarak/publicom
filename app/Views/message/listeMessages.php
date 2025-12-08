@@ -43,10 +43,10 @@ foreach ($messageListe as $message) {
                     <input name="idMessage" type="hidden" value="<?= $message['ID'] ?>" />
                     <input name="idCommune" type="hidden" value="<?= $commune['ID'] ?>" />
 
-                    <input type="radio" id="on" name="publie" value="1" <?php if ($message['PUBLIE'] == 1) {echo 'checked';} ?> />
+                    <input type="radio" id=<?=$message['ID'].'on'?> name="publie" value="1" <?php if ($message['PUBLIE'] == 1) {echo 'checked';} ?> />
                     <label for="on">On</label>
 
-                    <input type="radio" id="off" name="publie" value="0" <?php if ($message['PUBLIE'] == 0) {echo 'checked';} ?> />
+                    <input type="radio" id=<?=$message['ID'].'off'?> name="publie" value="0" <?php if ($message['PUBLIE'] == 0) {echo 'checked';} ?> />
                     <label for="off">Off</label>
                     <button class="bouton" type="submit">Changer</button>
 
