@@ -18,13 +18,25 @@ foreach ($messageListe as $message) {
 
 <table>
     <tr>
-        <th> Message </th>
+        <th> Titre du Message </th>
+        <th> Contenu du Message </th>
+        <th> Police du titre </th>
+        <th> Police du contenu </th>
+        <th> Taille du titre </th>
+        <th> Taille du contenu </th>
+        <th> Alignement du message </th>
         <th> Visibilité </th>
     </tr>
 
     <?php foreach ($messageListe as $message) { ?>
         <tr>
             <td> <?= $message['TITRE'] ?> </td>
+            <td> <?= $message['CONTENU'] ?> </td>
+            <td> <?= $message['POLICETITRE'] ?> </td>
+            <td> <?= $message['POLICECONTENU'] ?> </td>
+            <td> <?= $message['TAILLETITRE'] ?> </td>
+            <td> <?= $message['TAILLECONTENU'] ?> </td>
+            <td> <?= $message['ALIGNEMENT'] ?> </td>
             <td>
 
                 <form method="post" action='<?= url_to('visuModif_message')?>'>
