@@ -5,19 +5,24 @@
 $policeTitre = $message['POLICETITRE'];
 $policeContenu = $message['POLICECONTENU'];
 $tailleTitre = $message['TAILLETITRE'];
-$tailleContenu =$message['TAILLECONTENU'];
+$tailleContenu = $message['TAILLECONTENU'];
 
-if ($message['ALIGNEMENT']=="droite"){
-    $alignement="right";
-} else if ($message['ALIGNEMENT']=="gauche"){
-    $alignement="left";
+if ($message['ALIGNEMENT'] == "droite") {
+    $alignement = "right";
+} else if ($message['ALIGNEMENT'] == "gauche") {
+    $alignement = "left";
 } else {
-    $alignement="center";
+    $alignement = "center";
 }
 ?>
 
 
 <style>
+    .msg {
+        text-align: center;
+        color: red;
+    }
+
     .article {
         margin: 10px;
         padding: 1em;
@@ -26,38 +31,41 @@ if ($message['ALIGNEMENT']=="droite"){
         border-width: 2px;
         border-color: black;
         background-color: #eee;
-        background-image: url(<?=$img?>);
+        background-image: url(<?= $img ?>);
 
     }
 
     .titre {
         font-family: <?= $policeTitre ?>;
-        font-size: <?=$tailleTitre/10?>rem;
+        font-size: <?= $tailleTitre / 10 ?>rem;
         text-align: <?= $alignement ?>;
     }
 
     .contenu {
         font-family: <?= $policeContenu ?>;
-        font-size: <?=$tailleContenu/10?>rem;
+        font-size: <?= $tailleContenu / 10 ?>rem;
         text-align: <?= $alignement ?>;
     }
 </style>
 
-<?php if (session()->getFlashdata('msg')){ ?>
-    <div >
-        <?= session()->getFlashdata('msg') ?>
-    </div>
+<?php if (session()->getFlashdata('msg')) {
+
+    $msg = session()->getFlashdata('msg'); ?>
+
+    <h1>Visualisation des message de <?= $commune['NOM'] ?></h1>
+    <h2 class="msg"><?= $msg ?></h2>
+
+<?php } else { ?>
+    <h1>Visualisation des message de <?= $commune['NOM'] ?></h1>
+
 <?php } ?>
-
-
-<h1>Visualisation des message de <?= $commune['NOM'] ?></h1>
 
 
 <!-- les bouton suivant et précédent ne fonctionne pas , à modifier -->
 
-<a class="bouton left" href='<?=url_to('preSuiv_message', $message['ID'],0)  ?>'> Message précédent </a> 
+<a class="bouton left" href='<?= url_to('preSuiv_message', $message['ID'], 0)  ?>'> Message précédent </a>
 
-<a class="bouton right" href='<?= url_to('preSuiv_message', $message['ID'],1) ?> '> Message Suivant </a>
+<a class="bouton right" href='<?= url_to('preSuiv_message', $message['ID'], 1) ?> '> Message Suivant </a>
 
 <article class="article">
     <h2 class="titre"> <?= $message['TITRE'] ?></h2>

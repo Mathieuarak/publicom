@@ -49,4 +49,11 @@ class MessageModel extends Model
         return (int) $row['ID'];
     }
 
+    public function messageInCommune($idCommune){
+        return $this
+        ->select("ID")
+        ->where("ID_COMMUNEMESSAGE",$idCommune)
+        ->findAll();
+    }
+
 }
