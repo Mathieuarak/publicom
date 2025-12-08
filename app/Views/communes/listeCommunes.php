@@ -10,7 +10,7 @@
     $table-> setHeading(['Nom','Modifier','Supprimer','Commune Accueil']);
 
     if (session()->getFlashData('msg')!==null){
-        echo'<p>'.session()->getFlashData('msg').'<p>';
+        echo'<p class="danger">'.session()->getFlashData('msg').'<p>';
     }
     // dd('getFlashData');
 

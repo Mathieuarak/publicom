@@ -318,3 +318,10 @@ a.button.secondary {
   transition: background .14s ease, transform .12s ease;
 }
 .a-button:hover { background:var(--accent-dark); transform: translateY(-2px); }
+
+.danger {
+    color: #ff0019;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
