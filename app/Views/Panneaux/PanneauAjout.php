@@ -8,17 +8,17 @@
 
     <p>
         <label for="numero">Numéro :</label>
-        <input type="text" name="numero" id="numero" value="<?= esc(old('numero')) ?>">
+        <input type="text" name="numero" id="numero" value="<?= esc(old('numero')) ?>" maxlength= "10">
     </p>
 
     <p>
         <label for="latitude">Latitude :</label>
-        <input type="text" name="latitude" id="latitude" value="<?= esc(old('latitude')) ?>">
+        <input type="text" name="latitude" id="latitude" value="<?= esc(old('latitude')) ?>"maxlength= "8">
     </p>
 
     <p>
         <label for="longitude">Longitude :</label>
-        <input type="text" name="longitude" id="longitude" value="<?= esc(old('longitude')) ?>">
+        <input type="text" name="longitude" id="longitude" value="<?= esc(old('longitude')) ?>"maxlength= "8">
     </p>
 
     <button type="submit">Valider</button>

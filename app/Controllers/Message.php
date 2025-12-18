@@ -147,10 +147,7 @@ class Message extends BaseController
                 ];
 
                 if ($messageModel->insert($data)===false){
-                    return redirect()
-                        ->back()
-                        ->withInput()
-                        ->with('errors', $messageModel->errors());
+                    return redirect()->back()->withInput()->with('errors', $messageModel->errors());
                 }
                 return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
             }

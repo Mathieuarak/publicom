@@ -10,19 +10,19 @@
     <p>
         <label for="numero">Numéro :</label>
         <input type="text" name="numero" id="numero"
-            value="<?= esc(old('numero', $panneau['NUMERO'])) ?>">
+            value="<?= esc(old('numero', $panneau['NUMERO'])) ?>"maxlength= "10">
     </p>
 
     <p>
         <label for="latitude">Latitude :</label>
         <input type="text" name="latitude" id="latitude"
-            value="<?= esc(old('latitude', $panneau['LATITUDE'])) ?>">
+            value="<?= esc(old('latitude', $panneau['LATITUDE'])) ?>"maxlength= "8">
     </p>
 
     <p>
         <label for="longitude">Longitude :</label>
         <input type="text" name="longitude" id="longitude"
-            value="<?= esc(old('longitude', $panneau['LONGITUDE'])) ?>">
+            value="<?= esc(old('longitude', $panneau['LONGITUDE'])) ?>"maxlength= "8">
     </p>
 
     <button type="submit">Valider</button>

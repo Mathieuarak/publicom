@@ -29,16 +29,10 @@ class MessageModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'TITRE' => 'required',
-        'CONTENU' => 'required',
+
     ];
     protected $validationMessages   = [
-        'TITRE' => [
-            'required' => 'Le titre du message est obligatoire',
-        ],
-        'CONTENU' => [
-            'required' => 'Le contenu du message est obligatoire',
-        ]
+
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
