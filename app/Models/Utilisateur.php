@@ -28,8 +28,26 @@ class Utilisateur extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = 
+    [
+        'IDENTIFIANT'=>'required|is_unique[utilisateur.IDENTIFIANT]',
+        'MOTDEPASSE'=>'required',
+        'NOM'=>'alpha',
+        'PRENOM'=>'alpha'
+    ]
+    ;
+
+    protected $validationMessages   = [
+        'IDENTIFIANT'=>
+        [
+            'required'=> 'identifiant obligatoire',
+            'is_unique'=>'l identifiant doit etre unique'
+        ],
+        'MOTDEPASSE'=>
+        ['
+            required'=>'mdp Obligatoire'
+        ]
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
