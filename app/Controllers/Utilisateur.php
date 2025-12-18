@@ -125,8 +125,14 @@ class Utilisateur extends BaseController
             "NOM" => $this->request->getPost('NOM'),
             "ID_UTILISATEURCOMMUNE" => $this->request->getPost('ID_UTILISATEURCOMMUNE'),
             "IDENTIFIANT" => $this->request->getPost('IDENTIFIANT'),
-            "MOTDEPASSE" => password_hash($this->request->getPost('MOTDEPASSE'), PASSWORD_BCRYPT)
         ];
+        // permet au required dans les validation rule du mdp de marcher car password_hash renvoie un entier meme si le champ est vide 
+        if (!empty($this->request->getPost('MOTDEPASSE'))){
+           $mdp= password_hash($this->request->getPost('MOTDEPASSE'), PASSWORD_BCRYPT);
+        }else{
+            $mdp=$this->request->getPost('MOTDEPASSE');
+        }
+        $data["MOTDEPASSE"] =$mdp;
 
         $model->insert($data);
 
@@ -161,9 +167,15 @@ class Utilisateur extends BaseController
             "PRENOM" => $this->request->getPost('PRENOM'),
             "NOM" => $this->request->getPost('NOM'),
             "IDENTIFIANT" => $this->request->getPost('IDENTIFIANT'),
-            "MOTDEPASSE" => password_hash($this->request->getPost('MOTDEPASSE'), PASSWORD_BCRYPT)
         ];
-
+        
+         // permet au required dans les validation rule du mdp de marcher car password_hash renvoie un entier meme si le champ est vide 
+        if (!empty($this->request->getPost('MOTDEPASSE'))){
+           $mdp= password_hash($this->request->getPost('MOTDEPASSE'), PASSWORD_BCRYPT);
+        }else{
+            $mdp=$this->request->getPost('MOTDEPASSE');
+        }
+        $data["MOTDEPASSE"] =$mdp;
 
         $model->update($this->request->getPost('ID'), $data);
         //dd($this->request->getPost());
