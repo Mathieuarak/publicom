@@ -31,7 +31,9 @@ class Utilisateur extends Model
     protected $validationRules      = 
     [
         'IDENTIFIANT'=>'required|is_unique[utilisateur.IDENTIFIANT]',
-        'MOTDEPASSE'=>'required'
+        'MOTDEPASSE'=>'required',
+        'NOM'=>'alpha',
+        'PRENOM'=>'alpha'
     ]
     ;
 
