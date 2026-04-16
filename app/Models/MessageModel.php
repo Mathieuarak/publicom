@@ -29,9 +29,33 @@ class MessageModel extends Model
 
     // Validation
     protected $validationRules      = [
-
+        'TITRE' => 'required',
+        'CONTENU' => 'required',
+        'POLICETITRE' => 'alpha_space',
+        'POLICECONTENU' => 'alpha_space',
+        'ALIGNEMENT' => 'required',
+        'TAILLETITRE' => 'required|integer'
     ];
     protected $validationMessages   = [
+        'TITRE' => [
+            'required' => 'Le titre du message est obligatoire',
+        ],
+        'CONTENU' => [
+            'required' => 'Le contenu du message est obligatoire',
+        ],
+        'POLICETITRE' =>[
+            'alpha_space' => 'La police du titre ne peut contenir que des lettres'
+        ],
+        'POLICECONTENU' =>[
+            'alpha_space' => 'La police du contenu ne peut contenir que des lettres'
+        ],
+        'ALIGNEMENT' =>[
+            'required' => 'Choissisez un alignement pour le message'
+        ],
+        'TAILLETITRE' => [
+            'required' => 'La taille de la police est obligatoire',
+            'integer' => 'il ne faut utiliser que des chiffres pour la taille de la police'
+        ]
 
     ];
     protected $skipValidation       = false;

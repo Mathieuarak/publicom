@@ -68,7 +68,7 @@ class Utilisateur extends BaseController
             // }
         }
 
-        return redirect()->back()/*->with('errorMessage',"Echec auth")*/;
+        return redirect()->back()->with('errorMessage',"Echec auth");
     }
 
     public function reads($numCommune)
@@ -168,7 +168,7 @@ class Utilisateur extends BaseController
             "NOM" => $this->request->getPost('NOM'),
             "IDENTIFIANT" => $this->request->getPost('IDENTIFIANT'),
         ];
-        
+
          // permet au required dans les validation rule du mdp de marcher car password_hash renvoie un entier meme si le champ est vide 
         if (!empty($this->request->getPost('MOTDEPASSE'))){
            $mdp= password_hash($this->request->getPost('MOTDEPASSE'), PASSWORD_BCRYPT);

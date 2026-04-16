@@ -73,7 +73,9 @@
 
 <body>
     <h1>
-        <?php /*if(isset($_SESSION['error']))*/  //if (session()->getFlashdata('errorMessage') !== NULL) { session()->getFlashdata('errorMessage'); /*dd($_SESSION['error']); $_SESSION['error']; */}?>
+        <?php if (session()->getFlashData('errorMessage')!==null){
+        echo'<p class="danger">'.session()->getFlashData('errorMessage').'<p>';
+    }?>
     </h1>
     <form method="post" action="<?=url_to("auth_user")?>">
     

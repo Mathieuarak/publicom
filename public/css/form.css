@@ -325,3 +325,7 @@ a.button.secondary {
     margin: 10px 0;
 }
 
+.erreur {
+    color: #ff0019;
+    margin-bottom: 10px;
+}

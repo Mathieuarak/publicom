@@ -3,9 +3,10 @@
 <?= $this->section('contenu') ?>
 
 
-<?php if (isset($errors)) { foreach ($errors as $error){ ?>
-    <li><?= esc($error) ?></li>
-<?php }}?>
+
+<?php 
+$errors ??= session()->getFlashdata('errors');
+?>
 
 <?= form_open_multipart('modif-message') ?>
     <fieldset>
@@ -17,15 +18,19 @@
 
         <label>Titre :</label>
         <input name="titre" type="text" value="<?= $message['TITRE'] ?>">
+        <p class="erreur"><?=  $errors['TITRE']?? '' ?></p>
 
         <label>Contenu du message :</label>
         <textarea name="message"><?= $message['CONTENU']?></textarea>
+        <p class="erreur"><?=  $errors['CONTENU']?? '' ?></p>
 
         <label>Nom de la police de caractères du titre :</label>
         <input name="policeTitre" type="text" value="<?= $message['POLICETITRE'] ?>">
+        <p class="erreur"><?=  $errors['POLICETITRE']?? '' ?></p>
 
         <label>Nom de la police de caractères du texte :</label>
         <input name="policeTexte" type="text" value="<?= $message['POLICECONTENU'] ?>">
+        <p class="erreur"><?=  $errors['POLICECONTENU']?? '' ?></p>
 
         <label>Alignement</label>
         <fieldset>
@@ -40,16 +45,22 @@
                 <label for="centre">Droite</label>
             </div>
         </fieldset>
+        <p class="erreur"><?=  $errors['ALIGNEMENT']?? '' ?></p>
 
 
         <label>Taille de la police du titre :</label>
         <input name="tailleTitre" type="text" value="<?= $message['TAILLETITRE'] ?>">
+        <p class="erreur"><?=  $errors['TAILLETITRE']?? '' ?></p>
 
         <label>Taille de la police du texte :</label>
         <input name="tailleTexte" type="text" value="<?= $message['TAILLECONTENU'] ?>">
+        <p class="erreur"><?=  $errors['TAILLECONTENU']?? '' ?></p>
 
         <label>Fond :</label>
         <input name="fond" type="file" >
+        <?php if (isset($errors)) { foreach ($errors as $error){ ?>
+            <p class="erreur"><?= esc($error) ?></p>
+        <?php }} ?>
 
         <input type="submit" value="Valider">
     </fieldset>

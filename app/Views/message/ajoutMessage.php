@@ -17,18 +17,21 @@ $errors ??= session()->getFlashdata('errors');
 
         <label>Titre :</label>
         <input name="titre" type="text">
-        <p class=""><?=  $errors['TITRE']?? '' ?></p>
+        <p class="erreur"><?=  $errors['TITRE']?? '' ?></p>
 
         <label>Contenu du message :</label>
         <textarea name="message"></textarea>
+        <p class="erreur"><?=  $errors['CONTENU']?? '' ?></p>
 
         
 
         <label>Nom de la police de caractères du titre :</label>
         <input name="policeTitre" type="text">
+        <p class="erreur"><?=  $errors['POLICETITRE']?? '' ?></p>
 
         <label>Nom de la police de caractères du texte :</label>
         <input name="policeTexte" type="text">
+        <p class="erreur"><?=  $errors['POLICECONTENU']?? '' ?></p>
 
         <label>Alignement</label>
         <fieldset>
@@ -43,16 +46,23 @@ $errors ??= session()->getFlashdata('errors');
                 <label for="centre">Droite</label>
             </div>
         </fieldset>
+        <p class="erreur"><?=  $errors['ALIGNEMENT']?? '' ?></p>
 
 
         <label>Taille de la police du titre :</label>
         <input name="tailleTitre" type="text">
+        <p class="erreur"><?=  $errors['TAILLETITRE']?? '' ?></p>
 
         <label>Taille de la police du texte :</label>
         <input name="tailleTexte" type="text">
+        <p class="erreur"><?=  $errors['TAILLECONTENU']?? '' ?></p>
 
         <label>Fond :</label>
         <input name="fond" type="file" >
+        <?php if (!empty($errors['fond'])){ ?>
+            <p class="erreur"><?= esc($errors['fond']) ?></p>
+        <?php } ?>
+        
 
         <input name="publie" type="hidden" value=0 />
 
