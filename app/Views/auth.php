@@ -79,7 +79,6 @@
     </h1>
     <form method="post" action="<?=url_to("auth_user")?>">
 
-        welcome to publicom, please login to access your dashboard
         <label for="nom" >Login </label>
         <input type="text" id="login" name="user_login" />
             
